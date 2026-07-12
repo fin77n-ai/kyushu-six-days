@@ -266,10 +266,10 @@
   .menu-modal{position:fixed; inset:0; background:rgba(0,0,0,.55); display:flex; align-items:flex-end; justify-content:center; z-index:90;}
   .menu-modal[hidden]{display:none;}
   .mm-box{background:var(--surface); width:100%; max-width:440px; max-height:90vh; overflow-y:auto; border-radius:18px 18px 0 0; box-shadow:0 -8px 30px rgba(0,0,0,.35); position:relative;}
-  .mm-close{position:sticky; top:0; z-index:2; display:flex; justify-content:flex-end; padding:9px 10px 0;}
-  .mm-close button{border:none; background:var(--surface-2); width:32px; height:32px; border-radius:50%; font-size:14px; color:var(--ink-soft); cursor:pointer; box-shadow:var(--shadow);}
+  .mm-close{position:sticky; top:0; z-index:3; height:46px; display:flex; justify-content:flex-end; padding:8px 10px 4px; background:var(--surface); border-bottom:1px solid var(--line);}
+  .mm-close button{border:none; background:var(--surface-2); width:34px; height:34px; border-radius:50%; font-size:14px; color:var(--ink-soft); cursor:pointer; box-shadow:var(--shadow); pointer-events:auto;}
   .mm-box .menu-card{margin:0 0 -4px; border:none; box-shadow:none; border-radius:0; background:transparent;}
-  .mm-box .menu-head{margin-top:-38px;}
+  .mm-box .menu-head{margin-top:0;}
   .must-pick{margin:0 15px 12px; padding:13px 14px; border:1px solid color-mix(in srgb,var(--kaki) 35%,var(--line));
     border-radius:14px; background:linear-gradient(135deg,var(--kaki-soft),var(--surface));}
   .must-pick .mp-title{display:flex; align-items:center; gap:7px; color:var(--kaki); font-size:14px; font-weight:800; margin-bottom:7px;}
@@ -313,8 +313,10 @@
   .phrase b{display:block; font-size:12.5px; line-height:1.4;}.phrase span{display:block; margin-top:4px; color:var(--kaki); font-size:10.5px; font-weight:700;}
   .phrase-ovl{position:fixed; inset:0; z-index:120; display:flex; align-items:center; justify-content:center; padding:22px; background:rgba(10,16,20,.82);}
   .phrase-ovl[hidden]{display:none;}.phrase-sheet{width:100%; max-width:420px; padding:26px 20px; border-radius:20px; background:var(--surface); text-align:center; box-shadow:0 20px 60px rgba(0,0,0,.4);}
-  .phrase-jp{font-size:27px; font-weight:800; line-height:1.5; color:var(--ink);}.phrase-cn{margin-top:14px; color:var(--ink-soft); font-size:14px;}
-  .phrase-close{margin-top:22px; border:none; border-radius:999px; padding:10px 24px; background:var(--kaki); color:#fff; font:800 13px/1 var(--font-cjk); cursor:pointer;}
+  .phrase-jp{font-size:27px; font-weight:800; line-height:1.5; color:var(--ink);}.phrase-reading{margin-top:12px; color:var(--kaki); font:700 14px/1.6 var(--font-lat);}.phrase-cn{margin-top:10px; color:var(--ink-soft); font-size:14px;}
+  .phrase-actions{display:flex; justify-content:center; gap:8px; margin-top:22px;}.phrase-speak,.phrase-close{border:none; border-radius:999px; padding:10px 18px; font:800 13px/1 var(--font-cjk); cursor:pointer;}
+  .phrase-speak{background:var(--indigo); color:#fff;}
+  .phrase-close{margin:0; background:var(--kaki); color:#fff;}
 </style>
 </head>
 <body>
@@ -998,18 +1000,23 @@
     <div class="sec-title"><span class="n">JAPANESE</span><h2>离线应急日语</h2></div>
     <div class="menu-tip" style="padding:0 5px 11px;">点一下全屏放大，直接把手机给对方看。无需联网，也不用现场表演日语摇滚。</div>
     <div class="phrase-grid">
-      <button class="phrase" data-jp="予約しています。確認をお願いします。" data-cn="我有预约，请帮我确认。"><b>我有预约</b><span>予約しています</span></button>
-      <button class="phrase" data-jp="馬肉は食べません。入れないでください。" data-cn="我们不吃马肉，请不要加入。"><b>不要马肉</b><span>馬肉は食べません</span></button>
-      <button class="phrase" data-jp="クレジットカードは使えますか？" data-cn="可以使用信用卡吗？"><b>可以刷卡吗</b><span>カードは使えますか</span></button>
-      <button class="phrase" data-jp="この場所までタクシーをお願いします。" data-cn="请帮我叫车去这个地方。"><b>请帮我叫出租车</b><span>タクシーをお願いします</span></button>
-      <button class="phrase" data-jp="荷物を預かっていただけますか？" data-cn="可以帮我寄存行李吗？"><b>寄存行李</b><span>荷物を預かれますか</span></button>
-      <button class="phrase" data-jp="道に迷いました。この場所へ行きたいです。" data-cn="我迷路了，想去这个地方。"><b>我迷路了</b><span>道に迷いました</span></button>
-      <button class="phrase" data-jp="体調が悪いです。病院を教えてください。" data-cn="我身体不舒服，请告诉我医院在哪里。"><b>身体不舒服</b><span>体調が悪いです</span></button>
-      <button class="phrase" data-jp="中国語か英語で対応できますか？" data-cn="可以用中文或英语沟通吗？"><b>需要中文或英语</b><span>中国語か英語で</span></button>
+      <button class="phrase" data-jp="生ビールを一杯お願いします。" data-reading="Nama biiru o ippai onegai shimasu" data-cn="请给我来一杯生啤。"><b>来一杯生啤</b><span>生ビールを一杯</span></button>
+      <button class="phrase" data-jp="とりあえず、生ビールを二杯お願いします。" data-reading="Toriaezu, nama biiru o nihai onegai shimasu" data-cn="先来两杯生啤。很地道的开场说法。"><b>先来两杯生啤</b><span>とりあえず、生二杯</span></button>
+      <button class="phrase" data-jp="これを一つお願いします。" data-reading="Kore o hitotsu onegai shimasu" data-cn="这个请给我来一份。"><b>这个来一份</b><span>これを一つ</span></button>
+      <button class="phrase" data-jp="おすすめは何ですか？" data-reading="Osusume wa nan desu ka" data-cn="有什么推荐？"><b>有什么推荐</b><span>おすすめは何ですか</span></button>
+      <button class="phrase" data-jp="お会計をお願いします。" data-reading="Okaikei o onegai shimasu" data-cn="麻烦结账。"><b>麻烦结账</b><span>お会計お願いします</span></button>
+      <button class="phrase" data-jp="予約しています。確認をお願いします。" data-reading="Yoyaku shite imasu. Kakunin o onegai shimasu" data-cn="我有预约，请帮我确认。"><b>我有预约</b><span>予約しています</span></button>
+      <button class="phrase" data-jp="馬肉は食べません。入れないでください。" data-reading="Baniku wa tabemasen. Irenaide kudasai" data-cn="我们不吃马肉，请不要加入。"><b>不要马肉</b><span>馬肉は食べません</span></button>
+      <button class="phrase" data-jp="クレジットカードは使えますか？" data-reading="Kurejitto kaado wa tsukaemasu ka" data-cn="可以使用信用卡吗？"><b>可以刷卡吗</b><span>カードは使えますか</span></button>
+      <button class="phrase" data-jp="この場所までタクシーをお願いします。" data-reading="Kono basho made takushii o onegai shimasu" data-cn="请帮我叫车去这个地方。"><b>请帮我叫出租车</b><span>タクシーをお願いします</span></button>
+      <button class="phrase" data-jp="荷物を預かっていただけますか？" data-reading="Nimotsu o azukatte itadakemasu ka" data-cn="可以帮我寄存行李吗？"><b>寄存行李</b><span>荷物を預かれますか</span></button>
+      <button class="phrase" data-jp="道に迷いました。この場所へ行きたいです。" data-reading="Michi ni mayoimashita. Kono basho e ikitai desu" data-cn="我迷路了，想去这个地方。"><b>我迷路了</b><span>道に迷いました</span></button>
+      <button class="phrase" data-jp="体調が悪いです。病院を教えてください。" data-reading="Taichou ga warui desu. Byouin o oshiete kudasai" data-cn="我身体不舒服，请告诉我医院在哪里。"><b>身体不舒服</b><span>体調が悪いです</span></button>
+      <button class="phrase" data-jp="中国語か英語で対応できますか？" data-reading="Chuugokugo ka eigo de taiou dekimasu ka" data-cn="可以用中文或英语沟通吗？"><b>需要中文或英语</b><span>中国語か英語で</span></button>
     </div>
   </section>
 
-  <div class="phrase-ovl" id="phraseOvl" hidden><div class="phrase-sheet"><div class="phrase-jp" id="phraseJp"></div><div class="phrase-cn" id="phraseCn"></div><button class="phrase-close" id="phraseClose" type="button">关闭</button></div></div>
+  <div class="phrase-ovl" id="phraseOvl" hidden><div class="phrase-sheet"><div class="phrase-jp" id="phraseJp"></div><div class="phrase-reading" id="phraseReading"></div><div class="phrase-cn" id="phraseCn"></div><div class="phrase-actions"><button class="phrase-speak" id="phraseSpeak" type="button">▶ 播放发音</button><button class="phrase-close" id="phraseClose" type="button">关闭</button></div></div></div>
 
   <!-- ============ TIPS ============ -->
   <section>
@@ -1152,9 +1159,16 @@
   document.querySelectorAll('.phrase').forEach(function(button){
     button.addEventListener('click',function(){
       document.getElementById('phraseJp').textContent=button.dataset.jp;
+      document.getElementById('phraseReading').textContent=button.dataset.reading;
       document.getElementById('phraseCn').textContent=button.dataset.cn;
       phraseOvl.hidden=false;
     });
+  });
+  document.getElementById('phraseSpeak').addEventListener('click',function(){
+    if(!('speechSynthesis' in window)) return;
+    speechSynthesis.cancel();
+    var utterance=new SpeechSynthesisUtterance(document.getElementById('phraseJp').textContent);
+    utterance.lang='ja-JP'; utterance.rate=.82; speechSynthesis.speak(utterance);
   });
   document.getElementById('phraseClose').addEventListener('click',function(){ phraseOvl.hidden=true; });
   phraseOvl.addEventListener('click',function(event){ if(event.target===phraseOvl) phraseOvl.hidden=true; });
