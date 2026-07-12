@@ -325,6 +325,8 @@
   .pay-chip{padding:2px 7px; border-radius:999px; font-size:10.5px; font-weight:700; background:var(--surface-2); color:var(--ink-soft);}
   .pay-chip.yes{background:var(--moss-soft); color:var(--moss);}.pay-chip.no{background:var(--kaki-soft); color:var(--kaki);}
   .pay-note{margin-top:5px; color:var(--ink-faint); font-size:10.5px; line-height:1.45;}
+  .pass-callout{margin:0 18px 13px; padding:13px 14px; border:1px solid color-mix(in srgb,var(--moss) 35%,var(--line)); border-radius:14px; background:linear-gradient(135deg,var(--moss-soft),var(--surface));}
+  .pass-callout .pc-title{font-size:14px; font-weight:800; color:var(--moss);}.pass-callout p{margin:5px 0 0; font-size:11.5px; line-height:1.6; color:var(--ink-soft);}.pass-callout b{color:var(--ink);}
 </style>
 </head>
 <body>
@@ -394,7 +396,7 @@
       <div class="pay-row"><div class="pay-icon">🚌</div><div><div class="pay-name">福冈西铁巴士</div><div class="pay-methods"><span class="pay-chip yes">Suica 可用</span><span class="pay-chip">现金</span><span class="pay-chip">部分线路信用卡感应</span></div><div class="pay-note">Suica 上车、下车都要刷；机场国际线巴士也支持全国交通 IC。</div></div></div>
       <div class="pay-row"><div class="pay-icon">🚄</div><div><div class="pay-name">九州新干线</div><div class="pay-methods"><span class="pay-chip yes">JR Pass / 指定席票</span><span class="pay-chip no">Suica 余额不可直接乘车</span></div><div class="pay-note">走人工或对应闸机出示 Pass；不要同时刷 Suica，避免产生异常进站记录。</div></div></div>
       <div class="pay-row"><div class="pay-icon">🚊</div><div><div class="pay-name">鹿儿岛市电 / 市营巴士</div><div class="pay-methods"><span class="pay-chip no">Suica 不可</span><span class="pay-chip yes">感应信用卡可用</span><span class="pay-chip">现金 / Rapica</span></div><div class="pay-note">市电下车付款；用同一张实体卡或同一台手机完成触碰。</div></div></div>
-      <div class="pay-row"><div class="pay-icon">🌋</div><div><div class="pay-name">Island View / City View 观光巴士</div><div class="pay-methods"><span class="pay-chip no">Suica 不可</span><span class="pay-chip">现金</span><span class="pay-chip yes">一日券最省心</span><span class="pay-chip">Rapica</span></div><div class="pay-note">上车前备零钱，或直接买 Island View / Cute 一日券；不要默认每辆车都能刷银行卡。</div></div></div>
+      <div class="pay-row"><div class="pay-icon">🌋</div><div><div class="pay-name">D2 鹿儿岛观光交通</div><div class="pay-methods"><span class="pay-chip yes">推荐 CUTE ¥1,300</span><span class="pay-chip no">Suica 不可刷观光巴士</span></div><div class="pay-note">CUTE 同时覆盖市电、市营巴士、City View、Island View 和樱岛渡轮；不是只覆盖岛内巴士的 ¥500 专用券。</div></div></div>
       <div class="pay-row"><div class="pay-icon">🚢</div><div><div class="pay-name">樱岛渡轮</div><div class="pay-methods"><span class="pay-chip yes">Suica 可用</span><span class="pay-chip yes">感应信用卡可用</span><span class="pay-chip">现金 / Rapica</span></div><div class="pay-note">下船时付款，支持 Suica 等全国交通 IC。</div></div></div>
       <div class="pay-row"><div class="pay-icon">♨️</div><div><div class="pay-name">鹿儿岛中央 ↔ 指宿 JR</div><div class="pay-methods"><span class="pay-chip yes">JR Pass / 纸票</span><span class="pay-chip no">Suica 不可到指宿</span></div><div class="pay-note">Suica 区域只到喜入，不能一路刷到指宿；玉手箱号还需要指定席。</div></div></div>
       <div class="pay-row"><div class="pay-icon">🚕</div><div><div class="pay-name">出租车</div><div class="pay-methods"><span class="pay-chip">现金最稳</span><span class="pay-chip">信用卡看车内标识</span></div><div class="pay-note">上车先确认卡标；短程备一些 ¥1,000 纸币和硬币。</div></div></div>
@@ -492,6 +494,7 @@
       <div class="adv-grid"><span class="adv-chip">👕 速干短袖</span><span class="adv-chip">☀️ <b>防晒必涂+补涂</b></span><span class="adv-chip">🧢 帽子墨镜</span><span class="adv-chip">💧 大量补水</span></div>
       <p>全程<b>最好天气也最晒</b>——樱岛火山口零遮荫。<b>SPF50 出门涂、午后补一次</b>；帽子墨镜小风扇齐上，带够水或便利店买 Pocari 补盐；足汤记得带小毛巾。今天走 ~1.3万步，穿最舒服的鞋。<a class="wx-live" href="https://tenki.jp/forecast/9/50/8880/46201/" target="_blank" rel="noopener">🔗 查鹿儿岛实时天气 →</a></p>
     </div></details></div>
+    <div class="pass-callout"><div class="pc-title">🎫 D2 买 CUTE 一日券 · ¥1,300/人</div><p><b>覆盖：</b>市电 + 市营巴士 + City View + Island View + 樱岛渡轮，当天不限次数。</p><p><b>怎么买：</b>D1 抵达鹿儿岛中央站时，在站内 Tourist Information Center 买纸质 CUTE；先别刮日期，D2 早上使用前刮开 <b>7/14</b>，上下车或过渡轮时出示。电子版需要现场联网，不如纸票稳。</p><p><b>别买错：</b>¥500 的券只管 Island View 岛内巴士，不能坐市电和渡轮。</p></div>
     <div class="route">
       <div class="r-item r-node">
         <span class="r-pin hotel">🏨</span>
@@ -1152,7 +1155,7 @@
 
   var tripDays=[
     {date:'2026-07-13',id:'d1',title:'D1 落地，直奔鹿儿岛',alert:'🧳 到鹿儿岛先去喜来登放行李，再逛天文馆；入住晚一点没关系。'},
-    {date:'2026-07-14',id:'d2',title:'D2 樱岛暴走日',alert:'🎒 行李留酒店，只带水、伞、防晒和充电宝。'},
+    {date:'2026-07-14',id:'d2',title:'D2 樱岛暴走日',alert:'🎫 带上 CUTE 纸质一日券；行李留酒店，只背水、伞、防晒和充电宝。'},
     {date:'2026-07-15',id:'d3',title:'D3 指宿或城市，转场福冈',alert:'🧳 退房后先去鹿儿岛中央站寄存三件行李，再轻装去指宿；回站直接上新干线。'},
     {date:'2026-07-16',id:'d4',title:'D4 大名、天神与海边日落',alert:'🚕 19:29 看完日落立即打车，20:30 おおやま预约不要迟到。'},
     {date:'2026-07-17',id:'d5',title:'D5 庭园、药院与鸡皮串',alert:'☔ 只背随身包；雨大就在友泉亭、药院之间打车。'},
