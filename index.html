@@ -252,7 +252,7 @@
   .n-name .ml-badge{display:inline-block; font-size:10px; font-weight:700; color:var(--kaki); background:var(--kaki-soft); padding:1px 6px; border-radius:999px; vertical-align:middle; margin-left:5px; white-space:nowrap;}
   .menu-launch{display:flex; flex-direction:column; gap:8px;}
   .ml-btn{display:flex; align-items:center; gap:8px; width:100%; text-align:left; padding:12px 14px; border:1px solid var(--line); border-radius:12px; background:var(--surface); box-shadow:var(--shadow); font-family:var(--font-cjk); font-size:14px; font-weight:700; color:var(--ink); cursor:pointer; -webkit-tap-highlight-color:transparent;}
-  .ml-btn::after{content:"菜单 ›"; margin-left:auto; font-size:11.5px; font-weight:700; color:var(--kaki);}
+  .ml-btn::after{content:"必点 ›"; margin-left:auto; font-size:11.5px; font-weight:700; color:var(--kaki);}
   .ml-btn:active{background:var(--surface-2);}
   /* menu modal */
   .menu-ovl{position:fixed; inset:0; background:rgba(0,0,0,.55); display:flex; align-items:flex-end; justify-content:center; z-index:90;}
@@ -270,6 +270,14 @@
   .mm-close button{border:none; background:var(--surface-2); width:32px; height:32px; border-radius:50%; font-size:14px; color:var(--ink-soft); cursor:pointer; box-shadow:var(--shadow);}
   .mm-box .menu-card{margin:0 0 -4px; border:none; box-shadow:none; border-radius:0; background:transparent;}
   .mm-box .menu-head{margin-top:-38px;}
+  .must-pick{margin:0 15px 12px; padding:13px 14px; border:1px solid color-mix(in srgb,var(--kaki) 35%,var(--line));
+    border-radius:14px; background:linear-gradient(135deg,var(--kaki-soft),var(--surface));}
+  .must-pick .mp-title{display:flex; align-items:center; gap:7px; color:var(--kaki); font-size:14px; font-weight:800; margin-bottom:7px;}
+  .must-pick .mp-title::before{content:"必点"; padding:2px 7px; border-radius:999px; background:var(--kaki); color:#fff; font-size:10px; letter-spacing:.08em;}
+  .must-pick p{margin:0; color:var(--ink); font-size:12.5px; line-height:1.7;}
+  .must-pick p + p{margin-top:5px; padding-top:5px; border-top:1px dashed color-mix(in srgb,var(--kaki) 25%,var(--line)); color:var(--ink-soft);}
+  .must-pick b{color:var(--ink);}
+  .dish::before{content:"想加菜再看"; display:block; padding:3px 15px 7px; color:var(--ink-faint); font-size:10px; font-weight:700; letter-spacing:.12em;}
   footer{text-align:center; padding:22px 20px 6px; color:var(--ink-faint); font-size:11.5px; line-height:1.7;}
   footer .lat{color:var(--ink-soft);}
   .app-tools{display:flex; align-items:center; gap:7px; padding:10px 18px; position:sticky; top:0; z-index:20;
@@ -799,14 +807,14 @@
 
   <!-- ============ MENU ============ -->
   <section>
-    <div class="sec-title"><span class="n">MENU</span><h2>各店菜单 · 点选预点</h2></div>
-    <div class="menu-tip" style="padding:2px 6px 12px;">👆 点下面按钮、或直接点行程里带 <span class="ml-badge">📖菜单</span> 的<b style="color:var(--kaki)">餐厅名</b>，弹出菜单 → 选份数 → <b style="color:var(--kaki)">生成日语点单页</b>给店员看。</div>
+    <div class="sec-title"><span class="n">MUST EAT</span><h2>两人必点推荐</h2></div>
+    <div class="menu-tip" style="padding:2px 6px 12px;">👆 每家先看一套<b style="color:var(--kaki)">两人闭眼点组合</b>，不纠结；想调整再往下选份数，最后生成日语点单页给店员看。</div>
     <div class="menu-launch">
-      <button class="ml-btn" data-open="mm-tenmonkan">🐻‍❄️ 天文馆 · 白熊 / 黑豚炸猪排</button>
       <button class="ml-btn" data-open="mm-gyuissai">🥩 牛一彩 · 鹿儿岛黑牛烤肉</button>
-      <button class="ml-btn" data-open="mm-yatai">🏮 中洲屋台</button>
       <button class="ml-btn" data-open="mm-ooyama">🍲 おおやま · 牛肠锅</button>
       <button class="ml-btn" data-open="mm-kawaya">🍢 かわ屋 · 鸡皮串</button>
+      <button class="ml-btn" data-open="mm-tenmonkan">🐻‍❄️ 天文馆 · 白熊 / 黑豚炸猪排</button>
+      <button class="ml-btn" data-open="mm-yatai">🏮 中洲屋台</button>
     </div>
     <div class="menu-tip" style="padding:11px 6px 4px;">🚶 <b style="color:var(--ink)">步数</b>：每天卡片右上角有当日预估（六天约 47,000 步/34km，D2 樱岛、D4 逛街是暴走双峰）。<br>📋 菜单为常见招牌 + 参考价（实际以店内为准），马肉已排除在 おおやま 菜单外。</div>
   </section>
@@ -815,6 +823,7 @@
   <div class="menu-modal" id="mm-gyuissai" hidden><div class="mm-box"><div class="mm-close"><button class="mm-x" aria-label="关闭">✕</button></div>
     <div class="menu-card">
       <div class="menu-head"><span class="menu-ic">🥩</span><div><div class="menu-name">牛一彩 · 鹿儿岛黑牛烤肉</div><div class="menu-sub">D2 · <span class="ok">✅ 已订 19:00</span> · A5黑毛和牛</div></div></div>
+      <div class="must-pick"><div class="mp-title">两人闭眼点</div><p><b>特上葱盐牛舌 ×1</b> · <b>稀有部位拼盘 ×1</b> · 上等五花或里脊 ×1 · 泡菜拼盘 ×1 · 冷面 ×1</p><p>先牛舌，再拼盘和肉，最后冷面。肉塔适合拍照但量大价高，不列入必点。</p></div>
       <ul class="dish">
         <li class="ord" data-jp="タン塩" data-cn="盐烤牛舌"><div class="d-info"><span class="d-jp">タン塩</span><span class="d-cn"><span class="star">⭐</span>盐烤牛舌 · 开场必点</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
         <li class="ord" data-jp="上タン" data-cn="上等牛舌"><div class="d-info"><span class="d-jp">上タン</span><span class="d-cn">上等牛舌·更厚</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
@@ -840,6 +849,7 @@
   <div class="menu-modal" id="mm-ooyama" hidden><div class="mm-box"><div class="mm-close"><button class="mm-x" aria-label="关闭">✕</button></div>
     <div class="menu-card">
       <div class="menu-head"><span class="menu-ic">🍲</span><div><div class="menu-name">おおやま · 牛肠锅（席のみ现点）</div><div class="menu-sub">D4 · <span class="ok">✅ 已订 20:30</span> · 到店现点</div></div></div>
+      <div class="must-pick"><div class="mp-title">两人闭眼点</div><p><b>味噌牛肠锅 ×2人份</b> · <b>嫩牛杂 ×1</b> · 明太薯泥沙拉 ×1 · <b>杂烩面 ×1</b></p><p>味噌是招牌浓口，面留到最后下锅吸汤。明确跳过馬刺し、馬ユッケ。</p></div>
       <ul class="dish">
         <li class="ord" data-jp="もつ鍋 みそ味" data-cn="牛肠锅·味噌"><div class="d-info"><span class="d-jp">もつ鍋 みそ味</span><span class="d-cn"><span class="star">⭐</span>牛肠锅·味噌最浓</span></div><span class="d-yen">¥2,178/人</span><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
         <li class="ord" data-jp="もつ鍋 しょうゆ味" data-cn="牛肠锅·酱油"><div class="d-info"><span class="d-jp">もつ鍋 しょうゆ味</span><span class="d-cn">牛肠锅·酱油清爽</span></div><span class="d-yen">¥2,178/人</span><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
@@ -863,6 +873,7 @@
   <div class="menu-modal" id="mm-kawaya" hidden><div class="mm-box"><div class="mm-close"><button class="mm-x" aria-label="关闭">✕</button></div>
     <div class="menu-card">
       <div class="menu-head"><span class="menu-ic">🍢</span><div><div class="menu-name">かわ屋 · 鸡皮串</div><div class="menu-sub">D5 · <span class="ok">✅ 已订 19:00 吧台</span></div></div></div>
+      <div class="must-pick"><div class="mp-title">两人闭眼点</div><p><b>酱味鸡皮 10串</b> · <b>盐味鸡皮 10串</b> · 鸡尾 2串 · 脆骨 2串 · 脆青椒 ×1 · <b>鸡肉釜饭 ×1</b></p><p>鸡皮先各来 10 串，不够再追单；青椒解腻，釜饭收尾。串数多但每串很小，别被 20 吓到。</p></div>
       <ul class="dish">
         <li class="ord" data-jp="とり皮（タレ）" data-cn="酱味鸡皮串"><div class="d-info"><span class="d-jp">とり皮（タレ）</span><span class="d-cn"><span class="star">⭐</span>酱味鸡皮串·招牌</span></div><span class="d-yen">¥154</span><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
         <li class="ord" data-jp="とり皮（塩）" data-cn="盐味鸡皮串"><div class="d-info"><span class="d-jp">とり皮（塩）</span><span class="d-cn">盐味鸡皮串·对比着吃</span></div><span class="d-yen">¥154</span><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
@@ -872,7 +883,6 @@
         <li class="ord" data-jp="ハツ" data-cn="鸡心"><div class="d-info"><span class="d-jp">ハツ</span><span class="d-cn">鸡心</span></div><span class="d-yen">¥154</span><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
         <li class="ord" data-jp="ぼんじり" data-cn="鸡尾"><div class="d-info"><span class="d-jp">ぼんじり</span><span class="d-cn">鸡尾·多汁</span></div><span class="d-yen">¥154</span><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
         <li class="ord" data-jp="ナンコツ" data-cn="脆骨"><div class="d-info"><span class="d-jp">ナンコツ</span><span class="d-cn">脆骨</span></div><span class="d-yen">¥154</span><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
-        <li class="ord" data-jp="ささみのしぎ焼き（2本）" data-cn="鸡胸夹蛋(2串)"><div class="d-info"><span class="d-jp">ささみのしぎ焼き</span><span class="d-cn">鸡胸夹蛋·2串</span></div><span class="d-yen">¥418</span><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
         <li class="ord" data-jp="パリパリピーマン" data-cn="脆青椒"><div class="d-info"><span class="d-jp">パリパリピーマン</span><span class="d-cn">脆青椒·解腻</span></div><span class="d-yen">¥250</span><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
         <li class="ord" data-jp="冷トマト" data-cn="冰镇番茄"><div class="d-info"><span class="d-jp">冷トマト</span><span class="d-cn">冰镇番茄</span></div><span class="d-yen">¥242</span><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
         <li class="ord" data-jp="もものタタキ" data-cn="鸡腿tataki"><div class="d-info"><span class="d-jp">もものタタキ</span><span class="d-cn">鸡腿轻炙·前菜</span></div><span class="d-yen">¥550</span><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
