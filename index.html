@@ -318,6 +318,13 @@
   .phrase-actions{display:flex; justify-content:center; gap:8px; margin-top:22px;}.phrase-speak,.phrase-close{border:none; border-radius:999px; padding:10px 18px; font:800 13px/1 var(--font-cjk); cursor:pointer;}
   .phrase-speak{background:var(--indigo); color:#fff;}
   .phrase-close{margin:0; background:var(--kaki); color:#fff;}
+  .pay-list{display:grid; gap:8px;}
+  .pay-row{display:grid; grid-template-columns:42px 1fr; gap:10px; padding:11px 12px; border:1px solid var(--line); border-radius:13px; background:var(--surface);}
+  .pay-icon{display:flex; align-items:center; justify-content:center; width:42px; height:42px; border-radius:12px; background:var(--indigo-soft); font-size:20px;}
+  .pay-name{font-size:13px; font-weight:800;}.pay-methods{display:flex; flex-wrap:wrap; gap:4px; margin-top:5px;}
+  .pay-chip{padding:2px 7px; border-radius:999px; font-size:10.5px; font-weight:700; background:var(--surface-2); color:var(--ink-soft);}
+  .pay-chip.yes{background:var(--moss-soft); color:var(--moss);}.pay-chip.no{background:var(--kaki-soft); color:var(--kaki);}
+  .pay-note{margin-top:5px; color:var(--ink-faint); font-size:10.5px; line-height:1.45;}
 </style>
 </head>
 <body>
@@ -376,6 +383,21 @@
         <div class="flt-mid"><div class="flt-route">福冈 → 上海浦东</div><div class="flt-sub">返程 · 最晚 15:30 出发去机场</div></div>
         <div class="flt-time"><div class="t">18:00</div><div class="d">7/18 六 起飞</div></div>
       </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-title"><span class="n">PAYMENTS</span><h2>交通付款速查</h2></div>
+    <div class="menu-tip" style="padding:0 5px 11px;">你的 Suica 在福冈很好用，在鹿儿岛要切换脑回路。看到红色“Suica 不可”就别拿手机和机器深情对望。</div>
+    <div class="pay-list">
+      <div class="pay-row"><div class="pay-icon">🚇</div><div><div class="pay-name">福冈地铁</div><div class="pay-methods"><span class="pay-chip yes">Suica 可用</span><span class="pay-chip">现金/单程票</span></div><div class="pay-note">进站、出站各刷一次；余额不足可在站内充值。</div></div></div>
+      <div class="pay-row"><div class="pay-icon">🚌</div><div><div class="pay-name">福冈西铁巴士</div><div class="pay-methods"><span class="pay-chip yes">Suica 可用</span><span class="pay-chip">现金</span><span class="pay-chip">部分线路信用卡感应</span></div><div class="pay-note">Suica 上车、下车都要刷；机场国际线巴士也支持全国交通 IC。</div></div></div>
+      <div class="pay-row"><div class="pay-icon">🚄</div><div><div class="pay-name">九州新干线</div><div class="pay-methods"><span class="pay-chip yes">JR Pass / 指定席票</span><span class="pay-chip no">Suica 余额不可直接乘车</span></div><div class="pay-note">走人工或对应闸机出示 Pass；不要同时刷 Suica，避免产生异常进站记录。</div></div></div>
+      <div class="pay-row"><div class="pay-icon">🚊</div><div><div class="pay-name">鹿儿岛市电 / 市营巴士</div><div class="pay-methods"><span class="pay-chip no">Suica 不可</span><span class="pay-chip yes">感应信用卡可用</span><span class="pay-chip">现金 / Rapica</span></div><div class="pay-note">市电下车付款；用同一张实体卡或同一台手机完成触碰。</div></div></div>
+      <div class="pay-row"><div class="pay-icon">🌋</div><div><div class="pay-name">Island View / City View 观光巴士</div><div class="pay-methods"><span class="pay-chip no">Suica 不可</span><span class="pay-chip">现金</span><span class="pay-chip yes">一日券最省心</span><span class="pay-chip">Rapica</span></div><div class="pay-note">上车前备零钱，或直接买 Island View / Cute 一日券；不要默认每辆车都能刷银行卡。</div></div></div>
+      <div class="pay-row"><div class="pay-icon">🚢</div><div><div class="pay-name">樱岛渡轮</div><div class="pay-methods"><span class="pay-chip yes">Suica 可用</span><span class="pay-chip yes">感应信用卡可用</span><span class="pay-chip">现金 / Rapica</span></div><div class="pay-note">下船时付款，支持 Suica 等全国交通 IC。</div></div></div>
+      <div class="pay-row"><div class="pay-icon">♨️</div><div><div class="pay-name">鹿儿岛中央 ↔ 指宿 JR</div><div class="pay-methods"><span class="pay-chip yes">JR Pass / 纸票</span><span class="pay-chip no">Suica 不可到指宿</span></div><div class="pay-note">Suica 区域只到喜入，不能一路刷到指宿；玉手箱号还需要指定席。</div></div></div>
+      <div class="pay-row"><div class="pay-icon">🚕</div><div><div class="pay-name">出租车</div><div class="pay-methods"><span class="pay-chip">现金最稳</span><span class="pay-chip">信用卡看车内标识</span></div><div class="pay-note">上车先确认卡标；短程备一些 ¥1,000 纸币和硬币。</div></div></div>
     </div>
   </section>
 
@@ -1025,7 +1047,7 @@
     <div class="card">
       <div class="row"><div class="ic">🍱</div><div class="bd"><div class="t">午饭怎么办（都不用预约，随走随吃）</div><div class="d"><b>D1</b>·新干线上吃驿便当(駅弁)或到鹿児島中央站 AMU广场；<b>D2</b>·樱岛口/水族馆附近轻食，或返天文馆吃拉面；<b>D3</b>·选指宿吃「温たまらん丼/流水素面」，选城市吃中央站 AMU；<b>D4</b>·太宰府参道梅園菜饭/名物梅ヶ枝餅垫肚，或天神商场餐厅；<b>D5</b>·Dacomecca 早餐管饱+友泉亭抹茶和菓子+药院咖啡轻食，一路续着不会饿；<b>D6</b>·博多站/机场解决。</div></div></div>
       <div class="row"><div class="ic">📌</div><div class="bd"><div class="t">预约小结</div><div class="d">✅ 已订：<b>牛一彩烤肉(D2 19:00) · 牛肠锅おおやま(D4 20:30) · かわ屋鸡皮串(D5 19:00)</b>，均 2 位。仅剩：<b>玉手箱号指定席(D3选指宿时·当地车站买)</b>。黑豚炸猪排、白熊、拉面、屋台、百道日落 → <b>免预约随到随吃</b>。</div></div></div>
-      <div class="row"><div class="ic">💴</div><div class="bd"><div class="t">现金 + 交通卡攻略</div><div class="d">✅ Suica 能刷：<b>樱岛渡轮、福冈地铁/JR、新干线闸机</b>。❌ <b>鹿儿岛市電刷不了 Suica</b>——用信用卡拍卡(Visa/MC/JCB)或现金均一 ¥170（车上可换零）。屋台、小店多收现金。</div></div></div>
+      <div class="row"><div class="ic">💴</div><div class="bd"><div class="t">现金 + 交通卡攻略</div><div class="d">✅ Suica 能刷：<b>福冈地铁、西铁巴士、樱岛渡轮</b>。❌ Suica 不能直接刷：<b>九州新干线、去指宿全程、鹿儿岛市电、Island View</b>。新干线/指宿用 JR Pass；鹿儿岛市电优先感应信用卡；观光巴士用现金或一日券。</div></div></div>
       <div class="row"><div class="ic">🌋</div><div class="bd"><div class="t">樱岛火山灰</div><div class="d">看风向，飘灰时戴口罩、备湿巾，别穿浅色、别晾衣服在外。</div></div></div>
       <div class="row"><div class="ic">🥵</div><div class="bd"><div class="t">高温 + 湿 = 易中暑</div><div class="d">32° 湿热暴晒，多补水补盐，便利店买 <span class="lat">Pocari</span>；带便携小风扇、防晒。</div></div></div>
       <div class="row"><div class="ic">☔</div><div class="bd"><div class="t">7/17 中雨</div><div class="d">折叠伞随身；忘带便利店 ¥600 有伞。那天走室内动线最稳。屋台雨天可能不出摊。</div></div></div>
