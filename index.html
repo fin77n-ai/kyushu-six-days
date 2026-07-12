@@ -304,6 +304,17 @@
   .reserve-actions{display:flex; gap:7px;}
   .reserve-actions button,.reserve-actions a{flex:1; border:1px solid var(--line); border-radius:999px; background:var(--surface); color:var(--ink); padding:7px 8px; text-align:center; text-decoration:none; font:700 11.5px/1 var(--font-cjk); cursor:pointer;}
   .preset-order{width:100%; margin-top:9px; border:none; border-radius:11px; padding:10px; background:var(--kaki); color:#fff; font:800 12.5px/1 var(--font-cjk); cursor:pointer;}
+  .fallback-grid{display:grid; gap:8px;}
+  .fallback{display:grid; grid-template-columns:38px 1fr; gap:10px; padding:11px 12px; border:1px solid var(--line); border-radius:13px; background:var(--surface);}
+  .fallback-day{display:flex; align-items:center; justify-content:center; width:38px; height:38px; border-radius:11px; background:var(--moss-soft); color:var(--moss); font:800 12px/1 var(--font-lat);}
+  .fallback b{font-size:13px;}.fallback p{margin:2px 0 0; font-size:11.5px; color:var(--ink-soft); line-height:1.55;}
+  .phrase-grid{display:grid; grid-template-columns:1fr 1fr; gap:8px;}
+  .phrase{min-height:76px; padding:10px; border:1px solid var(--line); border-radius:13px; background:var(--surface); color:var(--ink); text-align:left; cursor:pointer; box-shadow:var(--shadow);}
+  .phrase b{display:block; font-size:12.5px; line-height:1.4;}.phrase span{display:block; margin-top:4px; color:var(--kaki); font-size:10.5px; font-weight:700;}
+  .phrase-ovl{position:fixed; inset:0; z-index:120; display:flex; align-items:center; justify-content:center; padding:22px; background:rgba(10,16,20,.82);}
+  .phrase-ovl[hidden]{display:none;}.phrase-sheet{width:100%; max-width:420px; padding:26px 20px; border-radius:20px; background:var(--surface); text-align:center; box-shadow:0 20px 60px rgba(0,0,0,.4);}
+  .phrase-jp{font-size:27px; font-weight:800; line-height:1.5; color:var(--ink);}.phrase-cn{margin-top:14px; color:var(--ink-soft); font-size:14px;}
+  .phrase-close{margin-top:22px; border:none; border-radius:999px; padding:10px 24px; background:var(--kaki); color:#fff; font:800 13px/1 var(--font-cjk); cursor:pointer;}
 </style>
 </head>
 <body>
@@ -971,6 +982,35 @@
     </div>
   </div>
 
+  <section>
+    <div class="sec-title"><span class="n">PLAN B</span><h2>今天走不动了</h2></div>
+    <div class="fallback-grid">
+      <div class="fallback"><div class="fallback-day">D1</div><div><b>只保留转场、入住和晚饭</b><p>落地疲惫就不逛天文馆，酒店休息后直接吃黑豚或白熊。</p></div></div>
+      <div class="fallback"><div class="fallback-day">D2</div><div><b>樱岛巴士 + 足汤二选一</b><p>砍水族馆或仙巌园其中一个，19:00 牛一彩预约绝不动。</p></div></div>
+      <div class="fallback"><div class="fallback-day">D3</div><div><b>取消指宿，鹿儿岛市内慢逛</b><p>午后直接新干线去福冈，保留酒店入住和中洲夜景。</p></div></div>
+      <div class="fallback"><div class="fallback-day">D4</div><div><b>太宰府 / 天神只选一个</b><p>天气差就全走商场室内线，傍晚不去海边，直接回中洲吃牛肠锅。</p></div></div>
+      <div class="fallback"><div class="fallback-day">D5</div><div><b>Dacomecca + 药院 + かわ屋</b><p>砍友泉亭或打车往返，19:00 鸡皮串预约保留。</p></div></div>
+      <div class="fallback"><div class="fallback-day">D6</div><div><b>博多站一站式解决</b><p>咖啡、手信、午饭全放站内，15:30 前去机场，不挑战返程运气。</p></div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-title"><span class="n">JAPANESE</span><h2>离线应急日语</h2></div>
+    <div class="menu-tip" style="padding:0 5px 11px;">点一下全屏放大，直接把手机给对方看。无需联网，也不用现场表演日语摇滚。</div>
+    <div class="phrase-grid">
+      <button class="phrase" data-jp="予約しています。確認をお願いします。" data-cn="我有预约，请帮我确认。"><b>我有预约</b><span>予約しています</span></button>
+      <button class="phrase" data-jp="馬肉は食べません。入れないでください。" data-cn="我们不吃马肉，请不要加入。"><b>不要马肉</b><span>馬肉は食べません</span></button>
+      <button class="phrase" data-jp="クレジットカードは使えますか？" data-cn="可以使用信用卡吗？"><b>可以刷卡吗</b><span>カードは使えますか</span></button>
+      <button class="phrase" data-jp="この場所までタクシーをお願いします。" data-cn="请帮我叫车去这个地方。"><b>请帮我叫出租车</b><span>タクシーをお願いします</span></button>
+      <button class="phrase" data-jp="荷物を預かっていただけますか？" data-cn="可以帮我寄存行李吗？"><b>寄存行李</b><span>荷物を預かれますか</span></button>
+      <button class="phrase" data-jp="道に迷いました。この場所へ行きたいです。" data-cn="我迷路了，想去这个地方。"><b>我迷路了</b><span>道に迷いました</span></button>
+      <button class="phrase" data-jp="体調が悪いです。病院を教えてください。" data-cn="我身体不舒服，请告诉我医院在哪里。"><b>身体不舒服</b><span>体調が悪いです</span></button>
+      <button class="phrase" data-jp="中国語か英語で対応できますか？" data-cn="可以用中文或英语沟通吗？"><b>需要中文或英语</b><span>中国語か英語で</span></button>
+    </div>
+  </section>
+
+  <div class="phrase-ovl" id="phraseOvl" hidden><div class="phrase-sheet"><div class="phrase-jp" id="phraseJp"></div><div class="phrase-cn" id="phraseCn"></div><button class="phrase-close" id="phraseClose" type="button">关闭</button></div></div>
+
   <!-- ============ TIPS ============ -->
   <section>
     <div class="sec-title"><span class="n">TIPS</span><h2>出行注意点</h2></div>
@@ -1107,6 +1147,17 @@
     todaySub.textContent=next?'下一站：'+next.textContent.trim():'今天的安排已全部走完，回酒店躺平';
   }
   document.getElementById('todayGo').addEventListener('click',function(){ document.getElementById(target.id).scrollIntoView({behavior:'smooth'}); });
+
+  var phraseOvl=document.getElementById('phraseOvl');
+  document.querySelectorAll('.phrase').forEach(function(button){
+    button.addEventListener('click',function(){
+      document.getElementById('phraseJp').textContent=button.dataset.jp;
+      document.getElementById('phraseCn').textContent=button.dataset.cn;
+      phraseOvl.hidden=false;
+    });
+  });
+  document.getElementById('phraseClose').addEventListener('click',function(){ phraseOvl.hidden=true; });
+  phraseOvl.addEventListener('click',function(event){ if(event.target===phraseOvl) phraseOvl.hidden=true; });
 
   var root=document.documentElement;
   var savedTheme=localStorage.getItem('kyushu-theme');
