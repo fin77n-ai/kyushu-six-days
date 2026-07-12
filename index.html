@@ -293,6 +293,7 @@
   .today-copy{flex:1; min-width:0;}
   .today-title{font-size:18px; font-weight:800; line-height:1.3;}
   .today-sub{font-size:11.5px; opacity:.78; margin-top:3px;}
+  .today-alert{margin-top:10px; padding:8px 10px; border-radius:10px; background:rgba(255,255,255,.13); font-size:11.5px; font-weight:700; line-height:1.5;}
   .today-go{border:1px solid rgba(255,255,255,.35); background:rgba(255,255,255,.14); color:#fff; border-radius:999px; padding:8px 12px; font:800 12px/1 var(--font-cjk); cursor:pointer; white-space:nowrap;}
   .reserve-grid{display:grid; gap:9px;}
   .reserve-card{padding:13px 14px; border:1px solid var(--line); border-radius:15px; background:var(--surface); box-shadow:var(--shadow);}
@@ -359,7 +360,7 @@
 
   <div class="today-card" id="todayCard">
     <div class="today-kicker">TODAY MODE · JAPAN TIME</div>
-    <div class="today-main"><div class="today-copy"><div class="today-title" id="todayTitle">正在定位今天的行程</div><div class="today-sub" id="todaySub">以日本时间自动判断</div></div><button class="today-go" id="todayGo" type="button">查看今天</button></div>
+    <div class="today-main"><div class="today-copy"><div class="today-title" id="todayTitle">正在定位今天的行程</div><div class="today-sub" id="todaySub">以日本时间自动判断</div></div><button class="today-go" id="todayGo" type="button">查看今天</button></div><div class="today-alert" id="todayAlert">🧳 行李原则：先寄存，再开逛</div>
   </div>
 
   <section>
@@ -562,8 +563,8 @@
     <div class="route">
       <div class="r-item r-node">
         <span class="r-pin hotel">🏨</span>
-        <div class="n-top"><span class="n-name hotel">喜来登 退房出发</span></div>
-        <div class="n-jp">行李寄存前台，下午回来取</div>
+        <div class="n-top"><span class="n-name hotel">喜来登退房 → 鹿儿岛中央站寄存行李</span></div>
+        <div class="n-jp">先打车/市电到鹿児島中央駅，把三件行李放大型储物柜；满柜就找站员问人工寄存。下午回站直接上新干线，不折返酒店。</div>
       </div>
       <div class="r-item r-node">
         <span class="r-pin nat">1</span>
@@ -573,7 +574,7 @@
         <details class="exp"><summary>展开解说（选A必读·含车次）</summary><div class="exp-bd">
           <p><b>砂蒸温泉</b>是指宿 300 多年的传统：穿浴衣躺沙滩上，工作人员把 50-55° 的温泉砂盖你身上，10 分钟逼出一身汗，据说排毒效果是普通温泉数倍。埋着的样子像出土文物，记得让工作人员帮拍照📸。</p>
           <p>🚆 <b>车次引导</b>：鹿児島中央 → 指宿，首选观光特急 <b>「指宿のたまて箱(玉手箱号)」</b>约 50 分，一天 3 往返、<b>需订指定席</b>（头天在窗口订好）；赶不上就坐普通车约 1h15，约 30-60 分一班。</p>
-          <p>⏰ <b>时间账</b>：8 点出发 → 砂浴 1h → 12 点半前往回赶，下午转场不慌。嫌赶就选 B，城市里 <b>维新故乡馆</b>（西乡隆盛老家）+ 中央站对面 <b>AMU Plaza</b> 摩天轮也够玩。</p>
+          <p>⏰ <b>时间账</b>：8 点退房 → 鹿儿岛中央站寄存行李 → 指宿站下车后打车约 5 分到砂乐 → 砂浴 1h → 12 点前回赶。砂乐工作日 12:00–13:00 暂停接待，别卡午休。嫌赶就选 B，城市里 <b>维新故乡馆</b> + 中央站对面 <b>AMU Plaza</b> 也够玩。</p>
         </div></details>
       </div>
       <div class="r-item r-seg">
@@ -1128,24 +1129,24 @@
   });
 
   var tripDays=[
-    {date:'2026-07-13',id:'d1',title:'D1 落地，直奔鹿儿岛'},
-    {date:'2026-07-14',id:'d2',title:'D2 樱岛暴走日'},
-    {date:'2026-07-15',id:'d3',title:'D3 指宿或城市，转场福冈'},
-    {date:'2026-07-16',id:'d4',title:'D4 大名、天神与海边日落'},
-    {date:'2026-07-17',id:'d5',title:'D5 庭园、药院与鸡皮串'},
-    {date:'2026-07-18',id:'d6',title:'D6 慢逛后返程'}
+    {date:'2026-07-13',id:'d1',title:'D1 落地，直奔鹿儿岛',alert:'🧳 到鹿儿岛先去喜来登放行李，再逛天文馆；入住晚一点没关系。'},
+    {date:'2026-07-14',id:'d2',title:'D2 樱岛暴走日',alert:'🎒 行李留酒店，只带水、伞、防晒和充电宝。'},
+    {date:'2026-07-15',id:'d3',title:'D3 指宿或城市，转场福冈',alert:'🧳 退房后先去鹿儿岛中央站寄存三件行李，再轻装去指宿；回站直接上新干线。'},
+    {date:'2026-07-16',id:'d4',title:'D4 大名、天神与海边日落',alert:'🚕 19:29 看完日落立即打车，20:30 おおやま预约不要迟到。'},
+    {date:'2026-07-17',id:'d5',title:'D5 庭园、药院与鸡皮串',alert:'☔ 只背随身包；雨大就在友泉亭、药院之间打车。'},
+    {date:'2026-07-18',id:'d6',title:'D6 慢逛后返程',alert:'🧳 退房后把三件行李寄存酒店，逛完回来取，再直接去国际航站楼。'}
   ];
   var parts=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Tokyo',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).formatToParts(new Date());
   function part(type){ return parts.find(function(p){return p.type===type;}).value; }
   var japanDate=part('year')+'-'+part('month')+'-'+part('day'),japanMinutes=(+part('hour'))*60+(+part('minute'));
   var today=tripDays.find(function(day){return day.date===japanDate;}),target=today||tripDays[0];
-  var todayTitle=document.getElementById('todayTitle'),todaySub=document.getElementById('todaySub');
+  var todayTitle=document.getElementById('todayTitle'),todaySub=document.getElementById('todaySub'),todayAlert=document.getElementById('todayAlert');
   if(japanDate<'2026-07-13'){
-    todayTitle.textContent='明天出发 · D1 已待命'; todaySub.textContent='先确认护照、流量卡和预约凭证';
+    todayTitle.textContent='明天出发 · D1 已待命'; todaySub.textContent='先确认护照、流量卡和预约凭证'; todayAlert.textContent=tripDays[0].alert;
   }else if(japanDate>'2026-07-18'){
-    target=tripDays[5]; todayTitle.textContent='九州六日已圆满收官'; todaySub.textContent='行程与点单记录仍可离线查看';
+    target=tripDays[5]; todayTitle.textContent='九州六日已圆满收官'; todaySub.textContent='行程与点单记录仍可离线查看'; todayAlert.textContent='🎌 行李和两位旅客均已安全回家。';
   }else{
-    todayTitle.textContent=today.title;
+    todayTitle.textContent=today.title; todayAlert.textContent=today.alert;
     var next;
     document.querySelectorAll('#'+today.id+' .node').forEach(function(node){
       if(next) return; var time=node.querySelector('.n-time'); if(!time) return;
