@@ -62,7 +62,8 @@
       linear-gradient(180deg, var(--surface) 0%, var(--paper) 100%);
     border-bottom:1px solid var(--line); overflow:hidden;
   }
-  .hero .volcano{position:absolute; right:-28px; top:-12px; width:200px; height:145px; opacity:.9; pointer-events:none;}
+  .hero .volcano{position:absolute; right:-26px; top:-16px; width:196px; height:132px; opacity:.8; pointer-events:none;}
+  .hero .eyebrow, .hero h1{position:relative; z-index:1;}
   .eyebrow{font-family:var(--font-lat); font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--kaki); font-weight:600; margin-bottom:9px;}
   h1{margin:0; font-size:31px; line-height:1.12; font-weight:800; text-wrap:balance;}
   h1 small{display:block; font-size:14.5px; font-weight:600; color:var(--ink-soft); margin-top:8px; letter-spacing:.03em;}
@@ -101,8 +102,10 @@
 
   .day-card{background:var(--surface); border:1px solid var(--line); border-radius:18px; box-shadow:var(--shadow); overflow:hidden; margin:0 18px 18px; scroll-margin-top:56px;}
   .day-head{display:flex; align-items:center; gap:12px; padding:15px 16px 13px; background:linear-gradient(180deg,var(--surface-2),var(--surface)); border-bottom:1px solid var(--line);}
-  .day-num{font-family:var(--font-lat); font-weight:800; font-size:10px; letter-spacing:.14em; color:#fff; background:var(--ink); border-radius:8px; padding:6px 7px; text-align:center; line-height:1.15;}
-  .day-num span{display:block; font-size:16px;}
+  .day-num{flex:0 0 auto; width:46px; height:46px; border-radius:14px; display:flex; flex-direction:column; align-items:center; justify-content:center; line-height:1;
+    font-family:var(--font-lat); font-weight:800; font-size:8px; letter-spacing:.2em; color:rgba(255,255,255,.85);
+    background:linear-gradient(150deg, var(--kaki) 0%, #9a3f20 100%); box-shadow:0 3px 9px rgba(154,63,32,.4), inset 0 1px 0 rgba(255,255,255,.25); padding-top:2px;}
+  .day-num span{font-size:21px; font-weight:800; color:#fff; letter-spacing:0; margin-top:1px; text-shadow:0 1px 2px rgba(0,0,0,.18);}
   .day-title{flex:1; min-width:0;}
   .day-title .h{font-weight:800; font-size:16px; line-height:1.25;}
   .day-title .s{font-size:11.5px; color:var(--ink-soft); margin-top:3px; line-height:1.4;}
@@ -236,7 +239,12 @@
   .ord-list li{display:flex; justify-content:space-between; align-items:center; gap:12px; padding:13px 0; border-bottom:1px solid var(--line);}
   .ord-list .oj{font-size:19px; font-weight:800; color:var(--ink); line-height:1.25;}
   .ord-list .oc{font-size:11.5px; color:var(--ink-faint); font-weight:600; margin-top:2px;}
-  .ord-list .oq{font-family:var(--font-lat); font-weight:800; font-size:20px; color:var(--kaki); white-space:nowrap;}
+  .ord-list .oq{font-family:var(--font-lat); font-weight:800; font-size:20px; color:var(--kaki); white-space:nowrap; text-align:right;}
+  .ord-list .oq small{display:block; font-size:11px; font-weight:600; color:var(--ink-faint); margin-top:1px;}
+  .ord-total{display:flex; align-items:baseline; justify-content:space-between; margin:14px 18px 0; padding:12px 14px; background:var(--surface-2); border:1px solid var(--line); border-radius:12px;}
+  .ord-total .lbl{font-size:13px; font-weight:700; color:var(--ink-soft);}
+  .ord-total .amt{font-family:var(--font-lat); font-size:20px; font-weight:800; color:var(--ink);}
+  .ord-total .note{display:block; font-size:10.5px; font-weight:600; color:var(--ink-faint); margin-top:2px; text-align:right;}
   .ord-foot{text-align:center; margin:16px 18px 0; padding:13px; background:var(--kaki-soft); color:var(--kaki); border-radius:12px; font-size:14px; font-weight:800; line-height:1.5;}
   .ord-foot small{display:block; color:var(--ink-soft); font-weight:600; font-size:11px; margin-top:3px;}
   /* clickable restaurant name → menu */
@@ -277,10 +285,23 @@
 <div class="wrap">
 
   <header class="hero">
-    <svg class="volcano" viewBox="0 0 200 145" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M0 145 L55 52 Q67 38 79 52 L134 145 Z" fill="var(--kaki-soft)"/>
-      <path d="M55 52 Q67 38 79 52 L92 74 Q67 63 42 74 Z" fill="var(--kaki)" opacity=".5"/>
-      <path d="M61 44 q6 -14 -2 -26 M73 44 q-2 -16 8 -24 M67 42 q10 -8 8 -22" stroke="var(--kaki)" stroke-width="2.5" fill="none" opacity=".5" stroke-linecap="round"/>
+    <svg class="volcano" viewBox="0 0 240 150" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <linearGradient id="vg" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="var(--kaki)"/><stop offset="1" stop-color="#8f3a1e"/>
+        </linearGradient>
+        <linearGradient id="smk" x1="0" y1="1" x2="0" y2="0">
+          <stop offset="0" stop-color="var(--kaki)" stop-opacity=".5"/><stop offset="1" stop-color="var(--kaki)" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <circle cx="196" cy="40" r="31" fill="var(--kaki)" opacity=".13"/>
+      <circle cx="196" cy="40" r="17" fill="var(--kaki)" opacity=".22"/>
+      <path d="M0 150 L46 110 Q76 92 106 110 L150 150 Z" fill="var(--indigo)" opacity=".12"/>
+      <path d="M122 150 L186 106 Q210 90 234 106 L240 110 L240 150 Z" fill="var(--indigo)" opacity=".15"/>
+      <path d="M140 58 C133 43 152 37 144 21 C139 10 152 5 149 -6" stroke="url(#smk)" stroke-width="7" fill="none" stroke-linecap="round"/>
+      <path d="M74 150 L128 60 Q140 47 152 60 L206 150 Z" fill="url(#vg)"/>
+      <path d="M128 60 Q140 48 152 60 L162 77 Q140 68 118 77 Z" fill="#fff" opacity=".13"/>
+      <path d="M140 64 L126 150 M140 64 L154 150 M140 64 L116 126 M140 64 L166 128" stroke="#7d3219" stroke-width="1.4" opacity=".3" fill="none"/>
     </svg>
     <div class="eyebrow">Kyushu · 6 Days</div>
     <h1>九州六日<small>鹿儿岛 × 福冈 · 每天从酒店出发 · 点 🎧 有解说</small></h1>
@@ -802,13 +823,16 @@
         <li class="ord" data-jp="ロース" data-cn="里脊"><div class="d-info"><span class="d-jp">ロース</span><span class="d-cn">里脊 · 瘦嫩</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
         <li class="ord" data-jp="ハラミ" data-cn="横膈膜"><div class="d-info"><span class="d-jp">ハラミ</span><span class="d-cn">横膈膜·有嚼劲</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
         <li class="ord" data-jp="希少部位盛り" data-cn="稀有部位拼盘"><div class="d-info"><span class="d-jp">希少部位盛り</span><span class="d-cn"><span class="star">⭐</span>稀有部位拼盘 · 最划算</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="特上ネギ塩タン" data-cn="特上葱盐牛舌"><div class="d-info"><span class="d-jp">特上ネギ塩タン</span><span class="d-cn"><span class="star">⭐</span>特上葱盐柠檬牛舌·招牌</span></div><span class="d-yen">¥3,927</span><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="希少サーロインの手巻き（6貫）" data-cn="稀有西冷手卷(6卷)"><div class="d-info"><span class="d-jp">希少サーロイン手巻き</span><span class="d-cn"><span class="star">⭐</span>稀有西冷手卷·6卷</span></div><span class="d-yen">¥3,408</span><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="A5和牛の肉タワー" data-cn="A5和牛肉塔"><div class="d-info"><span class="d-jp">A5和牛 肉タワー</span><span class="d-cn">A5和牛肉塔·壕气拍照</span></div><span class="d-yen">¥10,000</span><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
         <li class="ord" data-jp="和牛ユッケ" data-cn="和牛生拌(生)"><div class="d-info"><span class="d-jp">和牛ユッケ</span><span class="d-cn">和牛生拌 · 生食可选</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
         <li class="ord" data-jp="サンチュ" data-cn="生菜包"><div class="d-info"><span class="d-jp">サンチュ</span><span class="d-cn">生菜·包肉解腻</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
         <li class="ord" data-jp="キムチ盛り" data-cn="泡菜拼盘"><div class="d-info"><span class="d-jp">キムチ盛り</span><span class="d-cn">韩式泡菜拼盘</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
         <li class="ord" data-jp="ビビンバ" data-cn="石锅拌饭(收尾)"><div class="d-info"><span class="d-jp">〆 ビビンバ</span><span class="d-cn">石锅拌饭收尾</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
         <li class="ord" data-jp="冷麺" data-cn="冷面(收尾)"><div class="d-info"><span class="d-jp">〆 冷麺</span><span class="d-cn">韩式冷面收尾</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
       </ul>
-      <div class="menu-tip">💡 单点顺序：<b>舌 → 五花/里脊 → 稀有拼盘</b>，和牛别烤过、变色带焦边就翻。不吃生食可跳过 ユッケ。</div>
+      <div class="menu-tip">🎫 <b>套餐(含2h畅饮)</b>：特選 ¥5,500(11品) / 彩 ¥6,600(12品) / 赤身特盛 ¥6,600(11品)。<br>💡 单点顺序：<b>舌 → 五花/里脊 → 稀有拼盘</b>，和牛别烤过、变色带焦边就翻。不吃生食可跳过 ユッケ。部分单品价店内为准。</div>
       <button class="order-show" data-shop="牛一彩 · 黑牛烤肉">📋 生成点单给店员看 <span class="os-n">0</span></button>
     </div>
   </div></div>
@@ -817,19 +841,21 @@
     <div class="menu-card">
       <div class="menu-head"><span class="menu-ic">🍲</span><div><div class="menu-name">おおやま · 牛肠锅（席のみ现点）</div><div class="menu-sub">D4 · <span class="ok">✅ 已订 20:30</span> · 到店现点</div></div></div>
       <ul class="dish">
-        <li class="ord" data-jp="もつ鍋（味噌）" data-cn="牛肠锅·味噌"><div class="d-info"><span class="d-jp">もつ鍋（味噌）</span><span class="d-cn"><span class="star">⭐</span>牛肠锅·味噌最浓 ~¥1,980/人</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
-        <li class="ord" data-jp="もつ鍋（醤油）" data-cn="牛肠锅·酱油"><div class="d-info"><span class="d-jp">もつ鍋（醤油）</span><span class="d-cn">牛肠锅·酱油清爽</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
-        <li class="ord" data-jp="もつ追加" data-cn="加牛肠"><div class="d-info"><span class="d-jp">もつ追加</span><span class="d-cn">加一份牛肠</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
-        <li class="ord" data-jp="柔らか牛すもつ" data-cn="嫩牛杂"><div class="d-info"><span class="d-jp">柔らか牛すもつ</span><span class="d-cn">嫩牛杂小菜</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
-        <li class="ord" data-jp="牛すじ煮込み" data-cn="牛筋炖"><div class="d-info"><span class="d-jp">牛すじ煮込み</span><span class="d-cn">牛筋炖</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
-        <li class="ord" data-jp="明太子" data-cn="明太子"><div class="d-info"><span class="d-jp">明太子</span><span class="d-cn">おおやま自制明太子</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
-        <li class="ord" data-jp="辛子高菜" data-cn="辣高菜"><div class="d-info"><span class="d-jp">辛子高菜</span><span class="d-cn">辣芥菜·下饭</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
-        <li class="ord" data-jp="明太ポテトサラダ" data-cn="明太薯泥沙拉"><div class="d-info"><span class="d-jp">明太ポテサラ</span><span class="d-cn">明太薯泥沙拉</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
-        <li class="ord" data-jp="一口餃子" data-cn="一口煎饺"><div class="d-info"><span class="d-jp">一口餃子</span><span class="d-cn">一口煎饺</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
-        <li class="ord" data-jp="〆 ちゃんぽん麺" data-cn="杂烩面(收尾)"><div class="d-info"><span class="d-jp">〆 ちゃんぽん麺</span><span class="d-cn"><span class="star">⭐</span>杂烩面下锅吸汤·必点</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
-        <li class="ord" data-jp="〆 雑炊" data-cn="杂炊粥(收尾)"><div class="d-info"><span class="d-jp">〆 雑炊</span><span class="d-cn">鸡蛋杂炊粥收尾</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="もつ鍋 みそ味" data-cn="牛肠锅·味噌"><div class="d-info"><span class="d-jp">もつ鍋 みそ味</span><span class="d-cn"><span class="star">⭐</span>牛肠锅·味噌最浓</span></div><span class="d-yen">¥2,178/人</span><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="もつ鍋 しょうゆ味" data-cn="牛肠锅·酱油"><div class="d-info"><span class="d-jp">もつ鍋 しょうゆ味</span><span class="d-cn">牛肠锅·酱油清爽</span></div><span class="d-yen">¥2,178/人</span><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="もつ鍋 水炊き風" data-cn="牛肠锅·水炊风"><div class="d-info"><span class="d-jp">もつ鍋 水炊き風</span><span class="d-cn">牛肠锅·清汤风</span></div><span class="d-yen">¥2,178/人</span><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="厚切り牛タンのから揚げ" data-cn="炸厚切牛舌"><div class="d-info"><span class="d-jp">厚切り牛タンのから揚げ</span><span class="d-cn">炸厚切牛舌·超香</span></div><span class="d-yen">¥968</span><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="柔らか牛すもつ" data-cn="嫩牛杂"><div class="d-info"><span class="d-jp">柔らか牛すもつ</span><span class="d-cn">嫩牛杂小菜</span></div><span class="d-yen">¥968</span><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="牛すじ煮込み" data-cn="牛筋炖"><div class="d-info"><span class="d-jp">牛すじ煮込み</span><span class="d-cn">牛筋炖</span></div><span class="d-yen">¥825</span><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="おおやま謹製博多明太子" data-cn="明太子"><div class="d-info"><span class="d-jp">おおやま明太子</span><span class="d-cn">自制博多明太子</span></div><span class="d-yen">¥858</span><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="特製明太ソースのポテトサラダ" data-cn="明太薯泥沙拉"><div class="d-info"><span class="d-jp">明太ポテサラ</span><span class="d-cn">明太薯泥沙拉</span></div><span class="d-yen">¥660</span><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="韓国風サラダ" data-cn="韩式沙拉"><div class="d-info"><span class="d-jp">韓国風サラダ</span><span class="d-cn">韩式沙拉·解腻</span></div><span class="d-yen">¥638</span><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="白菜キムチ" data-cn="白菜泡菜"><div class="d-info"><span class="d-jp">白菜キムチ</span><span class="d-cn">白菜泡菜</span></div><span class="d-yen">¥528</span><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="辛子高菜" data-cn="辣高菜"><div class="d-info"><span class="d-jp">辛子高菜</span><span class="d-cn">辣芥菜·下饭</span></div><span class="d-yen">¥429</span><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="〆 ちゃんぽんめん" data-cn="杂烩面(收尾)"><div class="d-info"><span class="d-jp">〆 ちゃんぽんめん</span><span class="d-cn"><span class="star">⭐</span>杂烩面下锅吸汤·必点</span></div><span class="d-yen">¥319</span><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="〆 雑炊セット" data-cn="杂炊粥(收尾)"><div class="d-info"><span class="d-jp">〆 雑炊セット</span><span class="d-cn">鸡蛋杂炊粥收尾</span></div><span class="d-yen">¥539</span><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
       </ul>
-      <div class="menu-tip">⚠️ <b>避开 馬刺し / 馬ユッケ（马肉）</b>！汤底味噌 > 酱油；两人点一锅 + 2-3 小菜 + 收尾面刚好。</div>
+      <div class="menu-tip">⚠️ <b>避开 馬刺し / 馬ユッケ（马肉）</b>！汤底味噌 > 酱油；两人点一锅 + 2-3 小菜 + 收尾面刚好。价格含税，实际以店内为准。</div>
       <button class="order-show" data-shop="おおやま · 牛肠锅">📋 生成点单给店员看 <span class="os-n">0</span></button>
     </div>
   </div></div>
@@ -838,21 +864,22 @@
     <div class="menu-card">
       <div class="menu-head"><span class="menu-ic">🍢</span><div><div class="menu-name">かわ屋 · 鸡皮串</div><div class="menu-sub">D5 · <span class="ok">✅ 已订 19:00 吧台</span></div></div></div>
       <ul class="dish">
-        <li class="ord" data-jp="とりかわ（タレ）" data-cn="酱味鸡皮串"><div class="d-info"><span class="d-jp">とりかわ（タレ）</span><span class="d-cn"><span class="star">⭐</span>酱味鸡皮串·招牌 ~¥130/串</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
-        <li class="ord" data-jp="とりかわ（塩）" data-cn="盐味鸡皮串"><div class="d-info"><span class="d-jp">とりかわ（塩）</span><span class="d-cn">盐味鸡皮串·对比着吃</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
-        <li class="ord" data-jp="つくね" data-cn="鸡肉丸"><div class="d-info"><span class="d-jp">つくね</span><span class="d-cn">鸡肉丸</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
-        <li class="ord" data-jp="せせり" data-cn="鸡颈肉"><div class="d-info"><span class="d-jp">せせり</span><span class="d-cn">鸡颈肉·弹嫩</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
-        <li class="ord" data-jp="ぼんじり" data-cn="鸡尾"><div class="d-info"><span class="d-jp">ぼんじり</span><span class="d-cn">鸡尾·多汁</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
-        <li class="ord" data-jp="砂ずり" data-cn="鸡胗"><div class="d-info"><span class="d-jp">砂ずり</span><span class="d-cn">鸡胗·脆口</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
-        <li class="ord" data-jp="手羽先" data-cn="鸡翅"><div class="d-info"><span class="d-jp">手羽先</span><span class="d-cn">烤鸡翅</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
-        <li class="ord" data-jp="豚バラ" data-cn="五花肉串"><div class="d-info"><span class="d-jp">豚バラ</span><span class="d-cn">五花肉串</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
-        <li class="ord" data-jp="季節野菜串" data-cn="时蔬串"><div class="d-info"><span class="d-jp">季節野菜串</span><span class="d-cn">时蔬串·换口</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
-        <li class="ord" data-jp="だし巻き玉子" data-cn="高汤蛋卷"><div class="d-info"><span class="d-jp">だし巻き玉子</span><span class="d-cn">高汤蛋卷</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
-        <li class="ord" data-jp="キャベツ" data-cn="生卷心菜"><div class="d-info"><span class="d-jp">キャベツ</span><span class="d-cn">生卷心菜·解腻</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
-        <li class="ord" data-jp="生ビール" data-cn="生啤"><div class="d-info"><span class="d-jp">生ビール</span><span class="d-cn">生啤·配串神器</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
-        <li class="ord" data-jp="ハイボール" data-cn="威士忌苏打"><div class="d-info"><span class="d-jp">ハイボール</span><span class="d-cn">威士忌苏打</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="とり皮（タレ）" data-cn="酱味鸡皮串"><div class="d-info"><span class="d-jp">とり皮（タレ）</span><span class="d-cn"><span class="star">⭐</span>酱味鸡皮串·招牌</span></div><span class="d-yen">¥154</span><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="とり皮（塩）" data-cn="盐味鸡皮串"><div class="d-info"><span class="d-jp">とり皮（塩）</span><span class="d-cn">盐味鸡皮串·对比着吃</span></div><span class="d-yen">¥154</span><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="とり身" data-cn="鸡腿肉串"><div class="d-info"><span class="d-jp">とり身</span><span class="d-cn">鸡腿肉串</span></div><span class="d-yen">¥154</span><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="バラ" data-cn="五花肉串"><div class="d-info"><span class="d-jp">バラ</span><span class="d-cn">五花肉串</span></div><span class="d-yen">¥154</span><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="砂ズリ" data-cn="鸡胗"><div class="d-info"><span class="d-jp">砂ズリ</span><span class="d-cn">鸡胗·脆口</span></div><span class="d-yen">¥154</span><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="ハツ" data-cn="鸡心"><div class="d-info"><span class="d-jp">ハツ</span><span class="d-cn">鸡心</span></div><span class="d-yen">¥154</span><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="ぼんじり" data-cn="鸡尾"><div class="d-info"><span class="d-jp">ぼんじり</span><span class="d-cn">鸡尾·多汁</span></div><span class="d-yen">¥154</span><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="ナンコツ" data-cn="脆骨"><div class="d-info"><span class="d-jp">ナンコツ</span><span class="d-cn">脆骨</span></div><span class="d-yen">¥154</span><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="ささみのしぎ焼き（2本）" data-cn="鸡胸夹蛋(2串)"><div class="d-info"><span class="d-jp">ささみのしぎ焼き</span><span class="d-cn">鸡胸夹蛋·2串</span></div><span class="d-yen">¥418</span><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="パリパリピーマン" data-cn="脆青椒"><div class="d-info"><span class="d-jp">パリパリピーマン</span><span class="d-cn">脆青椒·解腻</span></div><span class="d-yen">¥250</span><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="冷トマト" data-cn="冰镇番茄"><div class="d-info"><span class="d-jp">冷トマト</span><span class="d-cn">冰镇番茄</span></div><span class="d-yen">¥242</span><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="もものタタキ" data-cn="鸡腿tataki"><div class="d-info"><span class="d-jp">もものタタキ</span><span class="d-cn">鸡腿轻炙·前菜</span></div><span class="d-yen">¥550</span><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="〆 とり釜飯" data-cn="鸡肉釜饭(收尾)"><div class="d-info"><span class="d-jp">〆 とり釜飯</span><span class="d-cn"><span class="star">⭐</span>鸡肉釜饭·收尾</span></div><span class="d-yen">¥550</span><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="〆 醤油ラーメン" data-cn="酱油拉面(收尾)"><div class="d-info"><span class="d-jp">〆 醤油ラーメン</span><span class="d-cn">酱油拉面·收尾</span></div><span class="d-yen">¥550</span><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
       </ul>
-      <div class="menu-tip">💡 鸡皮串 <b>5 串起点</b>——先各来 10 串塩+タレ 打底，再点丸子/颈肉/野菜换口。</div>
+      <div class="menu-tip">💡 鸡皮串 <b>5 串起点</b>——先各来 10 串塩+タレ 打底，再点鸡尾/脆骨/前菜换口，釜饭收尾。价格含税，实际以店内为准。</div>
       <button class="order-show" data-shop="かわ屋 · 鸡皮串">📋 生成点单给店员看 <span class="os-n">0</span></button>
     </div>
   </div></div>
@@ -861,13 +888,13 @@
     <div class="menu-card">
       <div class="menu-head"><span class="menu-ic">🐻‍❄️</span><div><div class="menu-name">天文馆觅食 · 白熊 + 黑豚</div><div class="menu-sub">D1-D2 · 排队即可·免预约</div></div></div>
       <ul class="dish">
-        <li class="ord" data-jp="黒豚とんかつ" data-cn="黑豚炸猪排"><div class="d-info"><span class="d-jp">黒豚とんかつ</span><span class="d-cn"><span class="star">⭐</span>黑豚炸猪排·落地首餐</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
-        <li class="ord" data-jp="ロースかつ定食" data-cn="里脊炸猪排套餐"><div class="d-info"><span class="d-jp">ロースかつ定食</span><span class="d-cn">里脊炸猪排定食</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
-        <li class="ord" data-jp="黒豚しゃぶしゃぶ" data-cn="黑豚涮锅"><div class="d-info"><span class="d-jp">黒豚しゃぶしゃぶ</span><span class="d-cn">黑豚涮锅·蘸生蛋液</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
-        <li class="ord" data-jp="白熊（ベビー）" data-cn="白熊刨冰(小)"><div class="d-info"><span class="d-jp">白熊（ベビー）</span><span class="d-cn"><span class="star">⭐</span>白熊刨冰·两人一份够</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
-        <li class="ord" data-jp="鹿児島ラーメン" data-cn="鹿儿岛拉面"><div class="d-info"><span class="d-jp">鹿児島ラーメン</span><span class="d-cn">豚骨拉面·配焦葱</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
-        <li class="ord" data-jp="さつま揚げ" data-cn="萨摩炸鱼饼"><div class="d-info"><span class="d-jp">さつま揚げ</span><span class="d-cn">萨摩炸鱼饼·现炸</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
-        <li class="ord" data-jp="芋焼酎（お湯割り）" data-cn="芋烧酎(兑热水)"><div class="d-info"><span class="d-jp">芋焼酎</span><span class="d-cn">芋烧酎·兑水/热水</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="黒豚とんかつ" data-cn="黑豚炸猪排"><div class="d-info"><span class="d-jp">黒豚とんかつ</span><span class="d-cn"><span class="star">⭐</span>黑豚炸猪排·落地首餐</span></div><span class="d-yen">~¥1,600</span><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="ロースかつ定食" data-cn="里脊炸猪排套餐"><div class="d-info"><span class="d-jp">ロースかつ定食</span><span class="d-cn">里脊炸猪排定食</span></div><span class="d-yen">~¥1,800</span><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="黒豚しゃぶしゃぶ" data-cn="黑豚涮锅"><div class="d-info"><span class="d-jp">黒豚しゃぶしゃぶ</span><span class="d-cn">黑豚涮锅·蘸生蛋液</span></div><span class="d-yen">~¥3,000/人</span><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="白熊（ベビー）" data-cn="白熊刨冰(小)"><div class="d-info"><span class="d-jp">白熊（ベビー）</span><span class="d-cn"><span class="star">⭐</span>白熊刨冰·两人一份够</span></div><span class="d-yen">~¥600</span><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="鹿児島ラーメン" data-cn="鹿儿岛拉面"><div class="d-info"><span class="d-jp">鹿児島ラーメン</span><span class="d-cn">豚骨拉面·配焦葱</span></div><span class="d-yen">~¥800</span><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="さつま揚げ" data-cn="萨摩炸鱼饼"><div class="d-info"><span class="d-jp">さつま揚げ</span><span class="d-cn">萨摩炸鱼饼·现炸</span></div><span class="d-yen">~¥450</span><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="芋焼酎（お湯割り）" data-cn="芋烧酎(兑热水)"><div class="d-info"><span class="d-jp">芋焼酎</span><span class="d-cn">芋烧酎·兑水/热水</span></div><span class="d-yen">~¥500</span><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
       </ul>
       <div class="menu-tip">💡 落地日走进去就吃（川久/丸一等黑豚炸猪排店免预约）；白熊在 むじゃき 本店，翻台快。</div>
       <button class="order-show" data-shop="天文馆 · 白熊/黑豚">📋 生成点单给店员看 <span class="os-n">0</span></button>
@@ -878,13 +905,13 @@
     <div class="menu-card">
       <div class="menu-head"><span class="menu-ic">🏮</span><div><div class="menu-name">中洲屋台</div><div class="menu-sub">D3 · 现点现吃·备现金</div></div></div>
       <ul class="dish">
-        <li class="ord" data-jp="豚骨ラーメン" data-cn="豚骨拉面"><div class="d-info"><span class="d-jp">豚骨ラーメン</span><span class="d-cn"><span class="star">⭐</span>豚骨拉面·屋台经典</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
-        <li class="ord" data-jp="一口餃子" data-cn="一口煎饺"><div class="d-info"><span class="d-jp">一口餃子</span><span class="d-cn"><span class="star">⭐</span>博多一口煎饺</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
-        <li class="ord" data-jp="焼きラーメン" data-cn="煎拉面"><div class="d-info"><span class="d-jp">焼きラーメン</span><span class="d-cn">煎拉面·屋台名物</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
-        <li class="ord" data-jp="焼き鳥盛り" data-cn="烤串拼盘"><div class="d-info"><span class="d-jp">焼き鳥盛り</span><span class="d-cn">烤串拼盘</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
-        <li class="ord" data-jp="おでん" data-cn="关东煮"><div class="d-info"><span class="d-jp">おでん</span><span class="d-cn">关东煮</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
-        <li class="ord" data-jp="明太玉子焼き" data-cn="明太玉子烧"><div class="d-info"><span class="d-jp">明太玉子焼き</span><span class="d-cn">明太子玉子烧</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
-        <li class="ord" data-jp="生ビール" data-cn="生啤"><div class="d-info"><span class="d-jp">生ビール</span><span class="d-cn">生啤(先点一杯是规矩)</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="豚骨ラーメン" data-cn="豚骨拉面"><div class="d-info"><span class="d-jp">豚骨ラーメン</span><span class="d-cn"><span class="star">⭐</span>豚骨拉面·屋台经典</span></div><span class="d-yen">~¥800</span><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="一口餃子" data-cn="一口煎饺"><div class="d-info"><span class="d-jp">一口餃子</span><span class="d-cn"><span class="star">⭐</span>博多一口煎饺</span></div><span class="d-yen">~¥500</span><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="焼きラーメン" data-cn="煎拉面"><div class="d-info"><span class="d-jp">焼きラーメン</span><span class="d-cn">煎拉面·屋台名物</span></div><span class="d-yen">~¥700</span><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="焼き鳥盛り" data-cn="烤串拼盘"><div class="d-info"><span class="d-jp">焼き鳥盛り</span><span class="d-cn">烤串拼盘</span></div><span class="d-yen">~¥700</span><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="おでん" data-cn="关东煮"><div class="d-info"><span class="d-jp">おでん</span><span class="d-cn">关东煮</span></div><span class="d-yen">~¥500</span><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="明太玉子焼き" data-cn="明太玉子烧"><div class="d-info"><span class="d-jp">明太玉子焼き</span><span class="d-cn">明太子玉子烧</span></div><span class="d-yen">~¥600</span><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="生ビール" data-cn="生啤"><div class="d-info"><span class="d-jp">生ビール</span><span class="d-cn">生啤(先点一杯是规矩)</span></div><span class="d-yen">~¥600</span><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
       </ul>
       <div class="menu-tip">💡 每人先点一杯饮料是屋台规矩；一句「オススメは？」（推荐啥？）打开话匣子。</div>
       <button class="order-show" data-shop="中洲屋台">📋 生成点单给店员看 <span class="os-n">0</span></button>
@@ -897,6 +924,7 @@
       <div class="ord-top"><span class="ord-shop" id="ordShop"></span><button class="ord-x" id="ordX" aria-label="关闭">✕</button></div>
       <div class="ord-intro">すみません、これを<br>注文お願いします 🙏<span>不好意思，我想点这些 ↓</span></div>
       <ul class="ord-list" id="ordList"></ul>
+      <div class="ord-total" id="ordTotal"></div>
       <div class="ord-foot">👆 把这页给店员看<small>スタッフの方へ：上記をお願いします</small></div>
     </div>
   </div>
@@ -926,10 +954,13 @@
 
 <script>
 (function(){
-  var storagePrefix='kyushu-order:';
+  var storagePrefix='kyushu-order-v2:';
   var ovl=document.getElementById('ordOvl');
   var list=document.getElementById('ordList');
   var shopEl=document.getElementById('ordShop');
+  var totalEl=document.getElementById('ordTotal');
+  function fmt(n){ return '¥'+String(n).replace(/\B(?=(\d{3})+(?!\d))/g,','); }
+  function priceOf(li){ var y=li.querySelector('.d-yen'); if(!y) return null; var d=y.textContent.replace(/[^\d]/g,''); return d?parseInt(d,10):null; }
   document.querySelectorAll('.menu-card').forEach(function(card,cardIndex){
     var btn=card.querySelector('.order-show');
     var items=card.querySelectorAll('.dish li.ord');
@@ -956,14 +987,21 @@
     if(btn) btn.addEventListener('click',function(){
       if(btn.disabled) return;
       list.innerHTML='';
+      var grand=0, approx=false, unpriced=false;
       items.forEach(function(li){
         var v=(+li.dataset.q||0);
         if(v>0){
+          var p=priceOf(li), sub='';
+          if(p!=null){ grand+=p*v; sub='<small>'+fmt(p*v)+'</small>'; if((li.querySelector('.d-yen').textContent||'').indexOf('~')>=0) approx=true; }
+          else { unpriced=true; }
           var el=document.createElement('li');
-          el.innerHTML='<div><div class="oj">'+li.dataset.jp+'</div><div class="oc">'+li.dataset.cn+'</div></div><div class="oq">×'+v+'</div>';
+          el.innerHTML='<div><div class="oj">'+li.dataset.jp+'</div><div class="oc">'+li.dataset.cn+'</div></div><div class="oq">×'+v+sub+'</div>';
           list.appendChild(el);
         }
       });
+      var note=[]; if(approx) note.push('含~估价'); if(unpriced) note.push('另有未计价项');
+      if(grand>0){ totalEl.innerHTML='<span class="lbl">合计（约）</span><span><span class="amt">'+fmt(grand)+'</span>'+(note.length?'<span class="note">'+note.join(' · ')+'</span>':'')+'</span>'; }
+      else { totalEl.innerHTML='<span class="lbl">合计</span><span class="amt" style="font-size:14px;color:var(--ink-faint)">价格店内为准</span>'; }
       shopEl.textContent=btn.dataset.shop;
       ovl.hidden=false;
       ovl.scrollTop=0;
@@ -993,24 +1031,16 @@
     root.dataset.theme=dark?'light':'dark';
     localStorage.setItem('kyushu-theme',root.dataset.theme);
   });
-
-  var status=document.getElementById('appStatus');
-  function updateNetwork(){ status.textContent=navigator.onLine?'● 在线 · 行程可离线':'● 离线 · 行程照常可看'; }
+  var statusEl=document.getElementById('appStatus');
+  function updateNetwork(){ statusEl.textContent=navigator.onLine?'● 在线 · 行程可离线':'● 离线 · 行程照常可看'; }
   addEventListener('online',updateNetwork); addEventListener('offline',updateNetwork); updateNetwork();
-
-  var installPrompt;
-  var installButton=document.getElementById('installApp');
-  addEventListener('beforeinstallprompt',function(event){
-    event.preventDefault(); installPrompt=event; installButton.hidden=false;
-  });
+  var installPrompt,installButton=document.getElementById('installApp');
+  addEventListener('beforeinstallprompt',function(event){ event.preventDefault(); installPrompt=event; installButton.hidden=false; });
   installButton.addEventListener('click',function(){
     if(!installPrompt) return;
     installPrompt.prompt(); installPrompt.userChoice.finally(function(){ installPrompt=null; installButton.hidden=true; });
   });
-
-  if('serviceWorker' in navigator&&location.protocol.indexOf('http')===0){
-    navigator.serviceWorker.register('./sw.js');
-  }
+  if('serviceWorker' in navigator&&location.protocol.indexOf('http')===0){ navigator.serviceWorker.register('./sw.js'); }
 })();
 </script>
 </body>
