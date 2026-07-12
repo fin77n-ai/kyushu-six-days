@@ -1,9 +1,12 @@
-const CACHE_NAME = 'kyushu-six-days-v12';
+const CACHE_NAME = 'kyushu-six-days-v13';
 const APP_FILES = [
   './',
   './index.html',
   './manifest.webmanifest',
-  './icon.svg'
+  './icon.svg',
+  './apple-touch-icon.png',
+  './icon-192.png',
+  './icon-512.png'
 ];
 
 self.addEventListener('install', event => {
