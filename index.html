@@ -1,0 +1,1017 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#F1EFE8">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="九州六日">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<title>九州六日 · 鹿儿岛 × 福冈</title>
+<style>
+  :root{
+    --paper:#F1EFE8; --surface:#FBFAF6; --surface-2:#F5F2EA;
+    --ink:#1C2A33; --ink-soft:#57646C; --ink-faint:#8A949A;
+    --line:#E0DBCE;
+    --indigo:#285A86; --indigo-soft:#E4ECF3;
+    --kaki:#C0532E; --kaki-soft:#F6E3D8;
+    --moss:#3C7757; --moss-soft:#E2EDE5;
+    --shadow:0 1px 2px rgba(28,42,51,.06),0 6px 18px rgba(28,42,51,.07);
+    --font-cjk:"PingFang SC","Hiragino Sans GB","Hiragino Sans","Microsoft YaHei",sans-serif;
+    --font-lat:"SF Pro Display",-apple-system,"Helvetica Neue",Arial,sans-serif;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --paper:#11171C; --surface:#1A232A; --surface-2:#212C34;
+      --ink:#E9E6DD; --ink-soft:#9BA7AE; --ink-faint:#6C787F; --line:#2B3841;
+      --indigo:#6FA8D6; --indigo-soft:#1D3040; --kaki:#E1855F; --kaki-soft:#38271F;
+      --moss:#6DB58D; --moss-soft:#1D3228;
+      --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 18px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#11171C; --surface:#1A232A; --surface-2:#212C34;
+    --ink:#E9E6DD; --ink-soft:#9BA7AE; --ink-faint:#6C787F; --line:#2B3841;
+    --indigo:#6FA8D6; --indigo-soft:#1D3040; --kaki:#E1855F; --kaki-soft:#38271F;
+    --moss:#6DB58D; --moss-soft:#1D3228;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 18px rgba(0,0,0,.35);
+  }
+  :root[data-theme="light"]{
+    --paper:#F1EFE8; --surface:#FBFAF6; --surface-2:#F5F2EA;
+    --ink:#1C2A33; --ink-soft:#57646C; --ink-faint:#8A949A; --line:#E0DBCE;
+    --indigo:#285A86; --indigo-soft:#E4ECF3; --kaki:#C0532E; --kaki-soft:#F6E3D8;
+    --moss:#3C7757; --moss-soft:#E2EDE5;
+    --shadow:0 1px 2px rgba(28,42,51,.06),0 6px 18px rgba(28,42,51,.07);
+  }
+
+  *{box-sizing:border-box}
+  body{margin:0}
+  .wrap{
+    max-width:440px; margin:0 auto; background:var(--paper);
+    color:var(--ink); font-family:var(--font-cjk);
+    font-size:15px; line-height:1.6; -webkit-font-smoothing:antialiased;
+    padding-bottom:40px; overflow:hidden;
+  }
+  .lat{font-family:var(--font-lat); font-variant-numeric:tabular-nums;}
+
+  .hero{
+    position:relative; padding:30px 22px 24px;
+    background:radial-gradient(120% 90% at 80% 6%, var(--indigo-soft) 0%, transparent 55%),
+      linear-gradient(180deg, var(--surface) 0%, var(--paper) 100%);
+    border-bottom:1px solid var(--line); overflow:hidden;
+  }
+  .hero .volcano{position:absolute; right:-28px; top:-12px; width:200px; height:145px; opacity:.9; pointer-events:none;}
+  .eyebrow{font-family:var(--font-lat); font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--kaki); font-weight:600; margin-bottom:9px;}
+  h1{margin:0; font-size:31px; line-height:1.12; font-weight:800; text-wrap:balance;}
+  h1 small{display:block; font-size:14.5px; font-weight:600; color:var(--ink-soft); margin-top:8px; letter-spacing:.03em;}
+  .hero-meta{display:flex; flex-wrap:wrap; gap:7px; margin-top:15px;}
+  .pill{display:inline-flex; align-items:center; gap:5px; background:var(--surface); border:1px solid var(--line);
+    padding:5px 11px; border-radius:999px; font-size:12.5px; color:var(--ink-soft); box-shadow:var(--shadow);}
+  .pill b{color:var(--ink); font-weight:700;}
+
+  section{padding:22px 18px 2px;}
+  .sec-title{display:flex; align-items:baseline; gap:8px; margin:0 4px 13px;}
+  .sec-title .n{font-family:var(--font-lat); font-size:12px; letter-spacing:.18em; color:var(--kaki); font-weight:700;}
+  .sec-title h2{margin:0; font-size:19px; font-weight:800;}
+
+  .flight{background:var(--surface); border:1px solid var(--line); border-radius:16px; box-shadow:var(--shadow); overflow:hidden;}
+  .flt-row{display:flex; align-items:center; gap:12px; padding:13px 16px;}
+  .flt-row + .flt-row{border-top:1px dashed var(--line);}
+  .flt-code{font-family:var(--font-lat); font-weight:700; font-size:13px; color:#fff; background:var(--indigo); padding:4px 8px; border-radius:7px; white-space:nowrap;}
+  .flt-mid{flex:1; min-width:0;}
+  .flt-route{font-weight:700; font-size:14.5px;}
+  .flt-sub{font-size:12px; color:var(--ink-soft); margin-top:1px;}
+  .flt-time{text-align:right;}
+  .flt-time .t{font-family:var(--font-lat); font-weight:800; font-size:18px; line-height:1;}
+  .flt-time .d{font-size:11px; color:var(--ink-faint); margin-top:3px; font-family:var(--font-lat);}
+
+  .wx-scroll{display:flex; gap:8px; overflow-x:auto; padding:2px 4px 10px;}
+  .wx{flex:0 0 auto; width:86px; background:var(--surface); border:1px solid var(--line); border-radius:13px; padding:11px 8px; text-align:center; box-shadow:var(--shadow);}
+  .wx .day{font-size:11px; color:var(--ink-faint); font-family:var(--font-lat);}
+  .wx .ic{font-size:22px; margin:4px 0 2px; line-height:1;}
+  .wx .tmp{font-family:var(--font-lat); font-weight:700; font-size:14px;}
+  .wx .tmp small{color:var(--ink-faint); font-weight:500;}
+  .wx.rain{border-color:var(--indigo); background:var(--indigo-soft);}
+
+  .daynav{position:sticky; top:0; z-index:20; background:var(--paper); padding:10px 14px; display:flex; gap:7px; overflow-x:auto; border-bottom:1px solid var(--line);}
+  .daynav a{flex:0 0 auto; text-decoration:none; font-family:var(--font-lat); font-weight:700; font-size:12.5px; color:var(--ink-soft); background:var(--surface); border:1px solid var(--line); padding:6px 12px; border-radius:999px;}
+  .daynav a b{color:var(--indigo);}
+
+  .day-card{background:var(--surface); border:1px solid var(--line); border-radius:18px; box-shadow:var(--shadow); overflow:hidden; margin:0 18px 18px; scroll-margin-top:56px;}
+  .day-head{display:flex; align-items:center; gap:12px; padding:15px 16px 13px; background:linear-gradient(180deg,var(--surface-2),var(--surface)); border-bottom:1px solid var(--line);}
+  .day-num{font-family:var(--font-lat); font-weight:800; font-size:10px; letter-spacing:.14em; color:#fff; background:var(--ink); border-radius:8px; padding:6px 7px; text-align:center; line-height:1.15;}
+  .day-num span{display:block; font-size:16px;}
+  .day-title{flex:1; min-width:0;}
+  .day-title .h{font-weight:800; font-size:16px; line-height:1.25;}
+  .day-title .s{font-size:11.5px; color:var(--ink-soft); margin-top:3px; line-height:1.4;}
+  .day-wx{font-size:11.5px; color:var(--ink-soft); text-align:right; white-space:nowrap; display:flex; flex-direction:column; align-items:flex-end; gap:2px;}
+  .day-wx .ic{font-size:17px;}
+  .day-wx .stp{font-family:var(--font-lat); font-weight:700; font-size:10.5px; color:var(--kaki); background:var(--kaki-soft); padding:1px 7px; border-radius:999px;}
+  .day-adv{padding:10px 16px 0;}
+  .day-adv details.exp{margin-top:0;}
+  .day-adv details.exp summary{color:var(--kaki);}
+  .day-adv details.exp summary::before{content:none;}
+  .adv-grid{display:flex; flex-wrap:wrap; gap:6px; margin:2px 0 8px;}
+  .adv-chip{font-size:11.5px; font-weight:600; color:var(--ink-soft); background:var(--surface); border:1px solid var(--line); padding:3px 9px; border-radius:999px;}
+  .adv-chip b{color:var(--ink);}
+  .wx-live{display:inline-block; margin-top:2px; font-size:11.5px; font-weight:700; color:var(--indigo); text-decoration:none;}
+
+  .route{padding:8px 16px 4px;}
+  .r-item{position:relative; padding-left:40px;}
+  .r-item::before{content:""; position:absolute; left:15px; top:0; bottom:0; width:2px; background:var(--line);}
+  .r-item:first-child::before{top:24px;}
+  .r-item:last-child::before{bottom:auto; height:24px;}
+  .r-pin{position:absolute; left:3px; top:11px; width:26px; height:26px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; z-index:1;
+    font-family:var(--font-lat); font-weight:800; font-size:13px; color:#fff;
+    background:var(--indigo); border:2px solid var(--surface); box-shadow:0 0 0 1px var(--line);}
+  .r-pin.food{background:var(--kaki);}
+  .r-pin.nat{background:var(--moss);}
+  .r-pin.hotel{background:var(--kaki); font-size:13px;}
+  .r-pin.air{background:var(--indigo); font-size:13px;}
+
+  .r-node{padding-top:9px; padding-bottom:9px;}
+  .n-top{display:flex; align-items:center; gap:7px; flex-wrap:wrap;}
+  .n-time{font-family:var(--font-lat); font-size:11px; font-weight:700; color:var(--kaki); letter-spacing:.02em;}
+  .n-name{font-weight:800; font-size:14.5px;}
+  .n-name.hotel{color:var(--kaki);}
+  .n-nav{font-size:11px; font-weight:700; color:var(--indigo); text-decoration:none; background:var(--indigo-soft); padding:2px 8px; border-radius:999px; white-space:nowrap;}
+  .n-jp{display:inline-flex; align-items:center; gap:4px; margin:4px 0 0; font-size:11.5px; font-weight:700; color:var(--indigo); background:var(--indigo-soft); padding:2px 8px; border-radius:6px;}
+  .n-jp::before{content:"🗾"; font-size:10px;}
+  .n-find{font-size:12.5px; color:var(--ink-soft); line-height:1.5; margin-top:4px;}
+  .n-find b{color:var(--ink); font-weight:700;}
+  .tags{display:inline-flex; flex-wrap:wrap; gap:5px; vertical-align:middle;}
+  .tag{font-size:10.5px; font-weight:700; padding:2px 8px; border-radius:999px; white-space:nowrap;}
+  .tag.book{background:var(--kaki-soft); color:var(--kaki);}
+  .tag.queue{background:var(--indigo-soft); color:var(--indigo);}
+  .tag.yen{background:var(--moss-soft); color:var(--moss);}
+  .tag.free{background:var(--surface-2); color:var(--ink-soft); border:1px solid var(--line);}
+
+  /* 展开解说 */
+  details.exp{margin-top:6px; border:1px solid var(--line); border-radius:11px; background:var(--surface-2); overflow:hidden;}
+  details.exp summary{
+    list-style:none; cursor:pointer; padding:7px 12px; font-size:12px; font-weight:700; color:var(--moss);
+    display:flex; align-items:center; gap:6px; -webkit-tap-highlight-color:transparent;
+  }
+  details.exp summary::-webkit-details-marker{display:none;}
+  details.exp summary::before{content:"🎧"; font-size:12px;}
+  details.exp summary::after{content:"▾"; margin-left:auto; color:var(--ink-faint); transition:transform .2s;}
+  details.exp[open] summary::after{transform:rotate(180deg);}
+  details.exp .exp-bd{padding:2px 12px 10px; font-size:12.5px; color:var(--ink-soft); line-height:1.65; border-top:1px dashed var(--line);}
+  details.exp .exp-bd b{color:var(--ink);}
+  details.exp .exp-bd p{margin:7px 0 0;}
+  @media (prefers-reduced-motion:reduce){ details.exp summary::after{transition:none;} }
+
+  /* 交通段 */
+  .r-seg{padding-top:5px; padding-bottom:5px;}
+  .seg-box{background:var(--surface-2); border:1px solid var(--line); border-radius:11px; padding:8px 12px;}
+  .seg-main{font-size:12px; color:var(--ink-soft); line-height:1.55;}
+  .seg-main b{color:var(--ink); font-weight:700;}
+  .seg-sub{font-size:11.5px; color:var(--ink-faint); line-height:1.55; margin-top:4px; padding-top:4px; border-top:1px dashed var(--line);}
+  .seg-sub b{color:var(--kaki); font-weight:700;}
+
+  .gmap{display:flex; align-items:center; justify-content:center; gap:8px; margin:8px 16px 16px; padding:12px; border-radius:13px;
+    background:var(--indigo); color:#fff; font-weight:700; font-size:13.5px; text-decoration:none; box-shadow:var(--shadow); letter-spacing:.01em;}
+  .gmap svg{width:17px; height:17px;}
+  .gmap:active{opacity:.85;}
+
+  .card{background:var(--surface); border:1px solid var(--line); border-radius:16px; box-shadow:var(--shadow); padding:4px 16px 6px; margin-bottom:16px;}
+  .row{display:flex; gap:12px; padding:12px 0; border-bottom:1px solid var(--line);}
+  .row:last-child{border-bottom:none;}
+  .row .ic{flex:0 0 26px; font-size:18px; text-align:center; line-height:1.4;}
+  .row .bd{flex:1; min-width:0;}
+  .row .bd .t{font-weight:700; font-size:14px;}
+  .row .bd .d{font-size:12.5px; color:var(--ink-soft); margin-top:2px; line-height:1.5;}
+
+  .steps{display:flex; flex-direction:column; gap:12px;}
+  .step-row{display:grid; grid-template-columns:58px 1fr auto; align-items:center; gap:10px;}
+  .step-lbl{font-family:var(--font-lat); font-weight:800; font-size:12px; color:var(--ink);}
+  .step-lbl small{display:block; font-family:var(--font-cjk); font-weight:600; font-size:10px; color:var(--ink-faint); margin-top:1px;}
+  .step-track{height:16px; background:var(--surface-2); border:1px solid var(--line); border-radius:8px; overflow:hidden;}
+  .step-fill{height:100%; border-radius:7px 0 0 7px; background:linear-gradient(90deg,var(--moss),var(--indigo));}
+  .step-fill.hi{background:linear-gradient(90deg,var(--kaki),#E0663A);}
+  .step-val{text-align:right; white-space:nowrap;}
+  .step-val b{font-family:var(--font-lat); font-weight:800; font-size:13px; color:var(--ink);}
+  .step-val small{display:block; font-size:10px; color:var(--ink-faint); font-family:var(--font-lat);}
+  .step-total{margin-top:4px; padding-top:12px; border-top:1px dashed var(--line); font-size:12.5px; color:var(--ink-soft); line-height:1.6;}
+  .step-total b{color:var(--ink);}
+  .menu-card{background:var(--surface); border:1px solid var(--line); border-radius:16px; box-shadow:var(--shadow); overflow:hidden; margin-bottom:14px;}
+  .menu-head{display:flex; align-items:center; gap:11px; padding:12px 15px; background:linear-gradient(180deg,var(--surface-2),var(--surface)); border-bottom:1px solid var(--line);}
+  .menu-ic{font-size:20px; flex:0 0 auto;}
+  .menu-name{font-weight:800; font-size:14.5px;}
+  .menu-sub{font-size:11px; color:var(--ink-soft); margin-top:1px;}
+  .menu-sub .ok{color:var(--moss); font-weight:700;}
+  ul.dish{list-style:none; margin:0; padding:6px 15px 10px;}
+  ul.dish li{display:flex; align-items:baseline; gap:8px; padding:6px 0; border-bottom:1px dashed var(--line); font-size:12.5px;}
+  ul.dish li:last-child{border-bottom:none;}
+  ul.dish .d-jp{font-weight:700; color:var(--ink); white-space:nowrap;}
+  ul.dish .d-cn{color:var(--ink-soft); flex:1; min-width:0;}
+  ul.dish .d-cn .star{color:var(--kaki); font-weight:700;}
+  ul.dish .d-yen{font-family:var(--font-lat); font-size:11.5px; color:var(--ink-faint); white-space:nowrap;}
+  .menu-tip{padding:0 15px 12px; font-size:11.5px; color:var(--ink-soft); line-height:1.55;}
+  .menu-tip b{color:var(--kaki);}
+  /* orderable dish rows */
+  ul.dish li.ord{gap:10px;}
+  .d-info{flex:1; min-width:0; display:flex; flex-direction:column; gap:1px;}
+  .stepper{flex:0 0 auto; display:flex; align-items:center; border:1px solid var(--line); border-radius:999px; background:var(--surface-2); overflow:hidden;}
+  .stepper button{width:30px; height:28px; border:none; background:transparent; color:var(--indigo); font-size:17px; font-weight:800; line-height:1; cursor:pointer; -webkit-tap-highlight-color:transparent;}
+  .stepper button:active{background:var(--indigo-soft);}
+  .stepper .st-q{min-width:22px; text-align:center; font-family:var(--font-lat); font-weight:800; font-size:13px; color:var(--ink);}
+  ul.dish li.sel{background:var(--kaki-soft); border-radius:8px; margin:0 -6px; padding-left:6px; padding-right:6px;}
+  .order-show{display:flex; align-items:center; justify-content:center; gap:8px; width:calc(100% - 30px); margin:2px 15px 14px; padding:11px; border:none; border-radius:12px; background:var(--kaki); color:#fff; font-weight:800; font-size:13.5px; cursor:pointer; -webkit-tap-highlight-color:transparent;}
+  .order-show[disabled]{opacity:.4;}
+  .order-show .os-n{background:rgba(255,255,255,.28); border-radius:999px; padding:1px 9px; font-family:var(--font-lat); min-width:22px;}
+  /* order overlay */
+  .ord-ovl{position:fixed; inset:0; background:rgba(0,0,0,.55); display:flex; align-items:flex-end; justify-content:center; z-index:100;}
+  .ord-ovl[hidden]{display:none;}
+  .ord-box{background:var(--paper); width:100%; max-width:440px; max-height:86vh; overflow-y:auto; border-radius:18px 18px 0 0; padding-bottom:22px; box-shadow:0 -8px 30px rgba(0,0,0,.3);}
+  .ord-top{position:sticky; top:0; background:var(--paper); display:flex; align-items:center; justify-content:space-between; gap:10px; padding:16px 18px 11px; border-bottom:1px solid var(--line); z-index:1;}
+  .ord-shop{font-weight:800; font-size:15px;}
+  .ord-x{flex:0 0 auto; border:none; background:var(--surface-2); width:30px; height:30px; border-radius:50%; font-size:14px; cursor:pointer; color:var(--ink-soft);}
+  .ord-intro{text-align:center; padding:18px 16px 10px; font-size:20px; font-weight:800; color:var(--ink); line-height:1.35;}
+  .ord-intro span{display:block; font-size:12px; font-weight:600; color:var(--ink-soft); margin-top:5px;}
+  .ord-list{list-style:none; margin:0; padding:0 18px;}
+  .ord-list li{display:flex; justify-content:space-between; align-items:center; gap:12px; padding:13px 0; border-bottom:1px solid var(--line);}
+  .ord-list .oj{font-size:19px; font-weight:800; color:var(--ink); line-height:1.25;}
+  .ord-list .oc{font-size:11.5px; color:var(--ink-faint); font-weight:600; margin-top:2px;}
+  .ord-list .oq{font-family:var(--font-lat); font-weight:800; font-size:20px; color:var(--kaki); white-space:nowrap;}
+  .ord-foot{text-align:center; margin:16px 18px 0; padding:13px; background:var(--kaki-soft); color:var(--kaki); border-radius:12px; font-size:14px; font-weight:800; line-height:1.5;}
+  .ord-foot small{display:block; color:var(--ink-soft); font-weight:600; font-size:11px; margin-top:3px;}
+  /* clickable restaurant name → menu */
+  .n-name.menu-link{cursor:pointer;}
+  .n-name .ml-badge{display:inline-block; font-size:10px; font-weight:700; color:var(--kaki); background:var(--kaki-soft); padding:1px 6px; border-radius:999px; vertical-align:middle; margin-left:5px; white-space:nowrap;}
+  .menu-launch{display:flex; flex-direction:column; gap:8px;}
+  .ml-btn{display:flex; align-items:center; gap:8px; width:100%; text-align:left; padding:12px 14px; border:1px solid var(--line); border-radius:12px; background:var(--surface); box-shadow:var(--shadow); font-family:var(--font-cjk); font-size:14px; font-weight:700; color:var(--ink); cursor:pointer; -webkit-tap-highlight-color:transparent;}
+  .ml-btn::after{content:"菜单 ›"; margin-left:auto; font-size:11.5px; font-weight:700; color:var(--kaki);}
+  .ml-btn:active{background:var(--surface-2);}
+  /* menu modal */
+  .menu-ovl{position:fixed; inset:0; background:rgba(0,0,0,.55); display:flex; align-items:flex-end; justify-content:center; z-index:90;}
+  .menu-ovl[hidden]{display:none;}
+  .menu-box{background:var(--paper); width:100%; max-width:440px; max-height:88vh; overflow-y:auto; border-radius:18px 18px 0 0; padding-bottom:16px; box-shadow:0 -8px 30px rgba(0,0,0,.3);}
+  .menu-note{padding:12px 16px; font-size:12px; color:var(--ink-soft); line-height:1.5; background:var(--surface-2); border-bottom:1px solid var(--line);}
+  .menu-note b{color:var(--kaki);}
+  #menuList{padding:6px 16px 4px;}
+  .menu-box .order-show{margin:6px 16px 8px; width:calc(100% - 32px);}
+  /* menu modal (wraps a menu-card) */
+  .menu-modal{position:fixed; inset:0; background:rgba(0,0,0,.55); display:flex; align-items:flex-end; justify-content:center; z-index:90;}
+  .menu-modal[hidden]{display:none;}
+  .mm-box{background:var(--surface); width:100%; max-width:440px; max-height:90vh; overflow-y:auto; border-radius:18px 18px 0 0; box-shadow:0 -8px 30px rgba(0,0,0,.35); position:relative;}
+  .mm-close{position:sticky; top:0; z-index:2; display:flex; justify-content:flex-end; padding:9px 10px 0;}
+  .mm-close button{border:none; background:var(--surface-2); width:32px; height:32px; border-radius:50%; font-size:14px; color:var(--ink-soft); cursor:pointer; box-shadow:var(--shadow);}
+  .mm-box .menu-card{margin:0 0 -4px; border:none; box-shadow:none; border-radius:0; background:transparent;}
+  .mm-box .menu-head{margin-top:-38px;}
+  footer{text-align:center; padding:22px 20px 6px; color:var(--ink-faint); font-size:11.5px; line-height:1.7;}
+  footer .lat{color:var(--ink-soft);}
+  .app-tools{display:flex; align-items:center; gap:7px; padding:10px 18px; position:sticky; top:0; z-index:20;
+    background:color-mix(in srgb,var(--paper) 88%,transparent); backdrop-filter:blur(12px); border-bottom:1px solid var(--line);}
+  .app-status{margin-right:auto; font-size:11.5px; font-weight:700; color:var(--moss);}
+  .app-btn{border:1px solid var(--line); background:var(--surface); color:var(--ink); border-radius:999px;
+    padding:6px 10px; font:700 12px/1 var(--font-cjk); cursor:pointer; box-shadow:var(--shadow);}
+  .app-btn[hidden]{display:none;}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="hero">
+    <svg class="volcano" viewBox="0 0 200 145" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M0 145 L55 52 Q67 38 79 52 L134 145 Z" fill="var(--kaki-soft)"/>
+      <path d="M55 52 Q67 38 79 52 L92 74 Q67 63 42 74 Z" fill="var(--kaki)" opacity=".5"/>
+      <path d="M61 44 q6 -14 -2 -26 M73 44 q-2 -16 8 -24 M67 42 q10 -8 8 -22" stroke="var(--kaki)" stroke-width="2.5" fill="none" opacity=".5" stroke-linecap="round"/>
+    </svg>
+    <div class="eyebrow">Kyushu · 6 Days</div>
+    <h1>九州六日<small>鹿儿岛 × 福冈 · 每天从酒店出发 · 点 🎧 有解说</small></h1>
+    <div class="hero-meta">
+      <span class="pill lat"><b>7/13</b>&nbsp;–&nbsp;<b>7/18</b>&nbsp;2026</span>
+      <span class="pill">✈️ 福冈进出 <b>FUK</b></span>
+      <span class="pill">🚄 新干线 + 电车</span>
+    </div>
+  </header>
+
+  <nav class="app-tools" aria-label="应用工具">
+    <span class="app-status" id="appStatus">● 行程可离线</span>
+    <button class="app-btn" id="installApp" type="button" hidden>装到桌面</button>
+    <button class="app-btn" id="themeToggle" type="button" aria-label="切换明暗主题">◐ 主题</button>
+  </nav>
+
+  <section>
+    <div class="sec-title"><span class="n">FLIGHTS</span><h2>航班</h2></div>
+    <div class="flight">
+      <div class="flt-row">
+        <span class="flt-code">9C6609</span>
+        <div class="flt-mid"><div class="flt-route">上海浦东 → 福冈</div><div class="flt-sub">去程 · 出关取行李约 1 小时</div></div>
+        <div class="flt-time"><div class="t">09:55</div><div class="d">7/13 一 落地</div></div>
+      </div>
+      <div class="flt-row">
+        <span class="flt-code">9C6538</span>
+        <div class="flt-mid"><div class="flt-route">福冈 → 上海浦东</div><div class="flt-sub">返程 · 最晚 15:30 出发去机场</div></div>
+        <div class="flt-time"><div class="t">18:00</div><div class="d">7/18 六 起飞</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-title"><span class="n">WEATHER</span><h2>六日天气</h2></div>
+    <div class="wx-scroll">
+      <div class="wx"><div class="day">7/13 MON</div><div class="ic">🌦</div><div class="tmp">32<small>/26°</small></div></div>
+      <div class="wx"><div class="day">7/14 TUE</div><div class="ic">☀️</div><div class="tmp">31<small>/25°</small></div></div>
+      <div class="wx"><div class="day">7/15 WED</div><div class="ic">⛅</div><div class="tmp">32<small>/25°</small></div></div>
+      <div class="wx"><div class="day">7/16 THU</div><div class="ic">🌧</div><div class="tmp">30<small>/25°</small></div></div>
+      <div class="wx rain"><div class="day">7/17 FRI</div><div class="ic">🌧</div><div class="tmp">27<small>/25°</small></div></div>
+      <div class="wx"><div class="day">7/18 SAT</div><div class="ic">🌤</div><div class="tmp">31<small>/24°</small></div></div>
+    </div>
+  </section>
+
+  <nav class="daynav">
+    <a href="#d1"><b>D1</b> 落地</a>
+    <a href="#d2"><b>D2</b> 樱岛</a>
+    <a href="#d3"><b>D3</b> 转场</a>
+    <a href="#d4"><b>D4</b> 大名天神</a>
+    <a href="#d5"><b>D5</b> 雨天</a>
+    <a href="#d6"><b>D6</b> 返程</a>
+  </nav>
+
+  <section style="padding-bottom:0;">
+    <div class="sec-title"><span class="n">ROUTES</span><h2>每日路线</h2></div>
+  </section>
+
+  <!-- ============ DAY 1 ============ -->
+  <article class="day-card" id="d1">
+    <div class="day-head">
+      <div class="day-num">DAY<span>01</span></div>
+      <div class="day-title"><div class="h">落地 → 杀去鹿儿岛</div><div class="s">7/13 一 · ✈️福冈 → 🚄 → 🏨天文馆 → 觅食</div></div>
+      <div class="day-wx"><div class="ic">🌦</div>32/26°<div class="stp">🚶 ~5,500</div></div>
+    </div>
+    <div class="day-adv"><details class="exp"><summary>🌡️ 今日穿什么 · 要不要防晒</summary><div class="exp-bd">
+      <div class="adv-grid"><span class="adv-chip">👕 <b>轻薄短袖</b></span><span class="adv-chip">☂️ 备折叠伞</span><span class="adv-chip">🧴 有太阳薄涂防晒</span><span class="adv-chip">👟 好走的鞋</span></div>
+      <p>落地日，闷热为主、偶有阵雨，大半天在车上/室内。穿<b>最透气的短袖短裤</b>，傍晚天文馆逛吃走路多，鞋要舒服。<a class="wx-live" href="https://tenki.jp/forecast/9/50/8880/46201/" target="_blank" rel="noopener">🔗 查鹿儿岛实时天气 →</a></p>
+    </div></details></div>
+    <div class="route">
+      <div class="r-item r-node">
+        <span class="r-pin air">✈</span>
+        <div class="n-top"><span class="n-time">09:55</span><span class="n-name">福冈机场落地</span><a class="n-nav" href="https://www.google.com/maps/search/福岡空港国際線ターミナル" target="_blank" rel="noopener">📍导航</a></div>
+        <div class="n-jp">福岡空港 · 国際線ターミナル</div>
+        <div class="n-find">出关取行李约 1h。出到达大厅找 <b>「国内線ターミナル・地下鉄」连络バス</b>（免费摆渡，约 8 分一班），坐到国内线下车就是地铁「福岡空港駅」。</div>
+      </div>
+      <div class="r-item r-seg">
+        <div class="seg-box">
+          <div class="seg-main">🚇 地下鉄空港線 6分 → 🚄 新幹線 <b>みずほ/さくら</b> 1h20 → 🚊 市電 10分 ｜ 共约 <b>¥10,700</b></div>
+          <div class="seg-sub">🕐 <b>班次</b>：地铁约 5-8 分一班；新干线约 <b>15-30 分一班</b>，随到随走。<b>引导</b>：博多站跟「新幹線」蓝标 → 先在绿色窗口(みどりの窓口)或售票机买<b>指定席</b> → 目标车次坐到「鹿児島中央」终点站。预计 11:30 前后的车，13:00 左右到。</div>
+        </div>
+      </div>
+      <div class="r-item r-node">
+        <span class="r-pin hotel">🏨</span>
+        <div class="n-top"><span class="n-time">14:30</span><span class="n-name hotel">Check in · 喜来登</span><a class="n-nav" href="https://www.google.com/maps/search/シェラトン鹿児島" target="_blank" rel="noopener">📍导航</a></div>
+        <div class="n-jp">シェラトン鹿児島（天文館「高見馬場」電停近く）</div>
+        <div class="n-find">鹿児島中央駅坐市電约 10 分或走路 20 分。放行李，进入摸鱼模式。</div>
+        <details class="exp"><summary>展开解说</summary><div class="exp-bd">
+          <p><b>鹿儿岛喜来登</b>是 2023 年新开的高层酒店，高层能同时看到市区和樱岛——办入住时可以问问有没有<b>樱岛景观房(桜島ビュー)</b>，清晨看火山冒烟绝了。</p>
+          <p>位置就在天文馆商圈边上，晚上觅食走路全搞定，完全不用再坐车。</p>
+        </div></details>
+      </div>
+      <div class="r-item r-seg">
+        <div class="seg-box"><div class="seg-main">🚶 拱廊步行 5 分</div></div>
+      </div>
+      <div class="r-item r-node">
+        <span class="r-pin food">1</span>
+        <div class="n-top"><span class="n-time">18:00</span><span class="n-name menu-link" data-open="mm-tenmonkan">🍖 天文馆觅食首战 <span class="ml-badge">📖菜单</span></span><a class="n-nav" href="https://www.google.com/maps/search/天文館むじゃき本店" target="_blank" rel="noopener">📍导航</a></div>
+        <div class="n-jp">白熊＝しろくま @ むじゃき本店</div>
+        <div class="n-find">落地日轻装上阵：<b>黑豚炸猪排</b>（川久/丸一等，走进去就吃）+ 招牌 <b>白熊刨冰🐻‍❄️</b>。<span class="tags"><span class="tag queue">免预约·随到随吃</span></span></div>
+        <details class="exp"><summary>展开解说</summary><div class="exp-bd">
+          <p><b>天文馆(天文館)</b>是南九州最大的繁华街，名字来自江户时代岛津藩主建的天文观测所。带顶棚的拱廊街，下雨也不怕。</p>
+          <p><b>黑豚</b>认准「六白黒豚」——鹿儿岛萨摩黑猪，六处白毛（四蹄+鼻+尾），肉甜脂香。涮锅蘸生蛋液是本地吃法；名店 <b>あぢもり</b>（黑豚涮锅发祥店）、<b>寿庵</b>、<b>黒福多</b>。</p>
+          <p><b>白熊刨冰</b>1949 年诞生于むじゃき：炼乳刨冰上摆水果，俯视像白熊脸。招牌份量巨大，两人点一份「ベビー白熊」刚好。</p>
+        </div></details>
+      </div>
+    </div>
+    <a class="gmap" href="https://www.google.com/maps/dir/福岡空港/鹿児島中央駅/天文館" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+      用 Google 地图看今天路线
+    </a>
+  </article>
+
+  <!-- ============ DAY 2 ============ -->
+  <article class="day-card" id="d2">
+    <div class="day-head">
+      <div class="day-num">DAY<span>02</span></div>
+      <div class="day-title"><div class="h">樱岛火山 · 满血暴走</div><div class="s">7/14 二 · 🏨 → 🌋樱岛 → 🐋水族馆 → 仙巌园 → 🏨</div></div>
+      <div class="day-wx"><div class="ic">☀️</div>31/25°<div class="stp">🚶 ~13,000</div></div>
+    </div>
+    <div class="day-adv"><details class="exp"><summary>🌡️ 今日穿什么 · 要不要防晒（暴走日！）</summary><div class="exp-bd">
+      <div class="adv-grid"><span class="adv-chip">👕 速干短袖</span><span class="adv-chip">☀️ <b>防晒必涂+补涂</b></span><span class="adv-chip">🧢 帽子墨镜</span><span class="adv-chip">💧 大量补水</span></div>
+      <p>全程<b>最好天气也最晒</b>——樱岛火山口零遮荫。<b>SPF50 出门涂、午后补一次</b>；帽子墨镜小风扇齐上，带够水或便利店买 Pocari 补盐；足汤记得带小毛巾。今天走 ~1.3万步，穿最舒服的鞋。<a class="wx-live" href="https://tenki.jp/forecast/9/50/8880/46201/" target="_blank" rel="noopener">🔗 查鹿儿岛实时天气 →</a></p>
+    </div></details></div>
+    <div class="route">
+      <div class="r-item r-node">
+        <span class="r-pin hotel">🏨</span>
+        <div class="n-top"><span class="n-time">09:00</span><span class="n-name hotel">喜来登 出发</span></div>
+      </div>
+      <div class="r-item r-seg">
+        <div class="seg-box">
+          <div class="seg-main">🚊 市電 →「水族館口」10分 ＋ 🚶5分 ＋ 🚢 桜島フェリー 15分 <b>¥200</b></div>
+          <div class="seg-sub">🕐 <b>班次</b>：渡轮白天约 <b>15-20 分一班</b>，24 小时运航，不用查时刻随到随上。<b>引导</b>：不买票直接上船，<b>下船在樱岛侧付款</b>（现金或IC）。上船直奔顶层甲板，15 分钟海上看火山是白送的观光船。</div>
+        </div>
+      </div>
+      <div class="r-item r-node">
+        <span class="r-pin nat">1</span>
+        <div class="n-top"><span class="n-name">🌋 樱岛 · 汤之平展望台</span><a class="n-nav" href="https://www.google.com/maps/search/湯之平展望所" target="_blank" rel="noopener">📍导航</a></div>
+        <div class="n-jp">湯之平展望所 · 溶岩なぎさ公園 足湯</div>
+        <div class="n-find">港口坐 <b>Island View 观光巴士</b>绕火山一圈，最高点汤之平展望台下车拍照；回港后去免费海边足汤泡脚。<span class="tags"><span class="tag yen">巴士一日券 ¥500</span><span class="tag free">免预约</span></span></div>
+        <details class="exp"><summary>展开解说</summary><div class="exp-bd">
+          <p><b>樱岛</b>是日本最活跃的火山之一，至今每天小规模喷烟。1914 年大喷发的熔岩把它和对岸大隅半岛连成了半岛——所以它其实已经不是"岛"了。</p>
+          <p><b>汤之平展望台</b>海拔 373m，是游客能到的离火山口最近的点，看北岳的沟壑肌理最震撼。</p>
+          <p><b>Island View 巴士</b>约 1 小时一循环，在港口对好发车时间再逛周边。<b>足汤</b>在溶岩なぎさ公园，全长约 100m 日本数一数二的长足汤，面对锦江湾泡脚，记得带小毛巾。</p>
+        </div></details>
+      </div>
+      <div class="r-item r-seg">
+        <div class="seg-box"><div class="seg-main">🚢 渡轮返市区 · <b>下船步行 2 分就是水族馆</b></div></div>
+      </div>
+      <div class="r-item r-node">
+        <span class="r-pin nat">2</span>
+        <div class="n-top"><span class="n-time">13:00</span><span class="n-name">🐋 鹿儿岛水族馆</span><a class="n-nav" href="https://www.google.com/maps/search/いおワールドかごしま水族館" target="_blank" rel="noopener">📍导航</a></div>
+        <div class="n-jp">いおワールド かごしま水族館（桜島桟橋横）</div>
+        <div class="n-find">就在渡轮码头旁边，顺路白捡。<span class="tags"><span class="tag yen">入馆 ¥1,500</span><span class="tag free">免预约</span></span></div>
+        <details class="exp"><summary>展开解说</summary><div class="exp-bd">
+          <p>主打<b>锦江湾的黑潮生态</b>：镇馆的黑潮大水槽里有<b>鲸鲨</b>悠哉巡游（鹿儿岛方言叫它「ユウユウ」）。</p>
+          <p><b>海豚水路</b>是特色——水族馆外面的运河直通大海，海豚在开放水道里训练，不买票在岸边也能偶遇；进馆记得对一下「いるかの時間」海豚时间的场次表。</p>
+          <p>馆内全空调，正午最热的时段躲在这儿看鱼，等 15 点凉快点再去仙巌园，完美错峰。逛 1.5h 刚好。</p>
+        </div></details>
+      </div>
+      <div class="r-item r-seg">
+        <div class="seg-box">
+          <div class="seg-main">🚌 まち巡りバス「かごしま水族館前 → 仙巌園前」约 20分</div>
+          <div class="seg-sub">🕐 <b>班次</b>：约 30 分一班，一日券 ¥500 顺路景点随便跳。</div>
+        </div>
+      </div>
+      <div class="r-item r-node">
+        <span class="r-pin nat">3</span>
+        <div class="n-top"><span class="n-time">15:00</span><span class="n-name">📸 仙巌园</span><a class="n-nav" href="https://www.google.com/maps/search/仙巌園" target="_blank" rel="noopener">📍导航</a></div>
+        <div class="n-jp">仙巌園＝せんがんえん（「仙巌園前」下車）</div>
+        <div class="n-find">日式名园正对樱岛，随手明信片。<span class="tags"><span class="tag yen">入园 ¥1,000</span><span class="tag free">免预约</span></span></div>
+        <details class="exp"><summary>展开解说</summary><div class="exp-bd">
+          <p><b>仙巌园</b>建于 1658 年，是统治萨摩 700 年的岛津家别邸。最牛的设计是"借景"——把整座樱岛当作庭园的假山、锦江湾当作池塘，气魄拉满。</p>
+          <p>园内的<b>反射炉遗迹</b>是世界文化遗产（明治工业革命遗产），旁边尚古集成馆讲萨摩藩怎么偷偷搞近代化。</p>
+          <p>必吃<b>ぢゃんぼ餅（两棒饼）</b>：插两根竹签的烤年糕，甜酱油味，配抹茶看火山，值回票价。</p>
+        </div></details>
+      </div>
+      <div class="r-item r-seg">
+        <div class="seg-box"><div class="seg-main">🚌 まち巡りバス返「天文館」约 30分</div></div>
+      </div>
+      <div class="r-item r-node">
+        <span class="r-pin food">4</span>
+        <div class="n-top"><span class="n-time">19:00</span><span class="n-name menu-link" data-open="mm-gyuissai">🔥 鹿儿岛黑牛烤肉 <span class="ml-badge">📖菜单</span></span><a class="n-nav" href="https://www.google.com/maps/search/鹿児島市千日町12-12+牛一彩" target="_blank" rel="noopener">📍导航</a></div>
+        <div class="n-jp">牛一彩 天文館店 · 千日町12-12 KLGビル1F</div>
+        <div class="n-find">暴走一天，晚上用 <b>A5 鹿儿岛黑牛</b>犒劳自己。<span class="tags"><span class="tag yen">✅ 已订 19:00 · 2名</span><span class="tag book">留意店家电话/邮件确认</span></span></div>
+        <details class="exp"><summary>展开解说</summary><div class="exp-bd">
+          <p><b>鹿儿岛黑牛(鹿児島黒牛)</b>是"和牛奥运会"（全国和牛能力共进会）的<b>日本第一</b>——在产地吃冠军和牛，价格却比东京温柔一大截。</p>
+          <p><b>点法引导</b>：先来<b>タン塩(盐舌)</b>开场 → <b>カルビ(五花)</b>、<b>ロース(里脊)</b>主力 → 预算够上<b>特上/希少部位拼盘</b>最划算。烤和牛别烤过，表面变色带焦边就翻。配芋烧酎，解腻一绝。</p>
+          <p><b>预约</b>：让喜来登前台帮订「ぎゅういっさい てんもんかんてん」，或 Tabelog/ぐるなび 网上订。备胎：同区还有烤肉名店可让前台推荐，实在没位就转战<b>黑豚炸猪排+拉面</b>。</p>
+          <p>🍜 <b>宵夜彩蛋</b>：吃完不够，天文馆的<b>鹿儿岛拉面</b>（こむらさき/豚とろ）和现炸<b>萨摩鱼饼</b>还开着，白熊刨冰当甜点收官。</p>
+        </div></details>
+      </div>
+      <div class="r-item r-node">
+        <span class="r-pin hotel">🏨</span>
+        <div class="n-top"><span class="n-name hotel">回酒店</span></div>
+      </div>
+    </div>
+    <a class="gmap" href="https://www.google.com/maps/dir/天文館/桜島フェリーターミナル/湯之平展望所/いおワールドかごしま水族館/仙巌園/天文館" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+      用 Google 地图看今天路线
+    </a>
+  </article>
+
+  <!-- ============ DAY 3 ============ -->
+  <article class="day-card" id="d3">
+    <div class="day-head">
+      <div class="day-num">DAY<span>03</span></div>
+      <div class="day-title"><div class="h">鹿儿岛上午 → 转场福冈</div><div class="s">7/15 三 · 🏨 → 上午二选一 → 🚄博多 → 🏨中洲 → 屋台</div></div>
+      <div class="day-wx"><div class="ic">⛅</div>32/25°<div class="stp">🚶 ~6,000</div></div>
+    </div>
+    <div class="day-adv"><details class="exp"><summary>🌡️ 今日穿什么 · 要不要防晒</summary><div class="exp-bd">
+      <div class="adv-grid"><span class="adv-chip">👕 轻便换洗</span><span class="adv-chip">🧴 <b>防晒照涂</b></span><span class="adv-chip">🎒 理好行李</span></div>
+      <p>转场日，多云闷热。<b>7 月九州 UV 极强，多云也穿透</b>，防晒别偷懒。选指宿泡砂浴的话带一套换洗（泡完会出汗）。<a class="wx-live" href="https://tenki.jp/forecast/9/50/8880/46201/" target="_blank" rel="noopener">🔗 查鹿儿岛实时天气 →</a></p>
+    </div></details></div>
+    <div class="route">
+      <div class="r-item r-node">
+        <span class="r-pin hotel">🏨</span>
+        <div class="n-top"><span class="n-name hotel">喜来登 退房出发</span></div>
+        <div class="n-jp">行李寄存前台，下午回来取</div>
+      </div>
+      <div class="r-item r-node">
+        <span class="r-pin nat">1</span>
+        <div class="n-top"><span class="n-name">上午二选一</span><a class="n-nav" href="https://www.google.com/maps/search/砂むし会館砂楽" target="_blank" rel="noopener">📍导航</a></div>
+        <div class="n-jp">A：砂むし会館 砂楽＝さらく（指宿駅）</div>
+        <div class="n-find"><b>A 温泉派</b>·JR 去「指宿」泡天然砂蒸温泉。<b>B 悠闲派</b>·城市散步 + 手信（薩摩芋点心、芋烧酎）。<span class="tags"><span class="tag yen">砂浴 ¥1,100</span><span class="tag free">免预约</span></span></div>
+        <details class="exp"><summary>展开解说（选A必读·含车次）</summary><div class="exp-bd">
+          <p><b>砂蒸温泉</b>是指宿 300 多年的传统：穿浴衣躺沙滩上，工作人员把 50-55° 的温泉砂盖你身上，10 分钟逼出一身汗，据说排毒效果是普通温泉数倍。埋着的样子像出土文物，记得让工作人员帮拍照📸。</p>
+          <p>🚆 <b>车次引导</b>：鹿児島中央 → 指宿，首选观光特急 <b>「指宿のたまて箱(玉手箱号)」</b>约 50 分，一天 3 往返、<b>需订指定席</b>（头天在窗口订好）；赶不上就坐普通车约 1h15，约 30-60 分一班。</p>
+          <p>⏰ <b>时间账</b>：8 点出发 → 砂浴 1h → 12 点半前往回赶，下午转场不慌。嫌赶就选 B，城市里 <b>维新故乡馆</b>（西乡隆盛老家）+ 中央站对面 <b>AMU Plaza</b> 摩天轮也够玩。</p>
+        </div></details>
+      </div>
+      <div class="r-item r-seg">
+        <div class="seg-box">
+          <div class="seg-main">🚄 新幹線「鹿児島中央 → 博多」1h20 约 <b>¥10,450</b> → 🚇 地下鉄 →「中洲川端」</div>
+          <div class="seg-sub">🕐 <b>班次</b>：みずほ/さくら约 15-30 分一班。<b>引导</b>：建议坐 <b>14:00-14:30 间</b>的车，15:30 左右到博多 → 站内换地铁空港線（1 站到「中洲川端」）或直接打车 10 分到酒店。</div>
+        </div>
+      </div>
+      <div class="r-item r-node">
+        <span class="r-pin hotel">🏨</span>
+        <div class="n-top"><span class="n-time">16:30</span><span class="n-name hotel">Check in · canvas 中洲</span><a class="n-nav" href="https://www.google.com/maps/search/ザロイヤルパークキャンバス福岡中洲" target="_blank" rel="noopener">📍导航</a></div>
+        <div class="n-jp">ザ ロイヤルパーク キャンバス 福岡中洲（中洲川端駅步行3分）</div>
+        <div class="n-find">酒店就在中洲，晚上的战场在楼下河边。</div>
+        <details class="exp"><summary>展开解说</summary><div class="exp-bd">
+          <p><b>canvas 福冈中洲</b>是设计系酒店，最大卖点是<b>顶楼露台酒吧</b>——正对那珂川和中洲霓虹，日落时分上去喝一杯，屋台的灯笼一盏盏亮起来，福冈夜景第一排。</p>
+          <p>楼下就是「川端通商店街」，博多最老的拱廊街，早餐咖啡和宵夜都好解决。</p>
+        </div></details>
+      </div>
+      <div class="r-item r-seg">
+        <div class="seg-box"><div class="seg-main">🚶 走到那珂川河边 3分</div></div>
+      </div>
+      <div class="r-item r-node">
+        <span class="r-pin food">2</span>
+        <div class="n-top"><span class="n-time">19:30</span><span class="n-name menu-link" data-open="mm-yatai">🏮 中洲屋台（重头戏）<span class="ml-badge">📖菜单</span></span><a class="n-nav" href="https://www.google.com/maps/search/中洲屋台" target="_blank" rel="noopener">📍导航</a></div>
+        <div class="n-jp">中洲屋台（なかす やたい）· 那珂川沿い</div>
+        <div class="n-find">一排红灯笼：拉面、烤串、关东煮、煎饺。<span class="tags"><span class="tag queue">不可预约·先到先得</span><span class="tag yen">备现金</span></span></div>
+        <details class="exp"><summary>展开解说</summary><div class="exp-bd">
+          <p>全日本的屋台（路边摊）<b>三分之一在福冈</b>，中洲这排是最上镜的——霓虹倒映在那珂川上，就是明信片里那张。</p>
+          <p><b>玩法</b>：约 18:00 开档、24 点后收摊，一摊 8-10 个座。先溜一圈看哪摊气氛好再坐；点单必试 <b>博多一口煎饺、明太子玉子烧、豚骨拉面收尾</b>。每人先点一杯饮料是规矩。</p>
+          <p><b>提醒</b>：基本只收现金，人均 ¥2,000-3,000；雨天部分摊不出摊。跟摊主和邻座搭话是屋台文化精髓，一句「オススメは？」（推荐啥？）就能打开话匣子。</p>
+        </div></details>
+      </div>
+    </div>
+    <a class="gmap" href="https://www.google.com/maps/dir/天文館/鹿児島中央駅/博多駅/中洲" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+      用 Google 地图看今天路线
+    </a>
+  </article>
+
+  <!-- ============ DAY 4 ============ -->
+  <article class="day-card" id="d4">
+    <div class="day-head">
+      <div class="day-num">DAY<span>04</span></div>
+      <div class="day-title"><div class="h">大名天神 + 海滨日落</div><div class="s">7/16 四 · 🏨 → 👗大名 → 🛍天神 → 🌅百道海滨/福冈塔 → 🍲牛肠锅 → 🏨</div></div>
+      <div class="day-wx"><div class="ic">🌧</div>30/25°<div class="stp">🚶 ~11,000</div></div>
+    </div>
+    <div class="day-adv"><details class="exp"><summary>🌡️ 今日穿什么 · 要不要防晒</summary><div class="exp-bd">
+      <div class="adv-grid"><span class="adv-chip">👕 轻便逛街装</span><span class="adv-chip">☂️ <b>必带伞（雨 50%）</b></span><span class="adv-chip">🧴 傍晚海边补防晒</span><span class="adv-chip">👟 好走的鞋</span></div>
+      <p>降水 50%，<b>伞必带</b>。白天大名/天神多在室内商场、有棚拱廊，不太淋；傍晚百道海边看日落，<b>海风大、备件薄外套 + 补涂防晒</b>。逛街脚程 ~1.1 万步，鞋要舒服。<a class="wx-live" href="https://tenki.jp/forecast/9/43/8210/40130/" target="_blank" rel="noopener">🔗 查福冈实时天气 →</a></p>
+    </div></details></div>
+    <div class="route">
+      <div class="r-item r-node">
+        <span class="r-pin hotel">🏨</span>
+        <div class="n-top"><span class="n-name hotel">canvas 中洲 出发</span></div>
+      </div>
+      <div class="r-item r-seg">
+        <div class="seg-box"><div class="seg-main">🚇 中洲川端 → 天神 1 站 / 🚶 步行 15分（睡到自然醒再出门）</div></div>
+      </div>
+      <div class="r-item r-node">
+        <span class="r-pin food">1</span>
+        <div class="n-top"><span class="n-time">11:00</span><span class="n-name">👗 大名 city walk</span><a class="n-nav" href="https://www.google.com/maps/search/大名+福岡+カフェ" target="_blank" rel="noopener">📍导航</a></div>
+        <div class="n-jp">大名（だいみょう）· 今泉・警固 一帯</div>
+        <div class="n-find">天神西侧的文青街区，古着店、买手店、咖啡馆密布，慢慢逛慢慢泡。<span class="tags"><span class="tag free">躺平咖啡</span></span></div>
+        <details class="exp"><summary>展开解说</summary><div class="exp-bd">
+          <p><b>大名</b>是福冈最潮的小巷街区——旧小学改造的复合设施 <b>「大名ガーデンシティ」</b>、古着店、独立设计师买手店、精品咖啡一条条巷子藏着，是"时而躺平咖啡"的完美舞台。</p>
+          <p>连着逛：大名 → <b>今泉</b>（甜品/餐酒馆）→ <b>警固</b>（警固神社+公园），一路溜达不知不觉就到天神。咖啡点名 <b>REC COFFEE</b>（世界咖啡师亚军店）、<b>私立珈琲店</b>。</p>
+          <p>午饭就地解决：大名/今泉小馆多，或留肚子到天神。</p>
+        </div></details>
+      </div>
+      <div class="r-item r-seg">
+        <div class="seg-box"><div class="seg-main">🚶 大名 → 天神 步行 5-10分（连着的）</div></div>
+      </div>
+      <div class="r-item r-node">
+        <span class="r-pin food">2</span>
+        <div class="n-top"><span class="n-time">14:30</span><span class="n-name">🛍 天神 血拼</span><a class="n-nav" href="https://www.google.com/maps/search/天神+福岡" target="_blank" rel="noopener">📍导航</a></div>
+        <div class="n-jp">天神（てんじん）· PARCO・大丸・地下街</div>
+        <div class="n-find">九州最大商圈，百货药妆一网打尽，逛到 <b>17:30 出发去海边</b>。<span class="tags"><span class="tag free">免税带护照</span></span></div>
+        <details class="exp"><summary>展开解说</summary><div class="exp-bd">
+          <p><b>天神</b>百货扎堆：PARCO、大丸、三越、地下街，药妆比东京便宜一截。<b>ソラリア/イムズ</b>一带杂货多。</p>
+          <p>运河城(Canal City)留到 D5 雨天逛，今天专心天神+大名，走轻松路线。</p>
+        </div></details>
+      </div>
+      <div class="r-item r-seg">
+        <div class="seg-box">
+          <div class="seg-main">🚇 天神駅 → 西新駅 约 8分 → 🚶 步行 15分 / 🚌 至「福岡タワー」站</div>
+          <div class="seg-sub">🕐 <b>引导</b>：地铁空港線到「西新」，往海边走即到百道海滨；或天神/博多站坐西鉄巴士直达「福岡タワー」站。班次密，不用查。</div>
+        </div>
+      </div>
+      <div class="r-item r-node">
+        <span class="r-pin nat">3</span>
+        <div class="n-top"><span class="n-time">18:30</span><span class="n-name">🌅 百道海滨公园 · 福冈塔日落</span><a class="n-nav" href="https://www.google.com/maps/search/百道浜海浜公園+福岡タワー" target="_blank" rel="noopener">📍导航</a></div>
+        <div class="n-jp">百道浜（ももちはま）海浜公園 · 福岡タワー</div>
+        <div class="n-find">福冈正牌海滨日落点，就是你最初想去的"海滨公园"。沙滩+人工海滨，<b>7/16 日落 19:29</b>。<span class="tags"><span class="tag free">免费·免预约</span><span class="tag yen">塔展望台 ¥800</span></span></div>
+        <details class="exp"><summary>展开解说</summary><div class="exp-bd">
+          <p><b>百道海滨公园</b>是福冈市民的看海后花园，白色沙滩 + 结婚礼堂「マリゾン」+ 福冈塔构成经典海景线，比今宿近太多、地铁就到。</p>
+          <p>玩法：傍晚到沙滩散步、拍<b>塔+海+晚霞</b>；日落后 <b>福冈塔</b>上 123m 展望台看夜景（¥800），塔身还会点灯秀。<b>天气对赌</b>同样存在（7/16 多云一时雨 50%），但这里<b>不用订位、说走就走</b>——晴就冲海边，雨就直接上塔看夜景，进退自如。</p>
+          <p>晚餐分开吃（见下条）——不用再为一顿饭赌天气跑远门。</p>
+        </div></details>
+      </div>
+      <div class="r-item r-seg">
+        <div class="seg-box"><div class="seg-main">🚌/🚇 西新・百道 → 天神/中洲 约 15-20分 觅食</div></div>
+      </div>
+      <div class="r-item r-node">
+        <span class="r-pin food">4</span>
+        <div class="n-top"><span class="n-time">20:30</span><span class="n-name menu-link" data-open="mm-ooyama">🍲 晚餐 · 牛肠锅 おおやま <span class="ml-badge">📖菜单</span></span><a class="n-nav" href="https://www.google.com/maps/search/博多もつ鍋おおやま+本店+呉服町" target="_blank" rel="noopener">📍导航</a></div>
+        <div class="n-jp">博多もつ鍋 おおやま 本店（川端・祇園/呉服町 · 离酒店几步）</div>
+        <div class="n-find">福冈销量第一的牛肠锅，营业到 23:00，<b>20:30 从容</b>，就在中洲酒店旁。<span class="tags"><span class="tag yen">✅ 已订 20:30·2人·席のみ</span><span class="tag book">现点·马肉单点可跳过</span></span></div>
+        <details class="exp"><summary>展开解说</summary><div class="exp-bd">
+          <p><b>牛肠锅(もつ鍋)</b>是福冈灵魂锅物：牛小肠肥糯 + 成山的韭菜卷心菜，汤底选<b>味噌</b>（浓郁首推）或酱油。收尾必点<b>ちゃんぽん麺</b>下锅吸饱汤汁。</p>
+          <p><b>おおやま</b>是福冈县销量 No.1，全席掘りごたつ（挖地暖桌）个室，本店在呉服町、离你中洲酒店走几步。看完百道日落回来吃、吃完溜达回房，动线完美。</p>
+          <p>这样你 D5 かわ屋鸡皮串、D4 牛肠锅——博多<b>两大锅+名物串</b>全吃到，不撞菜。</p>
+          <p>🎫 <b>订「席のみ」到店现点</b>（套餐是全员同款、且贵的都含马肉，改现点最灵活）：点 <b>もつ鍋 ¥1,980/人</b>（味噌/酱油/水炊风）+ 明太子、牛筋炖、薯泥沙拉等小菜，收尾 <b>ちゃんぽん面</b>。想吃马肉的单点马刺し，不吃就跳过。</p>
+        </div></details>
+      </div>
+      <div class="r-item r-seg">
+        <div class="seg-box"><div class="seg-main">🚶/🚇 回中洲川端 就在酒店边</div></div>
+      </div>
+      <div class="r-item r-node">
+        <span class="r-pin hotel">🏨</span>
+        <div class="n-top"><span class="n-name hotel">回酒店</span></div>
+      </div>
+    </div>
+    <a class="gmap" href="https://www.google.com/maps/dir/中洲/大名+福岡/天神/福岡タワー/中洲" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+      用 Google 地图看今天路线
+    </a>
+  </article>
+
+  <!-- ============ DAY 5 ============ -->
+  <article class="day-card" id="d5">
+    <div class="day-head">
+      <div class="day-num">DAY<span>05</span></div>
+      <div class="day-title"><div class="h">雨天 · 面包庭园咖啡</div><div class="s">7/17 五 · 🏨 → 🥐Dacomecca → 友泉亭 → 薬院咖啡 → 🍢かわ屋鸡皮串 ☔</div></div>
+      <div class="day-wx"><div class="ic">🌧</div>27/25°<div class="stp">🚶 ~7,500</div></div>
+    </div>
+    <div class="day-adv"><details class="exp"><summary>🌡️ 今日穿什么 · 要不要防晒</summary><div class="exp-bd">
+      <div class="adv-grid"><span class="adv-chip">🧥 <b>薄长袖（今天最凉）</b></span><span class="adv-chip">☂️ 必带伞（中雨）</span><span class="adv-chip">👟 防水鞋</span><span class="adv-chip">🧴 防晒可省</span></div>
+      <p>全天<b>最凉 + 中雨</b>，室内动线为主（面包房/庭园/咖啡/鸡皮串）。<b>伞必带、鞋别穿布面</b>；室内冷气足，备件薄长袖搭着。防晒基本可省。<a class="wx-live" href="https://tenki.jp/forecast/9/43/8210/40130/" target="_blank" rel="noopener">🔗 查福冈实时天气 →</a></p>
+    </div></details></div>
+    <div class="route">
+      <div class="r-item r-node">
+        <span class="r-pin hotel">🏨</span>
+        <div class="n-top"><span class="n-name hotel">canvas 中洲 出发</span></div>
+      </div>
+      <div class="r-item r-seg">
+        <div class="seg-box"><div class="seg-main">🚶 徒歩约 15分 / 🚇 一站到博多駅（雨大走川端通拱廊+博多站地下道）</div></div>
+      </div>
+      <div class="r-item r-node">
+        <span class="r-pin food">1</span>
+        <div class="n-top"><span class="n-time">09:00</span><span class="n-name">🥐 Dacomecca 早餐</span><a class="n-nav" href="https://www.google.com/maps/search/DACOMECCA+博多" target="_blank" rel="noopener">📍导航</a></div>
+        <div class="n-jp">ダコメッカ（博多駅 博多口 步行3分）</div>
+        <div class="n-find">炉端烧面包房，8:00 开门，早去款式最全。<span class="tags"><span class="tag queue">排队即可</span></span></div>
+        <details class="exp"><summary>展开解说</summary><div class="exp-bd">
+          <p><b>DACOMECCA</b> 是博多的排队面包房：店里有<b>炭烤炉台</b>，食材现场炭火炙烤再夹进面包——概念叫"炉端焼ベーカリー"，全日本罕见。</p>
+          <p>推荐：炭烤培根蛋三明治、咖喱面包，配店内咖啡。有<b>モーニングプレート早餐盘</b>份量惊人。拿托盘夹子自选，结账说「イートイン」= 店内吃。</p>
+        </div></details>
+      </div>
+      <div class="r-item r-seg">
+        <div class="seg-box">
+          <div class="seg-main">🚌 博多駅前 → 西鉄バス「友泉亭」站 约 25分 / ☔ 雨大直接打车 15分 约 ¥1,800</div>
+          <div class="seg-sub">🕐 <b>引导</b>：博多站前坐往「片江営業所」等方向的西鉄巴士到「友泉亭」下车步行 5 分；班次约 15-20 分一班。雨天懒得研究巴士就打车，报「ゆうせんてい」即可。</div>
+        </div>
+      </div>
+      <div class="r-item r-node">
+        <span class="r-pin nat">2</span>
+        <div class="n-top"><span class="n-time">11:00</span><span class="n-name">🍵 友泉亭公园</span><a class="n-nav" href="https://www.google.com/maps/search/友泉亭公園" target="_blank" rel="noopener">📍导航</a></div>
+        <div class="n-jp">友泉亭公園＝ゆうせんてい</div>
+        <div class="n-find">池泉回游式日本庭园，在大広間榻榻米上喝抹茶看雨打池面——<b>雨天反而是加分项</b>。<span class="tags"><span class="tag yen">入园 ¥200 · 抹茶+和菓子 ¥500</span><span class="tag free">免预约</span></span></div>
+        <details class="exp"><summary>展开解说</summary><div class="exp-bd">
+          <p>原是江户时代<b>筑前黑田藩主的别庄</b>，福冈市第一座池泉回游式庭园。名气远小于太宰府，游客少，是本地人藏着的静处。</p>
+          <p>玩法：进<b>大広間</b>点一份抹茶+季节和菓子（¥500），跪坐在榻榻米上，整面敞开的障子正对大池——雨点打在池面、锦鲤游过，比晴天更有味道。拍照构图：榻榻米边缘做前景框住庭园。</p>
+        </div></details>
+      </div>
+      <div class="r-item r-seg">
+        <div class="seg-box"><div class="seg-main">🚕 打车 → 薬院 约 10分 ¥1,200（顺路，别折腾巴士了）</div></div>
+      </div>
+      <div class="r-item r-node">
+        <span class="r-pin food">3</span>
+        <div class="n-top"><span class="n-time">14:00</span><span class="n-name">☕ 药院咖啡巡礼</span><a class="n-nav" href="https://www.google.com/maps/search/薬院+カフェ" target="_blank" rel="noopener">📍导航</a></div>
+        <div class="n-jp">薬院＝やくいん（薬院駅一带）</div>
+        <div class="n-find">福冈文青浓度最高的街区，小咖啡馆、买手店、甜品店密布，雨天钻店最舒服。<span class="tags"><span class="tag free">躺平模式</span></span></div>
+        <details class="exp"><summary>展开解说</summary><div class="exp-bd">
+          <p><b>药院</b>之于福冈 ≈ 安福路之于上海：白天咖啡烘焙香，巷子里全是设计小店。步行圈内还有超好逛的杂货街区<b>今泉·警固</b>，一路能溜达回天神。</p>
+          <p>点名几家：<b>COFFEE COUNTY</b>（福冈自家烘焙天花板）、<b>manu coffee</b>（本地连锁鼻祖）、<b>アマムダコタン</b>（网红面包房 amam dacotan，Dacomecca 的姊妹店，早上没吃够这儿补）。</p>
+          <p>雨小的话可以加塞：地铁两站到<b>大濠公园</b>，湖景星巴克窗边发呆 1 小时再回。</p>
+        </div></details>
+      </div>
+      <div class="r-item r-seg">
+        <div class="seg-box"><div class="seg-main">🚶/🚇 薬院 → 天神/中洲方向 觅食</div></div>
+      </div>
+      <div class="r-item r-node">
+        <span class="r-pin food">4</span>
+        <div class="n-top"><span class="n-time">19:00</span><span class="n-name menu-link" data-open="mm-kawaya">🍢 かわ屋 鸡皮串 <span class="ml-badge">📖菜单</span></span><a class="n-nav" href="https://www.google.com/maps/search/かわ屋+今泉+福岡" target="_blank" rel="noopener">📍导航</a></div>
+        <div class="n-jp">かわ屋 今泉店（薬院/今泉一带 · 药院咖啡巡礼顺路）</div>
+        <div class="n-find">福冈神级鸡皮串，一人干 90-100 串的传奇店，就在今天药院活动圈里。<span class="tags"><span class="tag yen">✅ 已订 19:00 · 2人 · 吧台</span></span></div>
+        <details class="exp"><summary>展开解说</summary><div class="exp-bd">
+          <p><b>とりかわ（鸡皮串）</b>是博多和牛肠锅、水炊き齐名的名物。かわ屋的做法是把鸡脖皮缠在竹签上，<b>反复刷酱、烤 4-6 天</b>——外脆里糯、酱汁透进每一层，一口一串根本停不下，人均能干 <b>50-100 串</b>不夸张。</p>
+          <p><b>点法</b>：先来 10 串鸡皮打底(タレ酱味/塩盐味都试)，配一杯生啤或 highball；再点点招牌つくね(鸡肉丸)、季节野菜串换口。鸡皮 <b>5 串起点</b>，别害羞报整数。</p>
+          <p><b>预约必须</b>：かわ屋是排队王，务必网上(Hot Pepper)或让 canvas 前台电话订今泉店。订不上试警固店/博多かわ屋分店。<b>吃完</b>还可以溜回中洲屋台补个煎饺当宵夜。</p>
+        </div></details>
+      </div>
+      <div class="r-item r-node">
+        <span class="r-pin hotel">🏨</span>
+        <div class="n-top"><span class="n-name hotel">回酒店</span></div>
+      </div>
+    </div>
+    <a class="gmap" href="https://www.google.com/maps/dir/中洲/DACOMECCA+博多/友泉亭公園/薬院駅/かわ屋+今泉/中洲" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+      用 Google 地图看今天路线
+    </a>
+  </article>
+
+  <!-- ============ DAY 6 ============ -->
+  <article class="day-card" id="d6">
+    <div class="day-head">
+      <div class="day-num">DAY<span>06</span></div>
+      <div class="day-title"><div class="h">返程 · 完美收官</div><div class="s">7/18 六 · 🏨 → 慢咖啡/手信 → 🚇 → ✈️福冈</div></div>
+      <div class="day-wx"><div class="ic">🌤</div>31/24°<div class="stp">🚶 ~4,000</div></div>
+    </div>
+    <div class="day-adv"><details class="exp"><summary>🌡️ 今日穿什么 · 要不要防晒</summary><div class="exp-bd">
+      <div class="adv-grid"><span class="adv-chip">👕 轻装</span><span class="adv-chip">🧴 薄涂防晒</span><span class="adv-chip">🧳 收拾行李</span></div>
+      <p>返程日<b>转晴回暖</b>，轻装 + 薄涂防晒。博多站/机场补最后手信，<b>最晚 15:30 出发去机场</b>，留足值机安检时间。<a class="wx-live" href="https://tenki.jp/forecast/9/43/8210/40130/" target="_blank" rel="noopener">🔗 查福冈实时天气 →</a></p>
+    </div></details></div>
+    <div class="route">
+      <div class="r-item r-node">
+        <span class="r-pin hotel">🏨</span>
+        <div class="n-top"><span class="n-time">10:00</span><span class="n-name hotel">canvas 中洲 出发</span></div>
+        <div class="n-jp">退房行李寄存前台</div>
+      </div>
+      <div class="r-item r-seg">
+        <div class="seg-box"><div class="seg-main">🚶 河边散步 → 川端通商店街 → 博多站方向</div></div>
+      </div>
+      <div class="r-item r-node">
+        <span class="r-pin food">1</span>
+        <div class="n-top"><span class="n-name">☕ 慢咖啡 + 手信采购</span><a class="n-nav" href="https://www.google.com/maps/search/JR博多シティ" target="_blank" rel="noopener">📍导航</a></div>
+        <div class="n-jp">JR博多シティ · マイング（博多站手信街）</div>
+        <div class="n-find">明太子、点心一次补齐，别拖到最后一刻。</div>
+        <details class="exp"><summary>展开解说（手信清单）</summary><div class="exp-bd">
+          <p>博多站内<b>「マイング」</b>是手信一条街，90+ 店一次买齐：</p>
+          <p>🎁 必买榜：<b>明太子</b>（ふくや/やまや，要冷藏装+保冷袋）、<b>博多通りもん</b>（白馅小饼，福冈手信之王）、<b>ひよ子</b>小鸡馒头、鹿儿岛没买够的<b>薩摩芋塔</b>这里也有。</p>
+          <p>⚠️ 明太子过中国海关属肉制品灰区，自己吃低调少带；常温真空装更稳。</p>
+        </div></details>
+      </div>
+      <div class="r-item r-seg">
+        <div class="seg-box">
+          <div class="seg-main">🚇 地下鉄空港線「博多 → 福岡空港」6分 → 🚌 摆渡去国际线 8分 ｜ <b>最晚 15:30 出发</b></div>
+          <div class="seg-sub">🕐 <b>班次</b>：地铁 5-8 分一班；国内线→国际线免费连络巴士约 8-10 分一班。<b>引导</b>：春秋值机柜台通常起飞前 2.5h 开、45 分钟前截止，16:00 前到国际线大厅最稳。</div>
+        </div>
+      </div>
+      <div class="r-item r-node">
+        <span class="r-pin air">✈</span>
+        <div class="n-top"><span class="n-time">15:40</span><span class="n-name">福冈机场 · 国际线</span></div>
+        <div class="n-jp">福岡空港 国際線ターミナル</div>
+        <div class="n-find">值机 → 安检 → 免税店最后一波。</div>
+      </div>
+      <div class="r-item r-node">
+        <span class="r-pin air">✈</span>
+        <div class="n-top"><span class="n-time">18:00</span><span class="n-name">9C6538 起飞回上海</span></div>
+        <div class="n-find">19:00 落地浦东。九州の胃，圆满 🎌</div>
+      </div>
+    </div>
+    <a class="gmap" href="https://www.google.com/maps/dir/中洲/博多駅/福岡空港" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+      用 Google 地图看今天路线
+    </a>
+  </article>
+
+  <!-- ============ MENU ============ -->
+  <section>
+    <div class="sec-title"><span class="n">MENU</span><h2>各店菜单 · 点选预点</h2></div>
+    <div class="menu-tip" style="padding:2px 6px 12px;">👆 点下面按钮、或直接点行程里带 <span class="ml-badge">📖菜单</span> 的<b style="color:var(--kaki)">餐厅名</b>，弹出菜单 → 选份数 → <b style="color:var(--kaki)">生成日语点单页</b>给店员看。</div>
+    <div class="menu-launch">
+      <button class="ml-btn" data-open="mm-tenmonkan">🐻‍❄️ 天文馆 · 白熊 / 黑豚炸猪排</button>
+      <button class="ml-btn" data-open="mm-gyuissai">🥩 牛一彩 · 鹿儿岛黑牛烤肉</button>
+      <button class="ml-btn" data-open="mm-yatai">🏮 中洲屋台</button>
+      <button class="ml-btn" data-open="mm-ooyama">🍲 おおやま · 牛肠锅</button>
+      <button class="ml-btn" data-open="mm-kawaya">🍢 かわ屋 · 鸡皮串</button>
+    </div>
+    <div class="menu-tip" style="padding:11px 6px 4px;">🚶 <b style="color:var(--ink)">步数</b>：每天卡片右上角有当日预估（六天约 47,000 步/34km，D2 樱岛、D4 逛街是暴走双峰）。<br>📋 菜单为常见招牌 + 参考价（实际以店内为准），马肉已排除在 おおやま 菜单外。</div>
+  </section>
+
+  <!-- ===== 菜单弹窗（每家一张）===== -->
+  <div class="menu-modal" id="mm-gyuissai" hidden><div class="mm-box"><div class="mm-close"><button class="mm-x" aria-label="关闭">✕</button></div>
+    <div class="menu-card">
+      <div class="menu-head"><span class="menu-ic">🥩</span><div><div class="menu-name">牛一彩 · 鹿儿岛黑牛烤肉</div><div class="menu-sub">D2 · <span class="ok">✅ 已订 19:00</span> · A5黑毛和牛</div></div></div>
+      <ul class="dish">
+        <li class="ord" data-jp="タン塩" data-cn="盐烤牛舌"><div class="d-info"><span class="d-jp">タン塩</span><span class="d-cn"><span class="star">⭐</span>盐烤牛舌 · 开场必点</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="上タン" data-cn="上等牛舌"><div class="d-info"><span class="d-jp">上タン</span><span class="d-cn">上等牛舌·更厚</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="上カルビ" data-cn="上等五花"><div class="d-info"><span class="d-jp">上カルビ</span><span class="d-cn"><span class="star">⭐</span>上等五花 · 招牌</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="特上カルビ" data-cn="特上五花"><div class="d-info"><span class="d-jp">特上カルビ</span><span class="d-cn">特上五花·雪花</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="ロース" data-cn="里脊"><div class="d-info"><span class="d-jp">ロース</span><span class="d-cn">里脊 · 瘦嫩</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="ハラミ" data-cn="横膈膜"><div class="d-info"><span class="d-jp">ハラミ</span><span class="d-cn">横膈膜·有嚼劲</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="希少部位盛り" data-cn="稀有部位拼盘"><div class="d-info"><span class="d-jp">希少部位盛り</span><span class="d-cn"><span class="star">⭐</span>稀有部位拼盘 · 最划算</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="和牛ユッケ" data-cn="和牛生拌(生)"><div class="d-info"><span class="d-jp">和牛ユッケ</span><span class="d-cn">和牛生拌 · 生食可选</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="サンチュ" data-cn="生菜包"><div class="d-info"><span class="d-jp">サンチュ</span><span class="d-cn">生菜·包肉解腻</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="キムチ盛り" data-cn="泡菜拼盘"><div class="d-info"><span class="d-jp">キムチ盛り</span><span class="d-cn">韩式泡菜拼盘</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="ビビンバ" data-cn="石锅拌饭(收尾)"><div class="d-info"><span class="d-jp">〆 ビビンバ</span><span class="d-cn">石锅拌饭收尾</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="冷麺" data-cn="冷面(收尾)"><div class="d-info"><span class="d-jp">〆 冷麺</span><span class="d-cn">韩式冷面收尾</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+      </ul>
+      <div class="menu-tip">💡 单点顺序：<b>舌 → 五花/里脊 → 稀有拼盘</b>，和牛别烤过、变色带焦边就翻。不吃生食可跳过 ユッケ。</div>
+      <button class="order-show" data-shop="牛一彩 · 黑牛烤肉">📋 生成点单给店员看 <span class="os-n">0</span></button>
+    </div>
+  </div></div>
+
+  <div class="menu-modal" id="mm-ooyama" hidden><div class="mm-box"><div class="mm-close"><button class="mm-x" aria-label="关闭">✕</button></div>
+    <div class="menu-card">
+      <div class="menu-head"><span class="menu-ic">🍲</span><div><div class="menu-name">おおやま · 牛肠锅（席のみ现点）</div><div class="menu-sub">D4 · <span class="ok">✅ 已订 20:30</span> · 到店现点</div></div></div>
+      <ul class="dish">
+        <li class="ord" data-jp="もつ鍋（味噌）" data-cn="牛肠锅·味噌"><div class="d-info"><span class="d-jp">もつ鍋（味噌）</span><span class="d-cn"><span class="star">⭐</span>牛肠锅·味噌最浓 ~¥1,980/人</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="もつ鍋（醤油）" data-cn="牛肠锅·酱油"><div class="d-info"><span class="d-jp">もつ鍋（醤油）</span><span class="d-cn">牛肠锅·酱油清爽</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="もつ追加" data-cn="加牛肠"><div class="d-info"><span class="d-jp">もつ追加</span><span class="d-cn">加一份牛肠</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="柔らか牛すもつ" data-cn="嫩牛杂"><div class="d-info"><span class="d-jp">柔らか牛すもつ</span><span class="d-cn">嫩牛杂小菜</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="牛すじ煮込み" data-cn="牛筋炖"><div class="d-info"><span class="d-jp">牛すじ煮込み</span><span class="d-cn">牛筋炖</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="明太子" data-cn="明太子"><div class="d-info"><span class="d-jp">明太子</span><span class="d-cn">おおやま自制明太子</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="辛子高菜" data-cn="辣高菜"><div class="d-info"><span class="d-jp">辛子高菜</span><span class="d-cn">辣芥菜·下饭</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="明太ポテトサラダ" data-cn="明太薯泥沙拉"><div class="d-info"><span class="d-jp">明太ポテサラ</span><span class="d-cn">明太薯泥沙拉</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="一口餃子" data-cn="一口煎饺"><div class="d-info"><span class="d-jp">一口餃子</span><span class="d-cn">一口煎饺</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="〆 ちゃんぽん麺" data-cn="杂烩面(收尾)"><div class="d-info"><span class="d-jp">〆 ちゃんぽん麺</span><span class="d-cn"><span class="star">⭐</span>杂烩面下锅吸汤·必点</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="〆 雑炊" data-cn="杂炊粥(收尾)"><div class="d-info"><span class="d-jp">〆 雑炊</span><span class="d-cn">鸡蛋杂炊粥收尾</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+      </ul>
+      <div class="menu-tip">⚠️ <b>避开 馬刺し / 馬ユッケ（马肉）</b>！汤底味噌 > 酱油；两人点一锅 + 2-3 小菜 + 收尾面刚好。</div>
+      <button class="order-show" data-shop="おおやま · 牛肠锅">📋 生成点单给店员看 <span class="os-n">0</span></button>
+    </div>
+  </div></div>
+
+  <div class="menu-modal" id="mm-kawaya" hidden><div class="mm-box"><div class="mm-close"><button class="mm-x" aria-label="关闭">✕</button></div>
+    <div class="menu-card">
+      <div class="menu-head"><span class="menu-ic">🍢</span><div><div class="menu-name">かわ屋 · 鸡皮串</div><div class="menu-sub">D5 · <span class="ok">✅ 已订 19:00 吧台</span></div></div></div>
+      <ul class="dish">
+        <li class="ord" data-jp="とりかわ（タレ）" data-cn="酱味鸡皮串"><div class="d-info"><span class="d-jp">とりかわ（タレ）</span><span class="d-cn"><span class="star">⭐</span>酱味鸡皮串·招牌 ~¥130/串</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="とりかわ（塩）" data-cn="盐味鸡皮串"><div class="d-info"><span class="d-jp">とりかわ（塩）</span><span class="d-cn">盐味鸡皮串·对比着吃</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="つくね" data-cn="鸡肉丸"><div class="d-info"><span class="d-jp">つくね</span><span class="d-cn">鸡肉丸</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="せせり" data-cn="鸡颈肉"><div class="d-info"><span class="d-jp">せせり</span><span class="d-cn">鸡颈肉·弹嫩</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="ぼんじり" data-cn="鸡尾"><div class="d-info"><span class="d-jp">ぼんじり</span><span class="d-cn">鸡尾·多汁</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="砂ずり" data-cn="鸡胗"><div class="d-info"><span class="d-jp">砂ずり</span><span class="d-cn">鸡胗·脆口</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="手羽先" data-cn="鸡翅"><div class="d-info"><span class="d-jp">手羽先</span><span class="d-cn">烤鸡翅</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="豚バラ" data-cn="五花肉串"><div class="d-info"><span class="d-jp">豚バラ</span><span class="d-cn">五花肉串</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="季節野菜串" data-cn="时蔬串"><div class="d-info"><span class="d-jp">季節野菜串</span><span class="d-cn">时蔬串·换口</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="だし巻き玉子" data-cn="高汤蛋卷"><div class="d-info"><span class="d-jp">だし巻き玉子</span><span class="d-cn">高汤蛋卷</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="キャベツ" data-cn="生卷心菜"><div class="d-info"><span class="d-jp">キャベツ</span><span class="d-cn">生卷心菜·解腻</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="生ビール" data-cn="生啤"><div class="d-info"><span class="d-jp">生ビール</span><span class="d-cn">生啤·配串神器</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="ハイボール" data-cn="威士忌苏打"><div class="d-info"><span class="d-jp">ハイボール</span><span class="d-cn">威士忌苏打</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+      </ul>
+      <div class="menu-tip">💡 鸡皮串 <b>5 串起点</b>——先各来 10 串塩+タレ 打底，再点丸子/颈肉/野菜换口。</div>
+      <button class="order-show" data-shop="かわ屋 · 鸡皮串">📋 生成点单给店员看 <span class="os-n">0</span></button>
+    </div>
+  </div></div>
+
+  <div class="menu-modal" id="mm-tenmonkan" hidden><div class="mm-box"><div class="mm-close"><button class="mm-x" aria-label="关闭">✕</button></div>
+    <div class="menu-card">
+      <div class="menu-head"><span class="menu-ic">🐻‍❄️</span><div><div class="menu-name">天文馆觅食 · 白熊 + 黑豚</div><div class="menu-sub">D1-D2 · 排队即可·免预约</div></div></div>
+      <ul class="dish">
+        <li class="ord" data-jp="黒豚とんかつ" data-cn="黑豚炸猪排"><div class="d-info"><span class="d-jp">黒豚とんかつ</span><span class="d-cn"><span class="star">⭐</span>黑豚炸猪排·落地首餐</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="ロースかつ定食" data-cn="里脊炸猪排套餐"><div class="d-info"><span class="d-jp">ロースかつ定食</span><span class="d-cn">里脊炸猪排定食</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="黒豚しゃぶしゃぶ" data-cn="黑豚涮锅"><div class="d-info"><span class="d-jp">黒豚しゃぶしゃぶ</span><span class="d-cn">黑豚涮锅·蘸生蛋液</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="白熊（ベビー）" data-cn="白熊刨冰(小)"><div class="d-info"><span class="d-jp">白熊（ベビー）</span><span class="d-cn"><span class="star">⭐</span>白熊刨冰·两人一份够</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="鹿児島ラーメン" data-cn="鹿儿岛拉面"><div class="d-info"><span class="d-jp">鹿児島ラーメン</span><span class="d-cn">豚骨拉面·配焦葱</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="さつま揚げ" data-cn="萨摩炸鱼饼"><div class="d-info"><span class="d-jp">さつま揚げ</span><span class="d-cn">萨摩炸鱼饼·现炸</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="芋焼酎（お湯割り）" data-cn="芋烧酎(兑热水)"><div class="d-info"><span class="d-jp">芋焼酎</span><span class="d-cn">芋烧酎·兑水/热水</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+      </ul>
+      <div class="menu-tip">💡 落地日走进去就吃（川久/丸一等黑豚炸猪排店免预约）；白熊在 むじゃき 本店，翻台快。</div>
+      <button class="order-show" data-shop="天文馆 · 白熊/黑豚">📋 生成点单给店员看 <span class="os-n">0</span></button>
+    </div>
+  </div></div>
+
+  <div class="menu-modal" id="mm-yatai" hidden><div class="mm-box"><div class="mm-close"><button class="mm-x" aria-label="关闭">✕</button></div>
+    <div class="menu-card">
+      <div class="menu-head"><span class="menu-ic">🏮</span><div><div class="menu-name">中洲屋台</div><div class="menu-sub">D3 · 现点现吃·备现金</div></div></div>
+      <ul class="dish">
+        <li class="ord" data-jp="豚骨ラーメン" data-cn="豚骨拉面"><div class="d-info"><span class="d-jp">豚骨ラーメン</span><span class="d-cn"><span class="star">⭐</span>豚骨拉面·屋台经典</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="一口餃子" data-cn="一口煎饺"><div class="d-info"><span class="d-jp">一口餃子</span><span class="d-cn"><span class="star">⭐</span>博多一口煎饺</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="焼きラーメン" data-cn="煎拉面"><div class="d-info"><span class="d-jp">焼きラーメン</span><span class="d-cn">煎拉面·屋台名物</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="焼き鳥盛り" data-cn="烤串拼盘"><div class="d-info"><span class="d-jp">焼き鳥盛り</span><span class="d-cn">烤串拼盘</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="おでん" data-cn="关东煮"><div class="d-info"><span class="d-jp">おでん</span><span class="d-cn">关东煮</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="明太玉子焼き" data-cn="明太玉子烧"><div class="d-info"><span class="d-jp">明太玉子焼き</span><span class="d-cn">明太子玉子烧</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+        <li class="ord" data-jp="生ビール" data-cn="生啤"><div class="d-info"><span class="d-jp">生ビール</span><span class="d-cn">生啤(先点一杯是规矩)</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
+      </ul>
+      <div class="menu-tip">💡 每人先点一杯饮料是屋台规矩；一句「オススメは？」（推荐啥？）打开话匣子。</div>
+      <button class="order-show" data-shop="中洲屋台">📋 生成点单给店员看 <span class="os-n">0</span></button>
+    </div>
+  </div></div>
+
+  <!-- 点单浮层 -->
+  <div class="ord-ovl" id="ordOvl" hidden>
+    <div class="ord-box">
+      <div class="ord-top"><span class="ord-shop" id="ordShop"></span><button class="ord-x" id="ordX" aria-label="关闭">✕</button></div>
+      <div class="ord-intro">すみません、これを<br>注文お願いします 🙏<span>不好意思，我想点这些 ↓</span></div>
+      <ul class="ord-list" id="ordList"></ul>
+      <div class="ord-foot">👆 把这页给店员看<small>スタッフの方へ：上記をお願いします</small></div>
+    </div>
+  </div>
+
+  <!-- ============ TIPS ============ -->
+  <section>
+    <div class="sec-title"><span class="n">TIPS</span><h2>出行注意点</h2></div>
+    <div class="card">
+      <div class="row"><div class="ic">🍱</div><div class="bd"><div class="t">午饭怎么办（都不用预约，随走随吃）</div><div class="d"><b>D1</b>·新干线上吃驿便当(駅弁)或到鹿児島中央站 AMU广场；<b>D2</b>·樱岛口/水族馆附近轻食，或返天文馆吃拉面；<b>D3</b>·选指宿吃「温たまらん丼/流水素面」，选城市吃中央站 AMU；<b>D4</b>·太宰府参道梅園菜饭/名物梅ヶ枝餅垫肚，或天神商场餐厅；<b>D5</b>·Dacomecca 早餐管饱+友泉亭抹茶和菓子+药院咖啡轻食，一路续着不会饿；<b>D6</b>·博多站/机场解决。</div></div></div>
+      <div class="row"><div class="ic">📌</div><div class="bd"><div class="t">预约小结</div><div class="d">✅ 已订：<b>牛一彩烤肉(D2 19:00) · 牛肠锅おおやま(D4 20:30) · かわ屋鸡皮串(D5 19:00)</b>，均 2 位。仅剩：<b>玉手箱号指定席(D3选指宿时·当地车站买)</b>。黑豚炸猪排、白熊、拉面、屋台、百道日落 → <b>免预约随到随吃</b>。</div></div></div>
+      <div class="row"><div class="ic">💴</div><div class="bd"><div class="t">现金 + 交通卡攻略</div><div class="d">✅ Suica 能刷：<b>樱岛渡轮、福冈地铁/JR、新干线闸机</b>。❌ <b>鹿儿岛市電刷不了 Suica</b>——用信用卡拍卡(Visa/MC/JCB)或现金均一 ¥170（车上可换零）。屋台、小店多收现金。</div></div></div>
+      <div class="row"><div class="ic">🌋</div><div class="bd"><div class="t">樱岛火山灰</div><div class="d">看风向，飘灰时戴口罩、备湿巾，别穿浅色、别晾衣服在外。</div></div></div>
+      <div class="row"><div class="ic">🥵</div><div class="bd"><div class="t">高温 + 湿 = 易中暑</div><div class="d">32° 湿热暴晒，多补水补盐，便利店买 <span class="lat">Pocari</span>；带便携小风扇、防晒。</div></div></div>
+      <div class="row"><div class="ic">☔</div><div class="bd"><div class="t">7/17 中雨</div><div class="d">折叠伞随身；忘带便利店 ¥600 有伞。那天走室内动线最稳。屋台雨天可能不出摊。</div></div></div>
+      <div class="row"><div class="ic">🚄</div><div class="bd"><div class="t">新干线指定席早点买</div><div class="d">往返鹿儿岛约 ¥21,000。若还想多跑，可算 <b>JR 九州全九州 3 日券（约 ¥20,000）</b>是否划算。</div></div></div>
+      <div class="row"><div class="ic">📱</div><div class="bd"><div class="t">网络 + 导航</div><div class="d">备 eSIM / 随身 WiFi；每个点的 📍导航 和每天的 Google 路线按钮点开即导航（需联网）。查车次用 Google Maps 或「乘换案内」App 最准。</div></div></div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="lat">KYUSHU · KAGOSHIMA × FUKUOKA · 2026.07</div>
+    行程 by D 🐧 · 天气/航班/班次为参考，出发前请再核对一次<br>
+    航班：春秋 9C6609（浦东→福冈 09:55）· 9C6538（福冈→浦东 18:00）
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var storagePrefix='kyushu-order:';
+  var ovl=document.getElementById('ordOvl');
+  var list=document.getElementById('ordList');
+  var shopEl=document.getElementById('ordShop');
+  document.querySelectorAll('.menu-card').forEach(function(card,cardIndex){
+    var btn=card.querySelector('.order-show');
+    var items=card.querySelectorAll('.dish li.ord');
+    function refresh(){
+      var n=0;
+      items.forEach(function(li){ n+=(+li.dataset.q||0); });
+      if(btn){ btn.querySelector('.os-n').textContent=n; btn.disabled=(n===0); }
+    }
+    items.forEach(function(li,itemIndex){
+      var storageKey=storagePrefix+cardIndex+':'+itemIndex;
+      li.dataset.q=localStorage.getItem(storageKey)||'0';
+      var q=li.querySelector('.st-q');
+      q.textContent=li.dataset.q;
+      if(+li.dataset.q>0) li.classList.add('sel');
+      li.querySelector('.st-p').addEventListener('click',function(){
+        li.dataset.q=String((+li.dataset.q||0)+1); q.textContent=li.dataset.q;
+        localStorage.setItem(storageKey,li.dataset.q);
+        li.classList.add('sel'); refresh();
+      });
+      li.querySelector('.st-m').addEventListener('click',function(){
+        var v=(+li.dataset.q||0); if(v>0){ v--; li.dataset.q=String(v); q.textContent=v; localStorage.setItem(storageKey,String(v)); if(v===0) li.classList.remove('sel'); refresh(); }
+      });
+    });
+    if(btn) btn.addEventListener('click',function(){
+      if(btn.disabled) return;
+      list.innerHTML='';
+      items.forEach(function(li){
+        var v=(+li.dataset.q||0);
+        if(v>0){
+          var el=document.createElement('li');
+          el.innerHTML='<div><div class="oj">'+li.dataset.jp+'</div><div class="oc">'+li.dataset.cn+'</div></div><div class="oq">×'+v+'</div>';
+          list.appendChild(el);
+        }
+      });
+      shopEl.textContent=btn.dataset.shop;
+      ovl.hidden=false;
+      ovl.scrollTop=0;
+    });
+    refresh();
+  });
+  document.getElementById('ordX').addEventListener('click',function(){ ovl.hidden=true; });
+  ovl.addEventListener('click',function(e){ if(e.target===ovl) ovl.hidden=true; });
+
+  // menu modals: open by any [data-open], close by backdrop / ✕
+  document.querySelectorAll('[data-open]').forEach(function(t){
+    t.addEventListener('click',function(){
+      var m=document.getElementById(t.dataset.open);
+      if(m){ m.hidden=false; var b=m.querySelector('.mm-box'); if(b) b.scrollTop=0; }
+    });
+  });
+  document.querySelectorAll('.menu-modal').forEach(function(m){
+    m.addEventListener('click',function(e){ if(e.target===m) m.hidden=true; });
+    var x=m.querySelector('.mm-x'); if(x) x.addEventListener('click',function(){ m.hidden=true; });
+  });
+
+  var root=document.documentElement;
+  var savedTheme=localStorage.getItem('kyushu-theme');
+  if(savedTheme) root.dataset.theme=savedTheme;
+  document.getElementById('themeToggle').addEventListener('click',function(){
+    var dark=root.dataset.theme==='dark'||(!root.dataset.theme&&matchMedia('(prefers-color-scheme: dark)').matches);
+    root.dataset.theme=dark?'light':'dark';
+    localStorage.setItem('kyushu-theme',root.dataset.theme);
+  });
+
+  var status=document.getElementById('appStatus');
+  function updateNetwork(){ status.textContent=navigator.onLine?'● 在线 · 行程可离线':'● 离线 · 行程照常可看'; }
+  addEventListener('online',updateNetwork); addEventListener('offline',updateNetwork); updateNetwork();
+
+  var installPrompt;
+  var installButton=document.getElementById('installApp');
+  addEventListener('beforeinstallprompt',function(event){
+    event.preventDefault(); installPrompt=event; installButton.hidden=false;
+  });
+  installButton.addEventListener('click',function(){
+    if(!installPrompt) return;
+    installPrompt.prompt(); installPrompt.userChoice.finally(function(){ installPrompt=null; installButton.hidden=true; });
+  });
+
+  if('serviceWorker' in navigator&&location.protocol.indexOf('http')===0){
+    navigator.serviceWorker.register('./sw.js');
+  }
+})();
+</script>
+</body>
+</html>
