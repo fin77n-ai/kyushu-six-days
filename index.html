@@ -286,6 +286,24 @@
   .app-btn{border:1px solid var(--line); background:var(--surface); color:var(--ink); border-radius:999px;
     padding:6px 10px; font:700 12px/1 var(--font-cjk); cursor:pointer; box-shadow:var(--shadow);}
   .app-btn[hidden]{display:none;}
+  .today-card{margin:14px 18px 0; padding:15px 16px; border-radius:17px; color:#fff;
+    background:linear-gradient(135deg,#285A86,#173B5B); box-shadow:0 8px 22px rgba(40,90,134,.25);}
+  .today-kicker{font-family:var(--font-lat); font-size:10px; font-weight:800; letter-spacing:.16em; opacity:.72;}
+  .today-main{display:flex; align-items:end; gap:10px; margin-top:5px;}
+  .today-copy{flex:1; min-width:0;}
+  .today-title{font-size:18px; font-weight:800; line-height:1.3;}
+  .today-sub{font-size:11.5px; opacity:.78; margin-top:3px;}
+  .today-go{border:1px solid rgba(255,255,255,.35); background:rgba(255,255,255,.14); color:#fff; border-radius:999px; padding:8px 12px; font:800 12px/1 var(--font-cjk); cursor:pointer; white-space:nowrap;}
+  .reserve-grid{display:grid; gap:9px;}
+  .reserve-card{padding:13px 14px; border:1px solid var(--line); border-radius:15px; background:var(--surface); box-shadow:var(--shadow);}
+  .reserve-top{display:flex; align-items:center; gap:9px;}
+  .reserve-icon{font-size:21px;}
+  .reserve-name{font-weight:800; line-height:1.25;}
+  .reserve-meta{font-size:11.5px; color:var(--kaki); font-weight:700; margin-top:2px;}
+  .reserve-jp{margin:9px 0; padding:8px 10px; border-radius:10px; background:var(--surface-2); font-size:13px; font-weight:700; line-height:1.55;}
+  .reserve-actions{display:flex; gap:7px;}
+  .reserve-actions button,.reserve-actions a{flex:1; border:1px solid var(--line); border-radius:999px; background:var(--surface); color:var(--ink); padding:7px 8px; text-align:center; text-decoration:none; font:700 11.5px/1 var(--font-cjk); cursor:pointer;}
+  .preset-order{width:100%; margin-top:9px; border:none; border-radius:11px; padding:10px; background:var(--kaki); color:#fff; font:800 12.5px/1 var(--font-cjk); cursor:pointer;}
 </style>
 </head>
 <body>
@@ -325,6 +343,11 @@
     <button class="app-btn" id="installApp" type="button" hidden>装到桌面</button>
     <button class="app-btn" id="themeToggle" type="button" aria-label="切换明暗主题">◐ 主题</button>
   </nav>
+
+  <div class="today-card" id="todayCard">
+    <div class="today-kicker">TODAY MODE · JAPAN TIME</div>
+    <div class="today-main"><div class="today-copy"><div class="today-title" id="todayTitle">正在定位今天的行程</div><div class="today-sub" id="todaySub">以日本时间自动判断</div></div><button class="today-go" id="todayGo" type="button">查看今天</button></div>
+  </div>
 
   <section>
     <div class="sec-title"><span class="n">FLIGHTS</span><h2>航班</h2></div>
@@ -807,6 +830,15 @@
 
   <!-- ============ MENU ============ -->
   <section>
+    <div class="sec-title"><span class="n">RESERVED</span><h2>预约卡包</h2></div>
+    <div class="reserve-grid">
+      <div class="reserve-card"><div class="reserve-top"><span class="reserve-icon">🥩</span><div><div class="reserve-name">牛一彩 · 天文馆店</div><div class="reserve-meta">7/14 19:00 · 2名</div></div></div><div class="reserve-jp">19時に2名で予約した者です。<br>予約を確認していただけますか？</div><div class="reserve-actions"><button type="button" data-open="mm-gyuissai">查看必点</button><a href="https://www.google.com/maps/search/鹿児島市千日町12-12+牛一彩" target="_blank" rel="noopener">导航到店</a></div></div>
+      <div class="reserve-card"><div class="reserve-top"><span class="reserve-icon">🍲</span><div><div class="reserve-name">博多もつ鍋 おおやま</div><div class="reserve-meta">7/16 20:30 · 2名 · 席のみ</div></div></div><div class="reserve-jp">20時30分に2名で席のみ予約しています。<br>予約を確認していただけますか？</div><div class="reserve-actions"><button type="button" data-open="mm-ooyama">查看必点</button><a href="https://www.google.com/maps/search/博多もつ鍋おおやま+本店+呉服町" target="_blank" rel="noopener">导航到店</a></div></div>
+      <div class="reserve-card"><div class="reserve-top"><span class="reserve-icon">🍢</span><div><div class="reserve-name">かわ屋 · 今泉店</div><div class="reserve-meta">7/17 19:00 · 2名 · カウンター</div></div></div><div class="reserve-jp">19時に2名、カウンター席で予約しています。<br>予約を確認していただけますか？</div><div class="reserve-actions"><button type="button" data-open="mm-kawaya">查看必点</button><a href="https://www.google.com/maps/search/かわ屋+今泉+福岡" target="_blank" rel="noopener">导航到店</a></div></div>
+    </div>
+  </section>
+
+  <section>
     <div class="sec-title"><span class="n">MUST EAT</span><h2>两人必点推荐</h2></div>
     <div class="menu-tip" style="padding:2px 6px 12px;">👆 每家先看一套<b style="color:var(--kaki)">两人闭眼点组合</b>，不纠结；想调整再往下选份数，最后生成日语点单页给店员看。</div>
     <div class="menu-launch">
@@ -823,7 +855,7 @@
   <div class="menu-modal" id="mm-gyuissai" hidden><div class="mm-box"><div class="mm-close"><button class="mm-x" aria-label="关闭">✕</button></div>
     <div class="menu-card">
       <div class="menu-head"><span class="menu-ic">🥩</span><div><div class="menu-name">牛一彩 · 鹿儿岛黑牛烤肉</div><div class="menu-sub">D2 · <span class="ok">✅ 已订 19:00</span> · A5黑毛和牛</div></div></div>
-      <div class="must-pick"><div class="mp-title">两人闭眼点</div><p><b>特上葱盐牛舌 ×1</b> · <b>稀有部位拼盘 ×1</b> · 上等五花或里脊 ×1 · 泡菜拼盘 ×1 · 冷面 ×1</p><p>先牛舌，再拼盘和肉，最后冷面。肉塔适合拍照但量大价高，不列入必点。</p></div>
+      <div class="must-pick"><div class="mp-title">两人闭眼点</div><p><b>特上葱盐牛舌 ×1</b> · <b>稀有部位拼盘 ×1</b> · 上等五花 ×1 · 泡菜拼盘 ×1 · 冷面 ×1</p><p>先牛舌，再拼盘和肉，最后冷面。肉塔适合拍照但量大价高，不列入必点。</p><button class="preset-order" type="button" data-preset="gyuissai">一键选好这套</button></div>
       <ul class="dish">
         <li class="ord" data-jp="タン塩" data-cn="盐烤牛舌"><div class="d-info"><span class="d-jp">タン塩</span><span class="d-cn"><span class="star">⭐</span>盐烤牛舌 · 开场必点</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
         <li class="ord" data-jp="上タン" data-cn="上等牛舌"><div class="d-info"><span class="d-jp">上タン</span><span class="d-cn">上等牛舌·更厚</span></div><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
@@ -849,7 +881,7 @@
   <div class="menu-modal" id="mm-ooyama" hidden><div class="mm-box"><div class="mm-close"><button class="mm-x" aria-label="关闭">✕</button></div>
     <div class="menu-card">
       <div class="menu-head"><span class="menu-ic">🍲</span><div><div class="menu-name">おおやま · 牛肠锅（席のみ现点）</div><div class="menu-sub">D4 · <span class="ok">✅ 已订 20:30</span> · 到店现点</div></div></div>
-      <div class="must-pick"><div class="mp-title">两人闭眼点</div><p><b>味噌牛肠锅 ×2人份</b> · <b>嫩牛杂 ×1</b> · 明太薯泥沙拉 ×1 · <b>杂烩面 ×1</b></p><p>味噌是招牌浓口，面留到最后下锅吸汤。明确跳过馬刺し、馬ユッケ。</p></div>
+      <div class="must-pick"><div class="mp-title">两人闭眼点</div><p><b>味噌牛肠锅 ×2人份</b> · <b>嫩牛杂 ×1</b> · 明太薯泥沙拉 ×1 · <b>杂烩面 ×1</b></p><p>味噌是招牌浓口，面留到最后下锅吸汤。明确跳过馬刺し、馬ユッケ。</p><button class="preset-order" type="button" data-preset="ooyama">一键选好这套</button></div>
       <ul class="dish">
         <li class="ord" data-jp="もつ鍋 みそ味" data-cn="牛肠锅·味噌"><div class="d-info"><span class="d-jp">もつ鍋 みそ味</span><span class="d-cn"><span class="star">⭐</span>牛肠锅·味噌最浓</span></div><span class="d-yen">¥2,178/人</span><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
         <li class="ord" data-jp="もつ鍋 しょうゆ味" data-cn="牛肠锅·酱油"><div class="d-info"><span class="d-jp">もつ鍋 しょうゆ味</span><span class="d-cn">牛肠锅·酱油清爽</span></div><span class="d-yen">¥2,178/人</span><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
@@ -873,7 +905,7 @@
   <div class="menu-modal" id="mm-kawaya" hidden><div class="mm-box"><div class="mm-close"><button class="mm-x" aria-label="关闭">✕</button></div>
     <div class="menu-card">
       <div class="menu-head"><span class="menu-ic">🍢</span><div><div class="menu-name">かわ屋 · 鸡皮串</div><div class="menu-sub">D5 · <span class="ok">✅ 已订 19:00 吧台</span></div></div></div>
-      <div class="must-pick"><div class="mp-title">两人闭眼点</div><p><b>酱味鸡皮 10串</b> · <b>盐味鸡皮 10串</b> · 鸡尾 2串 · 脆骨 2串 · 脆青椒 ×1 · <b>鸡肉釜饭 ×1</b></p><p>鸡皮先各来 10 串，不够再追单；青椒解腻，釜饭收尾。串数多但每串很小，别被 20 吓到。</p></div>
+      <div class="must-pick"><div class="mp-title">两人闭眼点</div><p><b>酱味鸡皮 10串</b> · <b>盐味鸡皮 10串</b> · 鸡尾 2串 · 脆骨 2串 · 脆青椒 ×1 · <b>鸡肉釜饭 ×1</b></p><p>鸡皮先各来 10 串，不够再追单；青椒解腻，釜饭收尾。串数多但每串很小，别被 20 吓到。</p><button class="preset-order" type="button" data-preset="kawaya">一键选好这套</button></div>
       <ul class="dish">
         <li class="ord" data-jp="とり皮（タレ）" data-cn="酱味鸡皮串"><div class="d-info"><span class="d-jp">とり皮（タレ）</span><span class="d-cn"><span class="star">⭐</span>酱味鸡皮串·招牌</span></div><span class="d-yen">¥154</span><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
         <li class="ord" data-jp="とり皮（塩）" data-cn="盐味鸡皮串"><div class="d-info"><span class="d-jp">とり皮（塩）</span><span class="d-cn">盐味鸡皮串·对比着吃</span></div><span class="d-yen">¥154</span><span class="stepper"><button class="st-m" aria-label="减">−</button><span class="st-q">0</span><button class="st-p" aria-label="加">＋</button></span></li>
@@ -983,15 +1015,17 @@
       var storageKey=storagePrefix+cardIndex+':'+itemIndex;
       li.dataset.q=localStorage.getItem(storageKey)||'0';
       var q=li.querySelector('.st-q');
-      q.textContent=li.dataset.q;
-      if(+li.dataset.q>0) li.classList.add('sel');
+      function setQuantity(value){
+        value=Math.max(0,value|0); li.dataset.q=String(value); q.textContent=String(value);
+        localStorage.setItem(storageKey,String(value)); li.classList.toggle('sel',value>0); refresh();
+      }
+      li._setQuantity=setQuantity;
+      q.textContent=li.dataset.q; if(+li.dataset.q>0) li.classList.add('sel');
       li.querySelector('.st-p').addEventListener('click',function(){
-        li.dataset.q=String((+li.dataset.q||0)+1); q.textContent=li.dataset.q;
-        localStorage.setItem(storageKey,li.dataset.q);
-        li.classList.add('sel'); refresh();
+        setQuantity((+li.dataset.q||0)+1);
       });
       li.querySelector('.st-m').addEventListener('click',function(){
-        var v=(+li.dataset.q||0); if(v>0){ v--; li.dataset.q=String(v); q.textContent=v; localStorage.setItem(storageKey,String(v)); if(v===0) li.classList.remove('sel'); refresh(); }
+        setQuantity((+li.dataset.q||0)-1);
       });
     });
     if(btn) btn.addEventListener('click',function(){
@@ -1032,6 +1066,47 @@
     m.addEventListener('click',function(e){ if(e.target===m) m.hidden=true; });
     var x=m.querySelector('.mm-x'); if(x) x.addEventListener('click',function(){ m.hidden=true; });
   });
+
+  var presets={
+    gyuissai:{modal:'mm-gyuissai',items:{'特上ネギ塩タン':1,'希少部位盛り':1,'上カルビ':1,'キムチ盛り':1,'冷麺':1}},
+    ooyama:{modal:'mm-ooyama',items:{'もつ鍋 みそ味':2,'柔らか牛すもつ':1,'特製明太ソースのポテトサラダ':1,'〆 ちゃんぽんめん':1}},
+    kawaya:{modal:'mm-kawaya',items:{'とり皮（タレ）':10,'とり皮（塩）':10,'ぼんじり':2,'ナンコツ':2,'パリパリピーマン':1,'〆 とり釜飯':1}}
+  };
+  document.querySelectorAll('[data-preset]').forEach(function(button){
+    button.addEventListener('click',function(){
+      var preset=presets[button.dataset.preset],modal=document.getElementById(preset.modal);
+      modal.querySelectorAll('li.ord').forEach(function(li){ li._setQuantity(preset.items[li.dataset.jp]||0); });
+      modal.querySelector('.order-show').click();
+    });
+  });
+
+  var tripDays=[
+    {date:'2026-07-13',id:'d1',title:'D1 落地，直奔鹿儿岛'},
+    {date:'2026-07-14',id:'d2',title:'D2 樱岛暴走日'},
+    {date:'2026-07-15',id:'d3',title:'D3 指宿或城市，转场福冈'},
+    {date:'2026-07-16',id:'d4',title:'D4 大名、天神与海边日落'},
+    {date:'2026-07-17',id:'d5',title:'D5 庭园、药院与鸡皮串'},
+    {date:'2026-07-18',id:'d6',title:'D6 慢逛后返程'}
+  ];
+  var parts=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Tokyo',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).formatToParts(new Date());
+  function part(type){ return parts.find(function(p){return p.type===type;}).value; }
+  var japanDate=part('year')+'-'+part('month')+'-'+part('day'),japanMinutes=(+part('hour'))*60+(+part('minute'));
+  var today=tripDays.find(function(day){return day.date===japanDate;}),target=today||tripDays[0];
+  var todayTitle=document.getElementById('todayTitle'),todaySub=document.getElementById('todaySub');
+  if(japanDate<'2026-07-13'){
+    todayTitle.textContent='明天出发 · D1 已待命'; todaySub.textContent='先确认护照、流量卡和预约凭证';
+  }else if(japanDate>'2026-07-18'){
+    target=tripDays[5]; todayTitle.textContent='九州六日已圆满收官'; todaySub.textContent='行程与点单记录仍可离线查看';
+  }else{
+    todayTitle.textContent=today.title;
+    var next;
+    document.querySelectorAll('#'+today.id+' .node').forEach(function(node){
+      if(next) return; var time=node.querySelector('.n-time'); if(!time) return;
+      var match=time.textContent.match(/(\d{1,2}):(\d{2})/); if(match&&(+match[1]*60+(+match[2]))>=japanMinutes) next=node.querySelector('.n-name');
+    });
+    todaySub.textContent=next?'下一站：'+next.textContent.trim():'今天的安排已全部走完，回酒店躺平';
+  }
+  document.getElementById('todayGo').addEventListener('click',function(){ document.getElementById(target.id).scrollIntoView({behavior:'smooth'}); });
 
   var root=document.documentElement;
   var savedTheme=localStorage.getItem('kyushu-theme');
