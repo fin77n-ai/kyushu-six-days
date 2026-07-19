@@ -328,6 +328,20 @@
   .pay-note{margin-top:5px; color:var(--ink-faint); font-size:10.5px; line-height:1.45;}
   .pass-callout{margin:0 18px 13px; padding:13px 14px; border:1px solid color-mix(in srgb,var(--moss) 35%,var(--line)); border-radius:14px; background:linear-gradient(135deg,var(--moss-soft),var(--surface));}
   .pass-callout .pc-title{font-size:14px; font-weight:800; color:var(--moss);}.pass-callout p{margin:5px 0 0; font-size:11.5px; line-height:1.6; color:var(--ink-soft);}.pass-callout b{color:var(--ink);}
+  .tested-badge{display:inline-flex; align-items:center; gap:5px; margin:0 0 8px; padding:4px 9px; border-radius:999px; background:var(--kaki-soft); color:var(--kaki); font-size:10.5px; font-weight:800; letter-spacing:.03em;}
+  .pitfall-card{border:1px solid color-mix(in srgb,var(--kaki) 42%,var(--line)); background:linear-gradient(145deg,var(--kaki-soft),var(--surface)); border-radius:17px; box-shadow:var(--shadow); padding:13px 14px 9px;}
+  .pitfall-card .lead{font-size:12.5px; color:var(--ink-soft); margin:0 0 7px;}.pitfall-card .lead b{color:var(--ink);}
+  .pitfall-list{display:grid; gap:0; margin:0; padding:0; list-style:none;}
+  .pitfall-list li{position:relative; padding:7px 0 7px 23px; border-top:1px dashed color-mix(in srgb,var(--kaki) 25%,var(--line)); font-size:12px; line-height:1.5; color:var(--ink-soft);}
+  .pitfall-list li::before{content:"!"; position:absolute; left:0; top:8px; width:15px; height:15px; border-radius:50%; display:grid; place-items:center; background:var(--kaki); color:#fff; font:800 10px/1 var(--font-lat);}
+  .pitfall-list b{color:var(--ink);}
+  .tram-map{margin-top:8px; display:grid; gap:7px;}
+  .tram-line{display:grid; grid-template-columns:56px 1fr; gap:8px; align-items:center; font-size:11.5px;}
+  .tram-no{font-weight:800; color:#fff; background:var(--indigo); border-radius:8px; padding:5px 6px; text-align:center;}.tram-no.two{background:var(--kaki);}
+  .tram-path{padding:6px 8px; border:1px dashed var(--line); border-radius:8px; color:var(--ink-soft); background:var(--surface);}.tram-path b{color:var(--ink);}
+  .field-grid{display:grid; grid-template-columns:1fr 1fr; gap:7px; margin-top:8px;}
+  .field-note{padding:9px; border:1px solid var(--line); border-radius:10px; background:var(--surface); font-size:11.5px; color:var(--ink-soft); line-height:1.45;}.field-note b{display:block; color:var(--ink); font-size:12px; margin-bottom:2px;}
+  @media (max-width:360px){.field-grid{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
@@ -359,6 +373,7 @@
       <span class="pill lat"><b>7/13</b>&nbsp;–&nbsp;<b>7/18</b>&nbsp;2026</span>
       <span class="pill">✈️ 福冈进出 <b>FUK</b></span>
       <span class="pill">🚄 新干线 + 电车</span>
+      <span class="pill">✓ <b>2026.07 本人实测</b></span>
     </div>
   </header>
 
@@ -391,16 +406,36 @@
 
   <section>
     <div class="sec-title"><span class="n">PAYMENTS</span><h2>交通付款速查</h2></div>
-    <div class="menu-tip" style="padding:0 5px 11px;">你的 Suica 在福冈很好用，在鹿儿岛要切换脑回路。看到红色“Suica 不可”就别拿手机和机器深情对望。</div>
+    <div class="tested-badge">✓ 2026 年 7 月本人实测</div>
+    <div class="menu-tip" style="padding:0 5px 11px;"><b>实体 Visa + 少量现金优先，Apple Pay 只是补充。</b>不少小店仍不收 Apple Pay；微信/支付宝偶尔能用，但汇率未必比银行卡漂亮。Suica 在福冈和鹿儿岛市电都能用，部分民营线路则要看现场标识。</div>
     <div class="pay-list">
       <div class="pay-row"><div class="pay-icon">🚇</div><div><div class="pay-name">福冈地铁</div><div class="pay-methods"><span class="pay-chip yes">Suica 可用</span><span class="pay-chip">现金/单程票</span></div><div class="pay-note">进站、出站各刷一次；余额不足可在站内充值。</div></div></div>
       <div class="pay-row"><div class="pay-icon">🚌</div><div><div class="pay-name">福冈西铁巴士</div><div class="pay-methods"><span class="pay-chip yes">Suica 可用</span><span class="pay-chip">现金</span><span class="pay-chip">部分线路信用卡感应</span></div><div class="pay-note">Suica 上车、下车都要刷；机场国际线巴士也支持全国交通 IC。</div></div></div>
       <div class="pay-row"><div class="pay-icon">🚄</div><div><div class="pay-name">九州新干线</div><div class="pay-methods"><span class="pay-chip yes">JR Pass / 指定席票</span><span class="pay-chip no">Suica 余额不可直接乘车</span></div><div class="pay-note">走人工或对应闸机出示 Pass；不要同时刷 Suica，避免产生异常进站记录。</div></div></div>
-      <div class="pay-row"><div class="pay-icon">🚊</div><div><div class="pay-name">鹿儿岛市电 / 市营巴士</div><div class="pay-methods"><span class="pay-chip no">Suica 不可</span><span class="pay-chip yes">感应信用卡可用</span><span class="pay-chip">现金 / Rapica</span></div><div class="pay-note">市电下车付款；用同一张实体卡或同一台手机完成触碰。</div></div></div>
+      <div class="pay-row"><div class="pay-icon">🚊</div><div><div class="pay-name">鹿儿岛市电 / 市区线路</div><div class="pay-methods"><span class="pay-chip yes">本人实测 Suica 可乘市电</span><span class="pay-chip yes">感应信用卡可用</span><span class="pay-chip">CUTE / 现金 / Rapica</span></div><div class="pay-note">2026 年 7 月实测市电可刷 Suica；部分民营线路可能不同，仍要看现场标识。市电从后门上、前门下。</div></div></div>
       <div class="pay-row"><div class="pay-icon">🌋</div><div><div class="pay-name">D2 鹿儿岛观光交通</div><div class="pay-methods"><span class="pay-chip yes">推荐 CUTE ¥1,300</span><span class="pay-chip no">Suica 不可刷观光巴士</span></div><div class="pay-note">CUTE 同时覆盖市电、市营巴士、City View、Island View 和樱岛渡轮；不是只覆盖岛内巴士的 ¥500 专用券。</div></div></div>
       <div class="pay-row"><div class="pay-icon">🚢</div><div><div class="pay-name">樱岛渡轮</div><div class="pay-methods"><span class="pay-chip yes">Suica 可用</span><span class="pay-chip yes">感应信用卡可用</span><span class="pay-chip">现金 / Rapica</span></div><div class="pay-note">下船时付款，支持 Suica 等全国交通 IC。</div></div></div>
       <div class="pay-row"><div class="pay-icon">♨️</div><div><div class="pay-name">鹿儿岛中央 ↔ 指宿 JR</div><div class="pay-methods"><span class="pay-chip yes">JR Pass / 纸票</span><span class="pay-chip no">Suica 不可到指宿</span></div><div class="pay-note">Suica 区域只到喜入，不能一路刷到指宿；玉手箱号还需要指定席。</div></div></div>
-      <div class="pay-row"><div class="pay-icon">🚕</div><div><div class="pay-name">出租车</div><div class="pay-methods"><span class="pay-chip">现金最稳</span><span class="pay-chip">信用卡看车内标识</span></div><div class="pay-note">上车先确认卡标；短程备一些 ¥1,000 纸币和硬币。</div></div></div>
+      <div class="pay-row"><div class="pay-icon">🚕</div><div><div class="pay-name">出租车与小店</div><div class="pay-methods"><span class="pay-chip yes">实体 Visa 优先</span><span class="pay-chip">现金兜底</span><span class="pay-chip no">别只靠 Apple Pay</span></div><div class="pay-note">上车或结账前先看卡标；随身准备 ¥1,000 纸币和硬币，手机没电也不至于原地修行。</div></div></div>
+    </div>
+  </section>
+
+  <section id="field-pitfalls">
+    <div class="sec-title"><span class="n">FIELD NOTES</span><h2>本次旅行最重要的踩坑总结</h2></div>
+    <div class="pitfall-card">
+      <div class="tested-badge">✓ 2026 年 7 月本人实测</div>
+      <p class="lead">出发前先看这张。Google Maps 是<b>副驾驶</b>，现场方向、终点与时刻表才是方向盘。</p>
+      <ul class="pitfall-list">
+        <li><b>福冈国际航站楼没有地铁。</b>免费接驳站在到达层出门后靠右，标识不算醒目；先到国内线，再走 3–5 分钟去地铁。</li>
+        <li><b>JR Pass 找外国游客专门柜台。</b>认准「JR KYUSHU RAIL PASS」，先取号，别在普通 JR 窗口排到怀疑人生。</li>
+        <li><b>喜来登接驳车不在眼前的东口。</b>穿地下通道到马路对面的巴士站区域，找东 21 号 / Terminal Building 3 号站台。</li>
+        <li><b>鹿儿岛市电同时看系统编号、终点和大方向。</b>只认 1 / 2 系统仍可能坐反；Suica 本人实测可乘市电，但当天还坐渡轮和观光巴士时，纸质 CUTE 更省。</li>
+        <li><b>Island View 与 City View 到环线终点必须下车。</b>想继续坐要等下一班；每到景点第一件事先拍现场时刻表。</li>
+        <li><b>樱岛渡轮乌冬直接点 All Topping／全配。</b>普通版能吃，全配版才是完整快乐。</li>
+        <li><b>实体 Visa 和现金优先。</b>Apple Pay 不能当唯一支付方式；微信、支付宝能用时汇率也未必更好。</li>
+        <li><b>福冈买手店多在 11 点左右开门。</b>早上先咖啡、公园或早餐；别九点站在卷帘门前进行橱窗考古。</li>
+        <li><b>牛肠锅两人通常要同汤底 / 同套餐。</b>套餐量大，基础款就够；提前到店可礼貌询问能否早入场。</li>
+      </ul>
     </div>
   </section>
 
@@ -445,22 +480,31 @@
         <span class="r-pin air">✈</span>
         <div class="n-top"><span class="n-time">09:55</span><span class="n-name">福冈机场落地</span><a class="n-nav" href="https://www.google.com/maps/search/福岡空港国際線ターミナル" target="_blank" rel="noopener">📍导航</a></div>
         <div class="n-jp">福岡空港 · 国際線ターミナル</div>
-        <div class="n-find">出关取行李约 1h。出到达大厅找 <b>「国内線ターミナル・地下鉄」连络バス</b>（免费摆渡，约 8 分一班），坐到国内线下车就是地铁「福岡空港駅」。</div>
+        <div class="n-find"><span class="tested-badge">✓ 本人实测</span><br>国际线<b>没有地铁站</b>。出关取行李后到 1F 到达层，走出航站楼，沿车道边<b>向右走到较靠右的「国内線・地下鉄」连络巴士站</b>；它没有特别醒目地大写“免费”，认准航站楼图标和 <b>国内線</b> 字样。免费接驳约 10 分钟到国内线。<a class="n-nav" href="https://www.fukuoka-airport.jp/en/access/bus2.html" target="_blank" rel="noopener">官方站点图</a></div>
       </div>
       <div class="r-item r-seg">
         <div class="seg-box">
-          <div class="seg-main">🚌 国际线免费摆渡到国内线 → 🚇 地铁 6分到博多 ｜ 或 🚌 国际线直达博多 → 🚄 新干线 <b>みずほ/さくら</b> 1h20 → 🚊 市電 10分</div>
-          <div class="seg-sub">💡 <b>国际航站楼没有地铁站</b>。到博多站后，在 JR 九州窗口现场买全九州 3 日券并划带行李空间的指定席，给窗口预留 30–60 分钟；当天晚点入住不影响晚饭。</div>
+          <div class="seg-main">🚌 国际线免费接驳 → 国内线下车后按「地下鉄」步行 3–5 分 → 🚇 <b>蓝色机场线</b>「福岡空港 K13 → 博多 K11」两站 → 🚄 <b>みずほ/さくら</b> 约 1h20</div>
+          <div class="seg-sub">💡 现场机场线标识是<b>蓝色</b>，不要死盯 Google Maps 的配色。返程若打车，可直接定位「福岡空港 国際線ターミナル」，不用先绕国内线。</div>
         </div>
+      </div>
+      <div class="r-item r-node">
+        <span class="r-pin">JR</span>
+        <div class="n-top"><span class="n-name">博多站 · JR Pass 专门柜台</span><a class="n-nav" href="https://www.google.com/maps/search/JR+KYUSHU+RAIL+PASS+Counter+Hakata" target="_blank" rel="noopener">📍导航</a></div>
+        <div class="n-jp">JR KYUSHU RAIL PASS Counter · 先取号</div>
+        <div class="n-find"><span class="tested-badge">✓ 本人实测</span><br>别随便排普通「みどりの窓口」。进 JR 博多站后找写着 <b>JR KYUSHU RAIL PASS</b> 的外国游客专门柜台，先在入口取号机拿号码，再等屏幕叫号；准备好护照、购买凭证和想坐的车次。等待时去站内买一份<b>駅弁</b>，中午在新干线上吃，抵达鹿儿岛就不用饿着拖箱赶路。</div>
+      </div>
+      <div class="r-item r-seg">
+        <div class="seg-box"><div class="seg-main">🧳 两人一大一小不用宅急便：退房后优先寄存酒店；必须用车站柜时，<b>大箱放大型柜、小箱放中型柜</b>。</div></div>
       </div>
       <div class="r-item r-node">
         <span class="r-pin hotel">🏨</span>
         <div class="n-top"><span class="n-time">14:30</span><span class="n-name hotel">Check in · 喜来登</span><a class="n-nav" href="https://www.google.com/maps/search/シェラトン鹿児島" target="_blank" rel="noopener">📍导航</a></div>
-        <div class="n-jp">シェラトン鹿児島（天文館「高見馬場」電停近く）</div>
-        <div class="n-find">鹿児島中央駅坐市電约 10 分或走路 20 分。放行李，进入摸鱼模式。</div>
+        <div class="n-jp">シェラトン鹿児島 · 鹿児島中央駅免费接驳</div>
+        <div class="n-find"><span class="tested-badge">✓ 本人实测</span><br><b>不要只在眼前的东口找车。</b>从鹿儿岛中央站沿地下通道穿到马路对面的巴士站区域，找<b>东 21 号「鹿児島中央ターミナルビル」</b>；官方说明为 Terminal Building <b>3 号站台</b>，喜来登免费车约每 30 分钟一班。<a class="n-nav" href="https://www.google.com/maps/search/鹿児島中央ターミナルビル+バス乗り場" target="_blank" rel="noopener">站台定位</a></div>
         <details class="exp"><summary>展开解说</summary><div class="exp-bd">
           <p><b>鹿儿岛喜来登</b>是 2023 年新开的高层酒店，高层能同时看到市区和樱岛——办入住时可以问问有没有<b>樱岛景观房(桜島ビュー)</b>，清晨看火山冒烟绝了。</p>
-          <p>位置就在天文馆商圈边上，晚上觅食走路全搞定，完全不用再坐车。</p>
+          <p>接驳车站台藏得比酒店彩蛋还深：记住<b>地下通道 → 马路对面 → 巴士总站</b>三连。若班次衔接不上，直接打车去酒店更省体力。</p>
         </div></details>
       </div>
       <div class="r-item r-seg">
@@ -495,7 +539,7 @@
       <div class="adv-grid"><span class="adv-chip">👕 速干短袖</span><span class="adv-chip">☀️ <b>防晒必涂+补涂</b></span><span class="adv-chip">🧢 帽子墨镜</span><span class="adv-chip">💧 大量补水</span></div>
       <p>全程<b>最好天气也最晒</b>——樱岛火山口零遮荫。<b>SPF50 出门涂、午后补一次</b>；帽子墨镜小风扇齐上，带够水或便利店买 Pocari 补盐；足汤记得带小毛巾。今天走 ~1.3万步，穿最舒服的鞋。<a class="wx-live" href="https://tenki.jp/forecast/9/50/8880/46201/" target="_blank" rel="noopener">🔗 查鹿儿岛实时天气 →</a></p>
     </div></details></div>
-    <div class="pass-callout"><div class="pc-title">🎫 D2 买 CUTE 一日券 · ¥1,300/人</div><p><b>覆盖：</b>市电 + 市营巴士 + City View + Island View + 樱岛渡轮，当天不限次数。</p><p><b>怎么买：</b>D1 抵达鹿儿岛中央站时，在站内 Tourist Information Center 买纸质 CUTE；先别刮日期，D2 早上使用前刮开 <b>7/14</b>，上下车或过渡轮时出示。电子版需要现场联网，不如纸票稳。</p><p><b>别买错：</b>¥500 的券只管 Island View 岛内巴士，不能坐市电和渡轮。</p></div>
+    <div class="pass-callout"><div class="pc-title">🎫 D2 买纸质 CUTE 一日券 · ¥1,300/人</div><p><span class="tested-badge">✓ 本人实测</span><br><b>覆盖：</b>市电 + 市营巴士 + City View + Island View + 樱岛渡轮，当天不限次数；坐得多比单刷 Suica 更省。</p><p><b>怎么买：</b>D1 抵达鹿儿岛中央站时，在站内 Tourist Information Center 买纸质 CUTE；先别刮日期，D2 早上使用前刮开 <b>7/14</b>。市电<b>从后门上、前门下</b>，下车向司机出示票面即可。电子版需要现场联网，不如纸票稳。</p><p><b>别买错：</b>¥500 的券只管 Island View 岛内巴士，不能坐市电和渡轮。</p><div class="tram-map" aria-label="鹿儿岛市电方向简图"><div class="tram-line"><div class="tram-no">1 系统</div><div class="tram-path"><b>鹿児島駅前 ↔ 天文館通 ↔ 郡元 ↔ 谷山</b><br>去天文馆、郡元、谷山方向先看终点。</div></div><div class="tram-line"><div class="tram-no two">2 系统</div><div class="tram-path"><b>鹿児島駅前 ↔ 天文館通 ↔ 鹿児島中央駅前 ↔ 郡元</b><br>去中央站重点看 2 系统，但仍要确认行驶方向。</div></div></div><p><b>防坐反口诀：</b>车辆或站牌左上角看 1 / 2 系统，再读车头终点；Google Maps 只辅助，现场站牌 + 系统编号 + 终点方向三项对上再上车。</p></div>
     <div class="route">
       <div class="r-item r-node">
         <span class="r-pin hotel">🏨</span>
@@ -504,18 +548,20 @@
       <div class="r-item r-seg">
         <div class="seg-box">
           <div class="seg-main">🚊 市電 →「水族館口」10分 ＋ 🚶5分 ＋ 🚢 桜島フェリー 15分 <b>¥200</b></div>
-          <div class="seg-sub">🕐 <b>班次</b>：渡轮白天约 <b>15-20 分一班</b>，24 小时运航，不用查时刻随到随上。<b>引导</b>：不买票直接上船，<b>下船在樱岛侧付款</b>（现金或IC）。上船直奔顶层甲板，15 分钟海上看火山是白送的观光船。</div>
+          <div class="seg-sub">🕐 <b>班次</b>：渡轮白天约 <b>15-20 分一班</b>，24 小时运航，不用查时刻随到随上。<b>引导</b>：不买票直接上船，<b>下船在樱岛侧付款</b>（现金或 IC）。船上乌冬值得吃，别只点普通版，直接说 <b>All Topping／全部のせ</b>，配料齐全才是完整版。</div>
         </div>
       </div>
       <div class="r-item r-node">
         <span class="r-pin nat">1</span>
         <div class="n-top"><span class="n-name">🌋 樱岛 · 汤之平展望台</span><a class="n-nav" href="https://www.google.com/maps/search/湯之平展望所" target="_blank" rel="noopener">📍导航</a></div>
         <div class="n-jp">湯之平展望所 · 溶岩なぎさ公園 足湯</div>
-        <div class="n-find">港口坐 <b>Island View 观光巴士</b>绕火山一圈，最高点汤之平展望台下车拍照；回港后去免费海边足汤泡脚。<span class="tags"><span class="tag yen">巴士一日券 ¥500</span><span class="tag free">免预约</span></span></div>
+        <div class="n-find">港口坐 <b>Island View 观光巴士</b>绕火山一圈，最高点汤之平展望台下车拍照；回港后去免费海边足汤泡脚。<span class="tags"><span class="tag yen">CUTE 可用</span><span class="tag free">先拍时刻表</span></span></div>
         <details class="exp"><summary>展开解说</summary><div class="exp-bd">
           <p><b>樱岛</b>是日本最活跃的火山之一，至今每天小规模喷烟。1914 年大喷发的熔岩把它和对岸大隅半岛连成了半岛——所以它其实已经不是"岛"了。</p>
           <p><b>汤之平展望台</b>海拔 373m，是游客能到的离火山口最近的点，看北岳的沟壑肌理最震撼。</p>
-          <p><b>Island View 巴士</b>约 1 小时一循环，在港口对好发车时间再逛周边。<b>足汤</b>在溶岩なぎさ公园，全长约 100m 日本数一数二的长足汤，面对锦江湾泡脚，记得带小毛巾。</p>
+          <p><span class="tested-badge">✓ 本人实测重点避坑</span><br><b>Island View 和 City View 都是环线，但到终点必须下车</b>，不能赖在原车上继续下一圈；想继续坐要重新等下一班。网上和 Google Maps 的时间不一定与现场完全一致。</p>
+          <p>每到汤之平、赤水展望广场或游客中心，<b>第一件事先拍站牌时刻表</b>，再用下一班车时间倒推停留多久。地图负责告诉你景点在哪，现场时刻表负责让你回得去。</p>
+          <p><b>足汤</b>在溶岩なぎさ公园，全长约 100m，面对锦江湾泡脚，记得带小毛巾。</p>
         </div></details>
       </div>
       <div class="r-item r-seg">
@@ -542,7 +588,7 @@
         <span class="r-pin nat">3</span>
         <div class="n-top"><span class="n-time">15:00</span><span class="n-name">📸 仙巌园</span><a class="n-nav" href="https://www.google.com/maps/search/仙巌園" target="_blank" rel="noopener">📍导航</a></div>
         <div class="n-jp">仙巌園＝せんがんえん（「仙巌園前」下車）</div>
-        <div class="n-find">日式名园正对樱岛，随手明信片。<span class="tags"><span class="tag yen">入园 ¥1,600</span><span class="tag free">16:30停止入场</span></span></div>
+        <div class="n-find">日式名园正对樱岛，随手明信片。<b>至少留 2–3 小时</b>，不要塞成 40 分钟匆忙打卡。若当天时间不够，宁可删掉水族馆，把仙巌园作为唯一核心。<span class="tags"><span class="tag yen">入园 ¥1,600</span><span class="tag free">16:30停止入场</span></span></div>
         <details class="exp"><summary>展开解说</summary><div class="exp-bd">
           <p><b>仙巌园</b>建于 1658 年，是统治萨摩 700 年的岛津家别邸。最牛的设计是"借景"——把整座樱岛当作庭园的假山、锦江湾当作池塘，气魄拉满。</p>
           <p>园内的<b>反射炉遗迹</b>是世界文化遗产（明治工业革命遗产），旁边尚古集成馆讲萨摩藩怎么偷偷搞近代化。</p>
@@ -579,48 +625,49 @@
   <article class="day-card" id="d3">
     <div class="day-head">
       <div class="day-num">DAY<span>03</span></div>
-      <div class="day-title"><div class="h">鹿儿岛上午 → 转场福冈</div><div class="s">7/15 三 · 🏨 → 上午二选一 → 🚄博多 → 🏨中洲 → 屋台</div></div>
+      <div class="day-title"><div class="h">指宿轻松半日 → 转场福冈</div><div class="s">7/15 三 · 🏨 → 指宿散步/午饭 → 🚄博多 → 🏨中洲 → 屋台</div></div>
       <div class="day-wx"><div class="ic">⛅</div>32/25°<div class="stp">🚶 ~6,000</div></div>
     </div>
     <div class="day-adv"><details class="exp"><summary>🌡️ 今日穿什么 · 要不要防晒</summary><div class="exp-bd">
       <div class="adv-grid"><span class="adv-chip">👕 轻便换洗</span><span class="adv-chip">🧴 <b>防晒照涂</b></span><span class="adv-chip">🎒 理好行李</span></div>
-      <p>转场日，多云闷热。<b>7 月九州 UV 极强，多云也穿透</b>，防晒别偷懒。选指宿泡砂浴的话带一套换洗（泡完会出汗）。<a class="wx-live" href="https://tenki.jp/forecast/9/50/8880/46201/" target="_blank" rel="noopener">🔗 查鹿儿岛实时天气 →</a></p>
+      <p>转场日，多云闷热。<b>7 月九州 UV 极强，多云也穿透</b>，防晒别偷懒。砂蒸已从实测版删除，不用再背换洗衣物、冲澡和换装，把时间留给指宿散步与午饭。<a class="wx-live" href="https://tenki.jp/forecast/9/50/8880/46201/" target="_blank" rel="noopener">🔗 查鹿儿岛实时天气 →</a></p>
     </div></details></div>
     <div class="route">
       <div class="r-item r-node">
         <span class="r-pin hotel">🏨</span>
         <div class="n-top"><span class="n-name hotel">喜来登退房 → 鹿儿岛中央站寄存行李</span></div>
-        <div class="n-jp">先打车/市电到鹿児島中央駅。大箱放大号柜、小箱放中号柜；满柜就找站员问人工寄存。下午回站直接上新干线，不折返酒店。</div>
+        <div class="n-jp">方案 A：酒店寄存后折返取件｜方案 B：鹿児島中央駅大型柜 + 中型柜</div>
+        <div class="n-find"><span class="tested-badge">✓ 本人实测</span><br>两个人一大一小不用宅急便。退房后<b>优先请酒店寄存</b>，但指宿返程后必须从鹿儿岛中央站去喜来登取件、再回车站，给这次往返留 <b>45–60 分钟</b>。若想回来直接上新干线，就在出发前把大箱放大型柜、小箱放中型柜；满柜再问人工寄存。</div>
       </div>
       <div class="r-item r-node">
         <span class="r-pin nat">1</span>
-        <div class="n-top"><span class="n-name">上午二选一</span><a class="n-nav" href="https://www.google.com/maps/search/砂むし会館砂楽" target="_blank" rel="noopener">📍导航</a></div>
-        <div class="n-jp">A：砂むし会館 砂楽＝さらく（指宿駅）</div>
-        <div class="n-find"><b>A 砂浴版</b>·JR 去指宿，按下方早班时间走。<b>B 轻松版</b>·不去砂浴，寄存行李后在中央站吃饭买手信，直接坐提前订好的新干线去福冈；不用空等到14点。<span class="tags"><span class="tag yen">砂浴最低 ¥1,500</span><span class="tag free">当天二选一</span></span></div>
-        <details class="exp"><summary>展开解说（选A必读·含车次）</summary><div class="exp-bd">
-          <p><b>砂蒸温泉</b>是指宿 300 多年的传统：穿浴衣躺沙滩上，工作人员把 50-55° 的温泉砂盖你身上，10 分钟逼出一身汗，据说排毒效果是普通温泉数倍。埋着的样子像出土文物，记得让工作人员帮拍照📸。</p>
+        <div class="n-top"><span class="n-name">指宿轻松半日 · 不做砂蒸</span><a class="n-nav" href="https://www.google.com/maps/search/指宿駅" target="_blank" rel="noopener">📍导航</a></div>
+        <div class="n-jp">指宿駅周边散步 · 足湯 · 温たまらん丼</div>
+        <div class="n-find">保留指宿，但删除砂蒸、冲洗和换衣流程。到站后走走海边或站前足汤，中午吃温泉蛋盖饭 / 流水素面，按返程车次回鹿儿岛中央。<span class="tags"><span class="tag yen">JR Pass / 纸票</span><span class="tag free">轻松半日</span></span></div>
+        <details class="exp"><summary>展开解说（车次与时间账）</summary><div class="exp-bd">
           <p>🚆 <b>车次引导</b>：鹿児島中央 → 指宿，首选观光特急 <b>「指宿のたまて箱(玉手箱号)」</b>约 50 分，一天 3 往返、<b>需订指定席</b>（头天在窗口订好）；赶不上就坐普通车约 1h15，约 30-60 分一班。</p>
-          <p>⏰ <b>时间账</b>：8 点退房 → 鹿儿岛中央站寄存行李 → 指宿站下车后打车约 5 分到砂乐 → 砂浴 1h → 12 点前回赶。砂乐工作日 12:00–13:00 暂停接待，别卡午休。嫌赶就选 B，城市里 <b>维新故乡馆</b> + 中央站对面 <b>AMU Plaza</b> 也够玩。</p>
+          <p>⏰ <b>时间账</b>：8 点退房 → 寄存行李 → 早班到指宿 → 站前 / 海边轻松走 + 午饭 → 预留 15 分钟回站。砂蒸删除后至少省下冲洗、换衣和往返砂乐的时间，但仍要围绕真实返程班次倒推。</p>
+          <p>🎫 <b>JR Pass 不因删除砂蒸自动失去价值</b>：是否购买仍按博多 ↔ 鹿儿岛新干线 + 鹿儿岛 ↔ 指宿 JR 的总票价核算；只有整个指宿都取消，才需要重新比较是否还值得。</p>
         </div></details>
       </div>
       <div class="r-item r-seg">
         <div class="seg-box">
           <div class="seg-main">🚄 新幹線「鹿児島中央 → 博多」1h20 约 <b>¥10,450</b> → 🚇 地下鉄 →「中洲川端」</div>
-          <div class="seg-sub">🕐 <b>A 砂浴版</b>：建议坐 14:00–14:30 的车。<b>B 轻松版</b>：提前订 11:30–12:30 的车和大件行李座位，下午更早到福冈休息。到博多后换地铁空港线到「中洲川端」或打车到酒店。</div>
+          <div class="seg-sub">🕐 指宿返程后建议坐 <b>14:00–14:30</b> 的新干线，并预订大件行李空间附近座位。行李放酒店时，车次必须再往后留出 45–60 分钟取件缓冲；想赶 14 点档就用车站寄存柜。到博多后跟随蓝色「空港線」标识，坐<b>姪浜方向</b>「博多 K11 → 中洲川端 K09」两站；一大一小懒得搬时直接打车。</div>
         </div>
       </div>
       <div class="r-item r-node">
         <span class="r-pin hotel">🏨</span>
         <div class="n-top"><span class="n-time">16:30</span><span class="n-name hotel">Check in · canvas 中洲</span><a class="n-nav" href="https://www.google.com/maps/search/ザロイヤルパークキャンバス福岡中洲" target="_blank" rel="noopener">📍导航</a></div>
-        <div class="n-jp">ザ ロイヤルパーク キャンバス 福岡中洲（中洲川端駅步行3分）</div>
-        <div class="n-find">酒店就在中洲，晚上的战场在楼下河边。</div>
+        <div class="n-jp">ザ ロイヤルパーク キャンバス 福岡中洲 · 中洲川端駅 3号出口</div>
+        <div class="n-find"><span class="tested-badge">✓ 位置已纠正</span><br>酒店在<b>中洲川端站与那珂川河边</b>，不是博多站或运河城南侧。从博多坐机场线到中洲川端，3 号出口步行约 2–4 分；带行李可走有电梯的 4 号出口。博多站打车约 8–10 分钟。</div>
         <details class="exp"><summary>展开解说</summary><div class="exp-bd">
           <p><b>canvas 福冈中洲</b>是设计系酒店，最大卖点是<b>顶楼露台酒吧</b>——正对那珂川和中洲霓虹，日落时分上去喝一杯，屋台的灯笼一盏盏亮起来，福冈夜景第一排。</p>
-          <p>楼下就是「川端通商店街」，博多最老的拱廊街，早餐咖啡和宵夜都好解决。</p>
+          <p>中洲屋台和<b>堂吉诃德中洲店</b>都能步行到；中洲店面积偏小，适合夜间补货，不适合期待一次买齐。要集中采购，优先去天神店。</p>
         </div></details>
       </div>
       <div class="r-item r-seg">
-        <div class="seg-box"><div class="seg-main">🚶 走到那珂川河边 3分</div></div>
+        <div class="seg-box"><div class="seg-main">🚶 有体力先短走：堂吉诃德中洲店补货 / 博多运河城看喷泉，再回那珂川屋台</div><div class="seg-sub">本人实测：中洲 Donki 店小，适合临时补货；运河城看看喷泉和环境即可，不必专门留很久。</div></div>
       </div>
       <div class="r-item r-node">
         <span class="r-pin food">2</span>
@@ -634,7 +681,7 @@
         </div></details>
       </div>
     </div>
-    <a class="gmap" href="https://www.google.com/maps/dir/天文館/鹿児島中央駅/博多駅/中洲" target="_blank" rel="noopener">
+    <a class="gmap" href="https://www.google.com/maps/dir/シェラトン鹿児島/鹿児島中央駅/指宿駅/鹿児島中央駅/シェラトン鹿児島/鹿児島中央駅/博多駅/ザロイヤルパークキャンバス福岡中洲" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
       用 Google 地图看今天路线
     </a>
@@ -644,7 +691,7 @@
   <article class="day-card" id="d4">
     <div class="day-head">
       <div class="day-num">DAY<span>04</span></div>
-      <div class="day-title"><div class="h">大名天神 + 海滨日落</div><div class="s">7/16 四 · 🏨 → 👗大名 → 🛍天神 → 🌅百道海滨/福冈塔 → 🍲牛肠锅 → 🏨</div></div>
+      <div class="day-title"><div class="h">福冈实测选物线 + 海滨日落</div><div class="s">7/16 四 · 大名 → 天神补给 → 药院 → 大濠 → 百道 → 中洲</div></div>
       <div class="day-wx"><div class="ic">🌧</div>30/25°<div class="stp">🚶 ~11,000</div></div>
     </div>
     <div class="day-adv"><details class="exp"><summary>🌡️ 今日穿什么 · 要不要防晒</summary><div class="exp-bd">
@@ -663,11 +710,11 @@
         <span class="r-pin food">1</span>
         <div class="n-top"><span class="n-time">11:00</span><span class="n-name">👗 大名 city walk</span><a class="n-nav" href="https://www.google.com/maps/search/大名+福岡+カフェ" target="_blank" rel="noopener">📍导航</a></div>
         <div class="n-jp">大名（だいみょう）· 今泉・警固 一帯</div>
-        <div class="n-find">天神西侧的文青街区，古着店、买手店、咖啡馆密布，慢慢逛慢慢泡。<span class="tags"><span class="tag free">躺平咖啡</span></span></div>
+        <div class="n-find"><span class="tested-badge">✓ 本人实测</span><br>福冈很多服装店和买手店接近 <b>11:00</b> 才开门，早上先吃早餐或喝咖啡，别太早开逛。<span class="tags"><span class="tag free">11点后开逛</span></span></div>
         <details class="exp"><summary>展开解说</summary><div class="exp-bd">
           <p><b>大名</b>是福冈最潮的小巷街区——旧小学改造的复合设施 <b>「大名ガーデンシティ」</b>、古着店、独立设计师买手店、精品咖啡一条条巷子藏着，是"时而躺平咖啡"的完美舞台。</p>
-          <p>连着逛：大名 → <b>今泉</b>（甜品/餐酒馆）→ <b>警固</b>（警固神社+公园），一路溜达不知不觉就到天神。咖啡点名 <b>REC COFFEE</b>（世界咖啡师亚军店）、<b>私立珈琲店</b>。</p>
-          <p>午饭就地解决：大名/今泉小馆多，或留肚子到天神。</p>
+          <div class="field-grid"><div class="field-note"><b>CABaN</b>整整两层，是本次最喜欢的店之一；不只服装，还有生活日用选品。</div><div class="field-note"><b>LE LABO 街边店</b>比商场柜台更有品牌氛围，适合顺路闻香。</div></div>
+          <p>咖啡别硬排：<b>REC COFFEE</b>热门时段可能等位，时间紧就跳过；这次实测更喜欢 <b>COFFEE COUNTY</b> 的风味。</p>
         </div></details>
       </div>
       <div class="r-item r-seg">
@@ -675,28 +722,41 @@
       </div>
       <div class="r-item r-node">
         <span class="r-pin food">2</span>
-        <div class="n-top"><span class="n-time">14:30</span><span class="n-name">🛍 天神 血拼</span><a class="n-nav" href="https://www.google.com/maps/search/天神+福岡" target="_blank" rel="noopener">📍导航</a></div>
+        <div class="n-top"><span class="n-time">13:00</span><span class="n-name">🛍 天神补给 + Wakaba 炸猪排</span><a class="n-nav" href="https://www.google.com/maps/search/とんかつ+わか葉+天神" target="_blank" rel="noopener">📍导航</a></div>
         <div class="n-jp">天神（てんじん）· PARCO・大丸・地下街</div>
-        <div class="n-find">九州最大商圈，百货药妆一网打尽，逛到 <b>17:30 出发去海边</b>。<span class="tags"><span class="tag free">免税带护照</span></span></div>
+        <div class="n-find"><span class="tested-badge">✓ 本人实测推荐</span><br>大名逛完到天神吃「<b>とんかつ わか葉／Wakaba</b>」炸猪排，再集中补药妆。堂吉诃德要买齐优先天神店；中洲店留作夜间补货。<span class="tags"><span class="tag free">免税带护照</span></span></div>
         <details class="exp"><summary>展开解说</summary><div class="exp-bd">
           <p><b>天神</b>百货扎堆：PARCO、大丸、三越、地下街，药妆比东京便宜一截。<b>ソラリア/イムズ</b>一带杂货多。</p>
-          <p>运河城(Canal City)留到 D5 雨天逛，今天专心天神+大名，走轻松路线。</p>
+          <p>博多运河城只适合顺路短看喷泉与商场环境，不必专门留大段时间；今天的购物主线仍是大名、药院与大濠周边。</p>
         </div></details>
       </div>
       <div class="r-item r-node">
         <span class="r-pin food">🧴</span>
-        <div class="n-top"><span class="n-time">16:30</span><span class="n-name">SHIRO 岩田屋店 · 顺路必买</span><a class="n-nav" href="https://www.google.com/maps/search/SHIRO+岩田屋店" target="_blank" rel="noopener">📍导航</a></div>
+        <div class="n-top"><span class="n-time">14:15</span><span class="n-name">SHIRO 岩田屋店 · 顺路必买</span><a class="n-nav" href="https://www.google.com/maps/search/SHIRO+岩田屋店" target="_blank" rel="noopener">📍导航</a></div>
         <div class="n-jp">岩田屋本店 本館1F 化粧品 · 10:00–20:00 · TAX-FREE</div>
         <div class="n-find">就在天神购物动线里，从天神站步行约 5 分，<b>不需要额外绕路</b>。香水、护肤、彩妆都全；热门香型建议出发前在 SHIRO 官网商品页点「店舗在庫を確認する」。<span class="tags"><span class="tag free">D4 首选</span><span class="tag yen">Suica/信用卡可付</span></span></div>
       </div>
       <div class="r-item r-seg">
-        <div class="seg-box">
-          <div class="seg-main">🚇 天神駅 → 西新駅 约 8分 → 🚶 步行 15分 / 🚌 至「福岡タワー」站</div>
-          <div class="seg-sub">🕐 <b>引导</b>：地铁空港線到「西新」，往海边走即到百道海滨；或天神/博多站坐西鉄巴士直达「福岡タワー」站。班次密，不用查。</div>
-        </div>
+        <div class="seg-box"><div class="seg-main">🚇 天神地下街走到「天神南 N16」，认绿色七隈线、坐<b>桥本方向</b>两站到「药院 N14」→ 逛完药院直接短程打车去 BIOTOP / 大濠公园约 10–15 分</div><div class="seg-sub">现场先找绿色圆圈 <b>N</b> 标识，不要误进蓝色机场线；药院到大濠没有顺直地铁，短程打车比换乘绕路省时间。</div></div>
       </div>
       <div class="r-item r-node">
         <span class="r-pin nat">3</span>
+        <div class="n-top"><span class="n-time">14:45</span><span class="n-name">药院 → 大濠公园选物路线</span><a class="n-nav" href="https://www.google.com/maps/dir/ALSO+MOONSTAR/BBB+POTTERS/BIOTOP+FUKUOKA/ARTS%26SCIENCE+Fukuoka" target="_blank" rel="noopener">📍路线</a></div>
+        <div class="n-jp">薬院 → 大濠公園周边</div>
+        <div class="n-find">按体力选店，不要求全收集。核心路线：<b>ALSO Moonstar → BBB POTTERS → BIOTOP → ARTS&amp;SCIENCE</b>。</div>
+        <details class="exp"><summary>展开实测店铺</summary><div class="exp-bd">
+          <div class="field-grid"><div class="field-note"><b>ALSO Moonstar</b>九州本地硫化鞋品牌，最适合放进药院段。</div><div class="field-note"><b>BBB POTTERS</b>药院附近的双层生活杂货店，适合慢逛。</div><div class="field-note"><b>BIOTOP</b>靠近大濠公园，空间与选品都很好。</div><div class="field-note"><b>ARTS&amp;SCIENCE</b>大濠周边；二楼若没开放感，主动问工作人员。</div></div>
+          <p><b>AMU Plaza 博多 KEEN</b> 店面偏小，鞋款和尺码不一定齐，别把最后买鞋希望全押在返程日。</p>
+        </div></details>
+      </div>
+      <div class="r-item r-seg">
+        <div class="seg-box">
+          <div class="seg-main">🚇 蓝色机场线坐<b>姪浜方向</b>「大濠公園 K06 → 西新 K04」两站 → 1 号出口按「福岡タワー・百道浜」方向步行约 15–20 分</div>
+          <div class="seg-sub">🕐 不想走就从西新站附近坐开往「福岡タワー」的西铁巴士，在<b>福岡タワー南口</b>下；傍晚体力不足，从大濠周边直接打车最省脑。</div>
+        </div>
+      </div>
+      <div class="r-item r-node">
+        <span class="r-pin nat">4</span>
         <div class="n-top"><span class="n-time">18:30</span><span class="n-name">🌅 百道海滨公园 · 福冈塔日落</span><a class="n-nav" href="https://www.google.com/maps/search/百道浜海浜公園+福岡タワー" target="_blank" rel="noopener">📍导航</a></div>
         <div class="n-jp">百道浜（ももちはま）海浜公園 · 福岡タワー</div>
         <div class="n-find">福冈正牌海滨日落点，就是你最初想去的"海滨公园"。沙滩+人工海滨，<b>7/16 日落 19:29</b>。<span class="tags"><span class="tag free">免费·免预约</span><span class="tag yen">塔展望台 ¥800</span></span></div>
@@ -718,7 +778,8 @@
           <p><b>牛肠锅(もつ鍋)</b>是福冈灵魂锅物：牛小肠肥糯 + 成山的韭菜卷心菜，汤底选<b>味噌</b>（浓郁首推）或酱油。收尾必点<b>ちゃんぽん麺</b>下锅吸饱汤汁。</p>
           <p><b>おおやま</b>是福冈县销量 No.1，全席掘りごたつ（挖地暖桌）个室，本店在呉服町、离你中洲酒店走几步。看完百道日落回来吃、吃完溜达回房，动线完美。</p>
           <p>这样你 D5 かわ屋鸡皮串、D4 牛肠锅——博多<b>两大锅+名物串</b>全吃到，不撞菜。</p>
-          <p>🎫 <b>订「席のみ」到店现点</b>（套餐是全员同款、且贵的都含马肉，改现点最灵活）：点 <b>もつ鍋 ¥1,980/人</b>（味噌/酱油/水炊风）+ 明太子、牛筋炖、薯泥沙拉等小菜，收尾 <b>ちゃんぽん面</b>。想吃马肉的单点马刺し，不吃就跳过。</p>
+          <p><span class="tested-badge">✓ 本人实测点单避坑</span><br>两个人同桌通常要选<b>同一种汤底或套餐</b>；套餐量很大，普通食量选最便宜的基础款就够，一个人吃完整套会很撑。若比预约时间早到，可以礼貌问「早めに入れますか？」——店里有空时可能提前安排。</p>
+          <p>订「席のみ」到店现点最灵活：点 <b>もつ鍋</b>（味噌/酱油/水炊风）+ 一两样小菜，收尾再看胃容量决定是否加 <b>ちゃんぽん面</b>。</p>
         </div></details>
       </div>
       <div class="r-item r-seg">
@@ -729,7 +790,7 @@
         <div class="n-top"><span class="n-name hotel">回酒店</span></div>
       </div>
     </div>
-    <a class="gmap" href="https://www.google.com/maps/dir/中洲/大名+福岡/天神/福岡タワー/中洲" target="_blank" rel="noopener">
+    <a class="gmap" href="https://www.google.com/maps/dir/中洲/大名+福岡/薬院/大濠公園/福岡タワー/中洲" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
       用 Google 地图看今天路线
     </a>
@@ -787,10 +848,10 @@
         <span class="r-pin food">3</span>
         <div class="n-top"><span class="n-time">14:00</span><span class="n-name">☕ 药院咖啡巡礼</span><a class="n-nav" href="https://www.google.com/maps/search/薬院+カフェ" target="_blank" rel="noopener">📍导航</a></div>
         <div class="n-jp">薬院＝やくいん（薬院駅一带）</div>
-        <div class="n-find">福冈文青浓度最高的街区，小咖啡馆、买手店、甜品店密布，雨天钻店最舒服。<span class="tags"><span class="tag free">躺平模式</span></span></div>
+        <div class="n-find"><span class="tested-badge">✓ 本人实测</span><br>福冈文青浓度最高的街区，小咖啡馆、买手店、甜品店密布。<b>COUNTY COFFEE</b> 这次比 REC COFFEE 更合口味；REC 热门时段要排队，时间紧别专门死等。<span class="tags"><span class="tag free">躺平模式</span></span></div>
         <details class="exp"><summary>展开解说</summary><div class="exp-bd">
           <p><b>药院</b>之于福冈 ≈ 安福路之于上海：白天咖啡烘焙香，巷子里全是设计小店。步行圈内还有超好逛的杂货街区<b>今泉·警固</b>，一路能溜达回天神。</p>
-          <p>点名几家：<b>COFFEE COUNTY</b>（福冈自家烘焙天花板）、<b>manu coffee</b>（本地连锁鼻祖）、<b>アマムダコタン</b>（网红面包房 amam dacotan，Dacomecca 的姊妹店，早上没吃够这儿补）。</p>
+          <p>点名几家：<b>COFFEE COUNTY</b>（本次个人首选）、<b>manu coffee</b>（本地连锁）、<b>アマムダコタン</b>（Dacomecca 的姊妹店）。REC COFFEE 名气大但排队成本也真实存在，别为了打卡把晚餐预约赌掉。</p>
           <p>雨小的话可以加塞：地铁两站到<b>大濠公园</b>，湖景星巴克窗边发呆 1 小时再回。</p>
         </div></details>
       </div>
@@ -834,7 +895,8 @@
       <div class="r-item r-node">
         <span class="r-pin hotel">🏨</span>
         <div class="n-top"><span class="n-time">10:00</span><span class="n-name hotel">canvas 中洲 出发</span></div>
-        <div class="n-jp">退房行李寄存前台</div>
+        <div class="n-jp">退房后优先把一大一小寄存酒店前台</div>
+        <div class="n-find">酒店官方可在退房当日继续寄存行李。14:45 前回来取，不用拖着箱子逛，也不用为了两件行李安排宅急便。</div>
       </div>
       <div class="r-item r-seg">
         <div class="seg-box"><div class="seg-main">🚶 河边散步 → 川端通商店街 → 博多站方向</div></div>
@@ -847,20 +909,21 @@
         <details class="exp"><summary>展开解说（手信清单）</summary><div class="exp-bd">
           <p>博多站内<b>「マイング」</b>是手信一条街，90+ 店一次买齐：</p>
           <p>🎁 必买榜：<b>明太子</b>（ふくや/やまや，要冷藏装+保冷袋）、<b>博多通りもん</b>（白馅小饼，福冈手信之王）、<b>ひよ子</b>小鸡馒头、鹿儿岛没买够的<b>薩摩芋塔</b>这里也有。</p>
+          <p>🍶 <b>本人实测伴手礼：司牡丹 金色包装纯米酒</b>。价格不贵、实际喝过味道不错；金色瓶身 / 包装送父亲或长辈很体面，包好后不显廉价。把它当<b>高性价比伴手礼</b>，不是高端收藏酒。</p>
           <p>⚠️ 明太子过中国海关属肉制品灰区，自己吃低调少带；常温真空装更稳。</p>
         </div></details>
       </div>
       <div class="r-item r-seg">
         <div class="seg-box">
-          <div class="seg-main">🚇 地铁「博多 → 福岡空港」6分 → 🚌 免费摆渡到国际线 ｜ <b>15:00 从博多区域出发</b></div>
-          <div class="seg-sub">💡 国际线不在地铁口；摆渡含等车与行李上下车按 <b>20–30 分钟</b>预留。也可从博多站乘国际线直达巴士，16:00 前到大厅最稳。</div>
+          <div class="seg-main">方案 A：🚇「博多 K11 → 福岡空港 K13」两站 → 🚌 免费接驳到国际线 ｜ <b>15:00 从博多区域出发</b></div>
+          <div class="seg-sub">方案 B：行李多就直接打车定位<b>「福岡空港 国際線ターミナル」</b>，不用先去国内线或地铁站。走地铁时，国内线下车到接驳站仍按 20–30 分钟预留。</div>
         </div>
       </div>
       <div class="r-item r-node">
         <span class="r-pin air">✈</span>
         <div class="n-top"><span class="n-time">15:40</span><span class="n-name">福冈机场 · 国际线</span></div>
         <div class="n-jp">福岡空港 国際線ターミナル</div>
-        <div class="n-find">值机 → 安检 → 免税店最后一波。</div>
+        <div class="n-find">值机 → 安检 → 免税店最后一波。若从国内线转来，认准免费接驳的「国際線」方向；环航站楼绕路这件事，不值得在返程日二刷。</div>
       </div>
       <div class="r-item r-node">
         <span class="r-pin air">✈</span>
@@ -1022,10 +1085,10 @@
     <div class="menu-tip" style="padding:0 5px 11px;"><b>Plan B 是替换，不是加餐：</b>遇到大雨或体力不足，只保留一条轻松线，不要把多个室内景点重新拼成另一场暴走。</div>
     <div class="fallback-grid">
       <div class="fallback"><div class="fallback-day">D1</div><div><b>只保留转场、入住和晚饭</b><p>落地疲惫就不逛天文馆，酒店休息后直接吃黑豚或白熊。</p></div></div>
-      <div class="fallback"><div class="fallback-day">D2</div><div><b>樱岛巴士 + 足汤二选一</b><p>砍水族馆或仙巌园其中一个，19:00 牛一彩预约绝不动。</p></div></div>
+      <div class="fallback"><div class="fallback-day">D2</div><div><b>大雨只留仙巌园一个核心</b><p>取消樱岛环线和水族馆，给仙巌园留足 2–3 小时；19:00 牛一彩预约照常。</p></div></div>
       <div class="fallback"><div class="fallback-day">D3</div><div><b>取消指宿，提前去福冈</b><p>鹿儿岛中央站简单吃饭买手信，坐 11:30–12:30 的新干线；下午入住、休息和逛中洲。</p></div></div>
-      <div class="fallback"><div class="fallback-day">D4</div><div><b>雷雨取消百道，只走一条室内线</b><p>推荐：天神地下街慢逛 → 回中洲川端的博多 Riverain / 福冈亚洲美术馆 → 20:30 牛肠锅。不要追加太宰府或其他远点。</p></div></div>
-      <div class="fallback"><div class="fallback-day">D5</div><div><b>Dacomecca + 药院 + かわ屋</b><p>砍友泉亭或打车往返，19:00 鸡皮串预约保留。</p></div></div>
+      <div class="fallback"><div class="fallback-day">D4</div><div><b>雷雨只留福冈亚洲美术馆</b><p>取消百道、大濠和跨区逛店；在中洲川端附近看一个馆，之后直接去 20:30 牛肠锅。</p></div></div>
+      <div class="fallback"><div class="fallback-day">D5</div><div><b>只留药院一个街区</b><p>取消友泉亭和运河城，咖啡与选物都在药院解决；19:00 再去已预约的かわ屋。</p></div></div>
       <div class="fallback"><div class="fallback-day">D6</div><div><b>博多站一站式解决</b><p>咖啡、手信、午饭全放站内，14:45 前取行李、15:00 去机场，不挑战返程运气。</p></div></div>
     </div>
   </section>
@@ -1056,20 +1119,20 @@
   <section>
     <div class="sec-title"><span class="n">TIPS</span><h2>出行注意点</h2></div>
     <div class="card">
-      <div class="row"><div class="ic">🍱</div><div class="bd"><div class="t">午饭怎么办（都不用预约，随走随吃）</div><div class="d"><b>D1</b>·新干线上吃驿便当(駅弁)或到鹿児島中央站 AMU广场；<b>D2</b>·樱岛口/水族馆附近轻食，或返天文馆吃拉面；<b>D3</b>·选指宿吃「温たまらん丼/流水素面」，选城市吃中央站 AMU；<b>D4</b>·太宰府参道梅園菜饭/名物梅ヶ枝餅垫肚，或天神商场餐厅；<b>D5</b>·Dacomecca 早餐管饱+友泉亭抹茶和菓子+药院咖啡轻食，一路续着不会饿；<b>D6</b>·博多站/机场解决。</div></div></div>
+      <div class="row"><div class="ic">🍱</div><div class="bd"><div class="t">午饭怎么办（都不用预约，随走随吃）</div><div class="d"><b>D1</b>·博多站先买駅弁，新干线上吃最省时间；<b>D2</b>·渡轮全配乌冬 + 樱岛/水族馆附近轻食；<b>D3</b>·指宿吃「温たまらん丼/流水素面」；<b>D4</b>·天神重点吃 Wakaba 炸猪排；<b>D5</b>·Dacomecca 早餐 + 药院咖啡轻食；<b>D6</b>·博多站/机场解决。</div></div></div>
       <div class="row"><div class="ic">📌</div><div class="bd"><div class="t">预约小结</div><div class="d">✅ 已订：<b>牛一彩烤肉(D2 19:00) · 牛肠锅おおやま(D4 20:30) · かわ屋鸡皮串(D5 19:00)</b>，均 2 位。仅剩：<b>玉手箱号指定席(D3选指宿时·当地车站买)</b>。黑豚炸猪排、白熊、拉面、屋台、百道日落 → <b>免预约随到随吃</b>。</div></div></div>
-      <div class="row"><div class="ic">💴</div><div class="bd"><div class="t">现金 + 交通卡攻略</div><div class="d">✅ Suica 能刷：<b>福冈地铁、西铁巴士、樱岛渡轮</b>。❌ Suica 不能直接刷：<b>九州新干线、去指宿全程、鹿儿岛市电、Island View</b>。新干线/指宿用 JR Pass；鹿儿岛市电优先感应信用卡；观光巴士用现金或一日券。</div></div></div>
+      <div class="row"><div class="ic">💴</div><div class="bd"><div class="t">实体卡 + 现金才是主力</div><div class="d">福冈地铁、西铁巴士、鹿儿岛市电和樱岛渡轮都可用 Suica；部分民营线路要另看现场标识。市电、渡轮、观光巴士坐得多用 <b>CUTE</b>；小店优先实体 Visa，并备少量现金，Apple Pay 只作补充。</div></div></div>
       <div class="row"><div class="ic">🌋</div><div class="bd"><div class="t">樱岛火山灰</div><div class="d">看风向，飘灰时戴口罩、备湿巾，别穿浅色、别晾衣服在外。</div></div></div>
       <div class="row"><div class="ic">🥵</div><div class="bd"><div class="t">高温 + 湿 = 易中暑</div><div class="d">32° 湿热暴晒，多补水补盐，便利店买 <span class="lat">Pocari</span>；带便携小风扇、防晒。</div></div></div>
       <div class="row"><div class="ic">☔</div><div class="bd"><div class="t">7/17 中雨</div><div class="d">折叠伞随身；忘带便利店 ¥600 有伞。那天走室内动线最稳。屋台雨天可能不出摊。</div></div></div>
       <div class="row"><div class="ic">🚄</div><div class="bd"><div class="t">新干线指定席早点买</div><div class="d">往返鹿儿岛约 ¥21,000。若还想多跑，可算 <b>JR 九州全九州 3 日券（约 ¥20,000）</b>是否划算。</div></div></div>
-      <div class="row"><div class="ic">📱</div><div class="bd"><div class="t">网络 + 导航</div><div class="d">备 eSIM / 随身 WiFi；每个点的 📍导航 和每天的 Google 路线按钮点开即导航（需联网）。查车次用 Google Maps 或「乘换案内」App 最准。</div></div></div>
+      <div class="row"><div class="ic">📱</div><div class="bd"><div class="t">Google Maps 是辅助，不是圣旨</div><div class="d">备 eSIM / 随身 WiFi；地图负责定位，现场站牌、系统编号、终点方向和纸质时刻表负责防坐反。观光巴士到站先拍时刻表，再决定逛多久。</div></div></div>
     </div>
   </section>
 
   <footer>
     <div class="lat">KYUSHU · KAGOSHIMA × FUKUOKA · 2026.07</div>
-    行程 by D 🐧 · 天气/航班/班次为参考，出发前请再核对一次<br>
+    行程 by D 🐧 · 2026 年 7 月本人实测更新 · 天气/航班/班次出发前再核对<br>
     航班：春秋 9C6609（浦东→福冈 09:55）· 9C6538（福冈→浦东 18:00）
   </footer>
 
@@ -1162,10 +1225,10 @@
   });
 
   var tripDays=[
-    {date:'2026-07-13',id:'d1',title:'D1 落地，直奔鹿儿岛',alert:'🧳 到鹿儿岛先去喜来登放行李，再逛天文馆；入住晚一点没关系。'},
+    {date:'2026-07-13',id:'d1',title:'D1 落地，直奔鹿儿岛',alert:'🚌 国际线出门向右找免费接驳；JR Pass 认准外国游客专柜先取号。'},
     {date:'2026-07-14',id:'d2',title:'D2 樱岛暴走日',alert:'🎫 带上 CUTE 纸质一日券；行李留酒店，只背水、伞、防晒和充电宝。'},
-    {date:'2026-07-15',id:'d3',title:'D3 指宿或城市，转场福冈',alert:'🧳 一大一小先寄存鹿儿岛中央站；不去砂浴就改坐 11:30–12:30 新干线，别空等。'},
-    {date:'2026-07-16',id:'d4',title:'D4 大名、天神与海边日落',alert:'⛈ 雷雨就取消百道，改亚洲美术馆；天气好则19:29看完日落立即打车。'},
+    {date:'2026-07-15',id:'d3',title:'D3 指宿轻松半日，转场福冈',alert:'🧳 砂蒸已删除；一大一小优先寄存酒店，指宿按返程车次倒推。'},
+    {date:'2026-07-16',id:'d4',title:'D4 大名、药院、大濠与海边',alert:'🛍 买手店多在11点左右开；雷雨只留亚洲美术馆一个核心。'},
     {date:'2026-07-17',id:'d5',title:'D5 庭园、药院与鸡皮串',alert:'☔ 只背随身包；雨大就在友泉亭、药院之间打车。'},
     {date:'2026-07-18',id:'d6',title:'D6 慢逛后返程',alert:'🧳 一大一小退房后寄存酒店，14:45前取回，15:00从博多区域去国际航站楼。'}
   ];
