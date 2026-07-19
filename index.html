@@ -319,18 +319,20 @@
   .phrase-actions{display:flex; justify-content:center; gap:8px; margin-top:22px;}.phrase-speak,.phrase-close{border:none; border-radius:999px; padding:10px 18px; font:800 13px/1 var(--font-cjk); cursor:pointer;}
   .phrase-speak{background:var(--indigo); color:#fff;}
   .phrase-close{margin:0; background:var(--kaki); color:#fff;}
-  .pay-list{display:grid; gap:8px;}
-  .pay-row{display:grid; grid-template-columns:42px 1fr; gap:10px; padding:11px 12px; border:1px solid var(--line); border-radius:13px; background:var(--surface);}
-  .pay-icon{display:flex; align-items:center; justify-content:center; width:42px; height:42px; border-radius:12px; background:var(--indigo-soft); font-size:20px;}
-  .pay-name{font-size:13px; font-weight:800;}.pay-methods{display:flex; flex-wrap:wrap; gap:4px; margin-top:5px;}
-  .pay-chip{padding:2px 7px; border-radius:999px; font-size:10.5px; font-weight:700; background:var(--surface-2); color:var(--ink-soft);}
-  .pay-chip.yes{background:var(--moss-soft); color:var(--moss);}.pay-chip.no{background:var(--kaki-soft); color:var(--kaki);}
-  .pay-note{margin-top:5px; color:var(--ink-faint); font-size:10.5px; line-height:1.45;}
   .pass-callout{margin:0 18px 13px; padding:13px 14px; border:1px solid color-mix(in srgb,var(--moss) 35%,var(--line)); border-radius:14px; background:linear-gradient(135deg,var(--moss-soft),var(--surface));}
   .pass-callout .pc-title{font-size:14px; font-weight:800; color:var(--moss);}.pass-callout p{margin:5px 0 0; font-size:11.5px; line-height:1.6; color:var(--ink-soft);}.pass-callout b{color:var(--ink);}
+  .pass-callout>summary{cursor:pointer; list-style:none; display:flex; justify-content:space-between; gap:8px}.pass-callout>summary::-webkit-details-marker{display:none}.pass-callout>summary::after{content:'＋'; font-size:18px}.pass-callout[open]>summary::after{content:'－'}
   .tested-badge{display:inline-flex; align-items:center; gap:5px; margin:0 0 8px; padding:4px 9px; border-radius:999px; background:var(--kaki-soft); color:var(--kaki); font-size:10.5px; font-weight:800; letter-spacing:.03em;}
   .pitfall-card{border:1px solid color-mix(in srgb,var(--kaki) 42%,var(--line)); background:linear-gradient(145deg,var(--kaki-soft),var(--surface)); border-radius:17px; box-shadow:var(--shadow); padding:13px 14px 9px;}
   .pitfall-card .lead{font-size:12.5px; color:var(--ink-soft); margin:0 0 7px;}.pitfall-card .lead b{color:var(--ink);}
+  .pitfall-card>summary{cursor:pointer; list-style:none; font-size:14px; font-weight:900; display:flex; align-items:center; justify-content:space-between; gap:10px; padding-bottom:5px;}
+  .pitfall-card>summary::-webkit-details-marker{display:none}.pitfall-card>summary::after{content:'＋'; color:var(--kaki); font-size:18px}.pitfall-card[open]>summary::after{content:'－'}
+  .day-tasks{margin:12px 14px 2px; padding:11px 12px; border-radius:14px; background:var(--kaki-soft); border:1px solid color-mix(in srgb,var(--kaki) 30%,var(--line));}
+  .day-tasks-title{font-size:11px; font-weight:900; letter-spacing:1.2px; color:var(--kaki); margin-bottom:6px;}
+  .day-tasks ul{list-style:none; margin:0; padding:0; display:grid; gap:5px;}
+  .day-tasks li{font-size:12.5px; line-height:1.45; color:var(--ink-soft); padding-left:20px; position:relative;}
+  .day-tasks li::before{content:'□'; position:absolute; left:0; top:-1px; color:var(--kaki); font-size:16px; font-weight:900;}
+  .day-tasks b{color:var(--ink);}
   .pitfall-list{display:grid; gap:0; margin:0; padding:0; list-style:none;}
   .pitfall-list li{position:relative; padding:7px 0 7px 23px; border-top:1px dashed color-mix(in srgb,var(--kaki) 25%,var(--line)); font-size:12px; line-height:1.5; color:var(--ink-soft);}
   .pitfall-list li::before{content:"!"; position:absolute; left:0; top:8px; width:15px; height:15px; border-radius:50%; display:grid; place-items:center; background:var(--kaki); color:#fff; font:800 10px/1 var(--font-lat);}
@@ -404,39 +406,19 @@
     </div>
   </section>
 
-  <section>
-    <div class="sec-title"><span class="n">PAYMENTS</span><h2>交通付款速查</h2></div>
-    <div class="tested-badge">✓ 2026 年 7 月本人实测</div>
-    <div class="menu-tip" style="padding:0 5px 11px;"><b>实体 Visa + 少量现金优先，Apple Pay 只是补充。</b>不少小店仍不收 Apple Pay；微信/支付宝偶尔能用，但汇率未必比银行卡漂亮。Suica 在福冈和鹿儿岛市电都能用，部分民营线路则要看现场标识。</div>
-    <div class="pay-list">
-      <div class="pay-row"><div class="pay-icon">🚇</div><div><div class="pay-name">福冈地铁</div><div class="pay-methods"><span class="pay-chip yes">Suica 可用</span><span class="pay-chip">现金/单程票</span></div><div class="pay-note">进站、出站各刷一次；余额不足可在站内充值。</div></div></div>
-      <div class="pay-row"><div class="pay-icon">🚌</div><div><div class="pay-name">福冈西铁巴士</div><div class="pay-methods"><span class="pay-chip yes">Suica 可用</span><span class="pay-chip">现金</span><span class="pay-chip">部分线路信用卡感应</span></div><div class="pay-note">Suica 上车、下车都要刷；机场国际线巴士也支持全国交通 IC。</div></div></div>
-      <div class="pay-row"><div class="pay-icon">🚄</div><div><div class="pay-name">九州新干线</div><div class="pay-methods"><span class="pay-chip yes">JR Pass / 指定席票</span><span class="pay-chip no">Suica 余额不可直接乘车</span></div><div class="pay-note">走人工或对应闸机出示 Pass；不要同时刷 Suica，避免产生异常进站记录。</div></div></div>
-      <div class="pay-row"><div class="pay-icon">🚊</div><div><div class="pay-name">鹿儿岛市电 / 市区线路</div><div class="pay-methods"><span class="pay-chip yes">本人实测 Suica 可乘市电</span><span class="pay-chip yes">感应信用卡可用</span><span class="pay-chip">CUTE / 现金 / Rapica</span></div><div class="pay-note">2026 年 7 月实测市电可刷 Suica；部分民营线路可能不同，仍要看现场标识。市电从后门上、前门下。</div></div></div>
-      <div class="pay-row"><div class="pay-icon">🌋</div><div><div class="pay-name">D2 鹿儿岛观光交通</div><div class="pay-methods"><span class="pay-chip yes">推荐 CUTE ¥1,300</span><span class="pay-chip no">Suica 不可刷观光巴士</span></div><div class="pay-note">CUTE 同时覆盖市电、市营巴士、City View、Island View 和樱岛渡轮；不是只覆盖岛内巴士的 ¥500 专用券。</div></div></div>
-      <div class="pay-row"><div class="pay-icon">🚢</div><div><div class="pay-name">樱岛渡轮</div><div class="pay-methods"><span class="pay-chip yes">Suica 可用</span><span class="pay-chip yes">感应信用卡可用</span><span class="pay-chip">现金 / Rapica</span></div><div class="pay-note">下船时付款，支持 Suica 等全国交通 IC。</div></div></div>
-      <div class="pay-row"><div class="pay-icon">♨️</div><div><div class="pay-name">鹿儿岛中央 ↔ 指宿 JR</div><div class="pay-methods"><span class="pay-chip yes">JR Pass / 纸票</span><span class="pay-chip no">Suica 不可到指宿</span></div><div class="pay-note">Suica 区域只到喜入，不能一路刷到指宿；玉手箱号还需要指定席。</div></div></div>
-      <div class="pay-row"><div class="pay-icon">🚕</div><div><div class="pay-name">出租车与小店</div><div class="pay-methods"><span class="pay-chip yes">实体 Visa 优先</span><span class="pay-chip">现金兜底</span><span class="pay-chip no">别只靠 Apple Pay</span></div><div class="pay-note">上车或结账前先看卡标；随身准备 ¥1,000 纸币和硬币，手机没电也不至于原地修行。</div></div></div>
-    </div>
-  </section>
-
   <section id="field-pitfalls">
-    <div class="sec-title"><span class="n">FIELD NOTES</span><h2>本次旅行最重要的踩坑总结</h2></div>
-    <div class="pitfall-card">
-      <div class="tested-badge">✓ 2026 年 7 月本人实测</div>
-      <p class="lead">出发前先看这张。Google Maps 是<b>副驾驶</b>，现场方向、终点与时刻表才是方向盘。</p>
+    <div class="sec-title"><span class="n">QUICK CHECK</span><h2>出发前 30 秒速查</h2></div>
+    <details class="pitfall-card">
+      <summary><span>⚠️ 本次旅行最重要的踩坑总结</span><span class="tested-badge">本人实测</span></summary>
+      <p class="lead">详细动作已经放进每天的“今日任务”。这里仅供出发前快速复习。</p>
       <ul class="pitfall-list">
-        <li><b>福冈国际航站楼没有地铁。</b>免费接驳站在到达层出门后靠右，标识不算醒目；先到国内线，再走 3–5 分钟去地铁。</li>
-        <li><b>JR Pass 找外国游客专门柜台。</b>认准「JR KYUSHU RAIL PASS」，先取号，别在普通 JR 窗口排到怀疑人生。</li>
-        <li><b>喜来登接驳车不在眼前的东口。</b>穿地下通道到马路对面的巴士站区域，找东 21 号 / Terminal Building 3 号站台。</li>
-        <li><b>鹿儿岛市电同时看系统编号、终点和大方向。</b>只认 1 / 2 系统仍可能坐反；Suica 本人实测可乘市电，但当天还坐渡轮和观光巴士时，纸质 CUTE 更省。</li>
-        <li><b>Island View 与 City View 到环线终点必须下车。</b>想继续坐要等下一班；每到景点第一件事先拍现场时刻表。</li>
-        <li><b>樱岛渡轮乌冬直接点 All Topping／全配。</b>普通版能吃，全配版才是完整快乐。</li>
-        <li><b>实体 Visa 和现金优先。</b>Apple Pay 不能当唯一支付方式；微信、支付宝能用时汇率也未必更好。</li>
-        <li><b>福冈买手店多在 11 点左右开门。</b>早上先咖啡、公园或早餐；别九点站在卷帘门前进行橱窗考古。</li>
-        <li><b>牛肠锅两人通常要同汤底 / 同套餐。</b>套餐量大，基础款就够；提前到店可礼貌询问能否早入场。</li>
+        <li><b>D1：</b>国际线无地铁；JR Pass 找专门柜台；喜来登接驳要穿地下通道。</li>
+        <li><b>D2：</b>市电看编号 + 终点；观光巴士终点换车；到站先拍时刻表。</li>
+        <li><b>D3：</b>保留指宿、只删砂蒸；行李寄酒店就要预留折返时间。</li>
+        <li><b>D4–D5：</b>店铺约 11 点开；牛肠锅同汤底且量大；热门咖啡别死等。</li>
+        <li><b>全程：</b>Suica 可坐鹿儿岛市电；实体 Visa + 现金优先，Apple Pay 只补充。</li>
       </ul>
-    </div>
+    </details>
   </section>
 
   <section>
@@ -471,6 +453,11 @@
       <div class="day-title"><div class="h">落地 → 杀去鹿儿岛</div><div class="s">7/13 一 · ✈️福冈 → 🚄 → 🏨天文馆 → 觅食</div></div>
       <div class="day-wx"><div class="ic">🌦</div>32/26°<div class="stp">🚶 ~5,500</div></div>
     </div>
+    <div class="day-tasks"><div class="day-tasks-title">TODAY · 今日先完成</div><ul>
+      <li><b>机场：</b>国际线出门向右找免费接驳，国内线再走去 K13 地铁站。</li>
+      <li><b>博多：</b>认准 JR KYUSHU RAIL PASS 专柜先取号，顺手买駅弁；新干线走 Pass / 指定席票，别同时刷 Suica。</li>
+      <li><b>鹿儿岛：</b>Tourist Information Center 买纸质 CUTE，先别刮日期；再穿地下通道找东 21 号 / 3 号站台。</li>
+    </ul></div>
     <div class="day-adv"><details class="exp"><summary>🌡️ 今日穿什么 · 要不要防晒</summary><div class="exp-bd">
       <div class="adv-grid"><span class="adv-chip">👕 <b>轻薄短袖</b></span><span class="adv-chip">☂️ 备折叠伞</span><span class="adv-chip">🧴 有太阳薄涂防晒</span><span class="adv-chip">👟 好走的鞋</span></div>
       <p>落地日，闷热为主、偶有阵雨，大半天在车上/室内。穿<b>最透气的短袖短裤</b>，傍晚天文馆逛吃走路多，鞋要舒服。<a class="wx-live" href="https://tenki.jp/forecast/9/50/8880/46201/" target="_blank" rel="noopener">🔗 查鹿儿岛实时天气 →</a></p>
@@ -535,11 +522,17 @@
       <div class="day-title"><div class="h">樱岛火山 · 满血暴走</div><div class="s">7/14 二 · 🏨 → 🌋樱岛 → 🐋水族馆 → 仙巌园 → 🏨</div></div>
       <div class="day-wx"><div class="ic">☀️</div>31/25°<div class="stp">🚶 ~13,000</div></div>
     </div>
+    <div class="day-tasks"><div class="day-tasks-title">TODAY · 今日先完成</div><ul>
+      <li><b>出门：</b>刮开纸质 CUTE 的 7/14；只坐市电也可直接刷 Suica。</li>
+      <li><b>上车：</b>市电同时核对 1 / 2 系统、车头终点和行驶方向。</li>
+      <li><b>樱岛：</b>渡轮乌冬点 All Topping／全部のせ；每到一站先拍现场时刻表。</li>
+      <li><b>环线：</b>Island View / City View 到终点必须下车，继续坐要等下一班。</li>
+    </ul></div>
     <div class="day-adv"><details class="exp"><summary>🌡️ 今日穿什么 · 要不要防晒（暴走日！）</summary><div class="exp-bd">
       <div class="adv-grid"><span class="adv-chip">👕 速干短袖</span><span class="adv-chip">☀️ <b>防晒必涂+补涂</b></span><span class="adv-chip">🧢 帽子墨镜</span><span class="adv-chip">💧 大量补水</span></div>
       <p>全程<b>最好天气也最晒</b>——樱岛火山口零遮荫。<b>SPF50 出门涂、午后补一次</b>；帽子墨镜小风扇齐上，带够水或便利店买 Pocari 补盐；足汤记得带小毛巾。今天走 ~1.3万步，穿最舒服的鞋。<a class="wx-live" href="https://tenki.jp/forecast/9/50/8880/46201/" target="_blank" rel="noopener">🔗 查鹿儿岛实时天气 →</a></p>
     </div></details></div>
-    <div class="pass-callout"><div class="pc-title">🎫 D2 买纸质 CUTE 一日券 · ¥1,300/人</div><p><span class="tested-badge">✓ 本人实测</span><br><b>覆盖：</b>市电 + 市营巴士 + City View + Island View + 樱岛渡轮，当天不限次数；坐得多比单刷 Suica 更省。</p><p><b>怎么买：</b>D1 抵达鹿儿岛中央站时，在站内 Tourist Information Center 买纸质 CUTE；先别刮日期，D2 早上使用前刮开 <b>7/14</b>。市电<b>从后门上、前门下</b>，下车向司机出示票面即可。电子版需要现场联网，不如纸票稳。</p><p><b>别买错：</b>¥500 的券只管 Island View 岛内巴士，不能坐市电和渡轮。</p><div class="tram-map" aria-label="鹿儿岛市电方向简图"><div class="tram-line"><div class="tram-no">1 系统</div><div class="tram-path"><b>鹿児島駅前 ↔ 天文館通 ↔ 郡元 ↔ 谷山</b><br>去天文馆、郡元、谷山方向先看终点。</div></div><div class="tram-line"><div class="tram-no two">2 系统</div><div class="tram-path"><b>鹿児島駅前 ↔ 天文館通 ↔ 鹿児島中央駅前 ↔ 郡元</b><br>去中央站重点看 2 系统，但仍要确认行驶方向。</div></div></div><p><b>防坐反口诀：</b>车辆或站牌左上角看 1 / 2 系统，再读车头终点；Google Maps 只辅助，现场站牌 + 系统编号 + 终点方向三项对上再上车。</p></div>
+    <details class="pass-callout"><summary class="pc-title">🎫 展开 CUTE 购买方法与市电简图</summary><p><span class="tested-badge">✓ 本人实测</span><br><b>覆盖：</b>市电 + 市营巴士 + City View + Island View + 樱岛渡轮，当天不限次数；坐得多比单刷 Suica 更省。</p><p><b>怎么买：</b>D1 抵达鹿儿岛中央站时，在站内 Tourist Information Center 买纸质 CUTE；先别刮日期，D2 早上使用前刮开 <b>7/14</b>。市电<b>从后门上、前门下</b>，下车向司机出示票面即可。电子版需要现场联网，不如纸票稳。</p><p><b>别买错：</b>¥500 的券只管 Island View 岛内巴士，不能坐市电和渡轮。</p><div class="tram-map" aria-label="鹿儿岛市电方向简图"><div class="tram-line"><div class="tram-no">1 系统</div><div class="tram-path"><b>鹿児島駅前 ↔ 天文館通 ↔ 郡元 ↔ 谷山</b><br>去天文馆、郡元、谷山方向先看终点。</div></div><div class="tram-line"><div class="tram-no two">2 系统</div><div class="tram-path"><b>鹿児島駅前 ↔ 天文館通 ↔ 鹿児島中央駅前 ↔ 郡元</b><br>去中央站重点看 2 系统，但仍要确认行驶方向。</div></div></div><p><b>防坐反口诀：</b>车辆或站牌左上角看 1 / 2 系统，再读车头终点；Google Maps 只辅助，现场站牌 + 系统编号 + 终点方向三项对上再上车。</p></details>
     <div class="route">
       <div class="r-item r-node">
         <span class="r-pin hotel">🏨</span>
@@ -628,6 +621,11 @@
       <div class="day-title"><div class="h">指宿轻松半日 → 转场福冈</div><div class="s">7/15 三 · 🏨 → 指宿散步/午饭 → 🚄博多 → 🏨中洲 → 屋台</div></div>
       <div class="day-wx"><div class="ic">⛅</div>32/25°<div class="stp">🚶 ~6,000</div></div>
     </div>
+    <div class="day-tasks"><div class="day-tasks-title">TODAY · 今日先完成</div><ul>
+      <li><b>行李二选一：</b>寄酒店就留 45–60 分钟折返；想直接上车就用大型柜 + 中型柜。</li>
+      <li><b>指宿：</b>保留海边、足汤和午饭，只删除砂蒸；Suica 只到喜入，往返用 JR Pass / 纸票。</li>
+      <li><b>到福冈：</b>蓝色机场线姪浜方向 K11 → K09；带行李走中洲川端 4 号电梯口。</li>
+    </ul></div>
     <div class="day-adv"><details class="exp"><summary>🌡️ 今日穿什么 · 要不要防晒</summary><div class="exp-bd">
       <div class="adv-grid"><span class="adv-chip">👕 轻便换洗</span><span class="adv-chip">🧴 <b>防晒照涂</b></span><span class="adv-chip">🎒 理好行李</span></div>
       <p>转场日，多云闷热。<b>7 月九州 UV 极强，多云也穿透</b>，防晒别偷懒。砂蒸已从实测版删除，不用再背换洗衣物、冲澡和换装，把时间留给指宿散步与午饭。<a class="wx-live" href="https://tenki.jp/forecast/9/50/8880/46201/" target="_blank" rel="noopener">🔗 查鹿儿岛实时天气 →</a></p>
@@ -694,6 +692,11 @@
       <div class="day-title"><div class="h">福冈实测选物线 + 海滨日落</div><div class="s">7/16 四 · 大名 → 天神补给 → 药院 → 大濠 → 百道 → 中洲</div></div>
       <div class="day-wx"><div class="ic">🌧</div>30/25°<div class="stp">🚶 ~11,000</div></div>
     </div>
+    <div class="day-tasks"><div class="day-tasks-title">TODAY · 今日先完成</div><ul>
+      <li><b>上午：</b>买手店多在 11 点左右开，先早餐、咖啡或公园，别守卷帘门。</li>
+      <li><b>购物：</b>大名 → 药院 → 大濠按体力取舍；天神逛完优先吃 Wakaba 炸猪排。</li>
+      <li><b>晚饭：</b>おおやま两人通常选同汤底；基础套餐已够大，提前到可问能否早入场。</li>
+    </ul></div>
     <div class="day-adv"><details class="exp"><summary>🌡️ 今日穿什么 · 要不要防晒</summary><div class="exp-bd">
       <div class="adv-grid"><span class="adv-chip">👕 轻便逛街装</span><span class="adv-chip">☂️ <b>必带伞（雨 50%）</b></span><span class="adv-chip">🧴 傍晚海边补防晒</span><span class="adv-chip">👟 好走的鞋</span></div>
       <p>降水 50%，<b>伞必带</b>。白天大名/天神多在室内商场、有棚拱廊，不太淋；傍晚百道海边看日落，<b>海风大、备件薄外套 + 补涂防晒</b>。逛街脚程 ~1.1 万步，鞋要舒服。<a class="wx-live" href="https://tenki.jp/forecast/9/43/8210/40130/" target="_blank" rel="noopener">🔗 查福冈实时天气 →</a></p>
@@ -803,6 +806,11 @@
       <div class="day-title"><div class="h">雨天 · 面包庭园咖啡</div><div class="s">7/17 五 · 🏨 → 🥐Dacomecca → 友泉亭 → 薬院咖啡 → 🍢かわ屋鸡皮串 ☔</div></div>
       <div class="day-wx"><div class="ic">🌧</div>27/25°<div class="stp">🚶 ~7,500</div></div>
     </div>
+    <div class="day-tasks"><div class="day-tasks-title">TODAY · 今日先完成</div><ul>
+      <li><b>普通下雨：</b>照原路线走；暴雨就只留药院一个街区，不重新拼一场转车马拉松。</li>
+      <li><b>咖啡：</b>COUNTY COFFEE 本人更喜欢；REC 排长队就跳过。</li>
+      <li><b>晚饭：</b>19:00 かわ屋已预约，咖啡和逛店别拖过头。</li>
+    </ul></div>
     <div class="day-adv"><details class="exp"><summary>🌡️ 今日穿什么 · 要不要防晒</summary><div class="exp-bd">
       <div class="adv-grid"><span class="adv-chip">🧥 <b>薄长袖（今天最凉）</b></span><span class="adv-chip">☂️ 必带伞（中雨）</span><span class="adv-chip">👟 防水鞋</span><span class="adv-chip">🧴 防晒可省</span></div>
       <p>全天<b>最凉 + 中雨</b>，室内动线为主（面包房/庭园/咖啡/鸡皮串）。<b>伞必带、鞋别穿布面</b>；室内冷气足，备件薄长袖搭着。防晒基本可省。<a class="wx-live" href="https://tenki.jp/forecast/9/43/8210/40130/" target="_blank" rel="noopener">🔗 查福冈实时天气 →</a></p>
@@ -887,6 +895,11 @@
       <div class="day-title"><div class="h">返程 · 完美收官</div><div class="s">7/18 六 · 🏨 → 慢咖啡/手信 → 🚇 → ✈️福冈</div></div>
       <div class="day-wx"><div class="ic">🌤</div>31/24°<div class="stp">🚶 ~4,000</div></div>
     </div>
+    <div class="day-tasks"><div class="day-tasks-title">TODAY · 今日先完成</div><ul>
+      <li><b>退房：</b>一大一小先寄酒店，14:45 前取回。</li>
+      <li><b>手信：</b>博多站集中买；司牡丹金色包装纯米酒是高性价比长辈礼。</li>
+      <li><b>机场：</b>15:00 左右出发；行李多就打车直达“福冈机场国际航站楼”。</li>
+    </ul></div>
     <div class="day-adv"><details class="exp"><summary>🌡️ 今日穿什么 · 要不要防晒</summary><div class="exp-bd">
       <div class="adv-grid"><span class="adv-chip">👕 轻装</span><span class="adv-chip">🧴 薄涂防晒</span><span class="adv-chip">🧳 收拾行李</span></div>
       <p>返程日<b>转晴回暖</b>，轻装 + 薄涂防晒。博多站/机场补最后手信，<b>最晚 15:30 出发去机场</b>，留足值机安检时间。<a class="wx-live" href="https://tenki.jp/forecast/9/43/8210/40130/" target="_blank" rel="noopener">🔗 查福冈实时天气 →</a></p>
@@ -1082,21 +1095,26 @@
 
   <section>
     <div class="sec-title"><span class="n">PLAN B</span><h2>今天只选一条</h2></div>
-    <div class="menu-tip" style="padding:0 5px 11px;"><b>Plan B 是替换，不是加餐：</b>遇到大雨或体力不足，只保留一条轻松线，不要把多个室内景点重新拼成另一场暴走。</div>
-    <div class="fallback-grid">
+    <details class="pitfall-card">
+      <summary>☔ 查看六天 Plan B</summary>
+      <div class="menu-tip" style="padding:8px 0 11px;"><b>Plan B 是替换，不是加餐：</b>遇到大雨或体力不足，只保留一条轻松线，不要把多个室内景点重新拼成另一场暴走。</div>
+      <div class="fallback-grid">
       <div class="fallback"><div class="fallback-day">D1</div><div><b>只保留转场、入住和晚饭</b><p>落地疲惫就不逛天文馆，酒店休息后直接吃黑豚或白熊。</p></div></div>
       <div class="fallback"><div class="fallback-day">D2</div><div><b>大雨只留仙巌园一个核心</b><p>取消樱岛环线和水族馆，给仙巌园留足 2–3 小时；19:00 牛一彩预约照常。</p></div></div>
       <div class="fallback"><div class="fallback-day">D3</div><div><b>取消指宿，提前去福冈</b><p>鹿儿岛中央站简单吃饭买手信，坐 11:30–12:30 的新干线；下午入住、休息和逛中洲。</p></div></div>
       <div class="fallback"><div class="fallback-day">D4</div><div><b>雷雨只留福冈亚洲美术馆</b><p>取消百道、大濠和跨区逛店；在中洲川端附近看一个馆，之后直接去 20:30 牛肠锅。</p></div></div>
       <div class="fallback"><div class="fallback-day">D5</div><div><b>只留药院一个街区</b><p>取消友泉亭和运河城，咖啡与选物都在药院解决；19:00 再去已预约的かわ屋。</p></div></div>
       <div class="fallback"><div class="fallback-day">D6</div><div><b>博多站一站式解决</b><p>咖啡、手信、午饭全放站内，14:45 前取行李、15:00 去机场，不挑战返程运气。</p></div></div>
-    </div>
+      </div>
+    </details>
   </section>
 
   <section>
     <div class="sec-title"><span class="n">JAPANESE</span><h2>离线应急日语</h2></div>
-    <div class="menu-tip" style="padding:0 5px 11px;">点一下全屏放大，直接把手机给对方看。无需联网，也不用现场表演日语摇滚。</div>
-    <div class="phrase-grid">
+    <details class="pitfall-card">
+      <summary>🗣️ 打开常用日语卡片</summary>
+      <div class="menu-tip" style="padding:8px 0 11px;">点一下全屏放大，直接把手机给对方看。无需联网，也不用现场表演日语摇滚。</div>
+      <div class="phrase-grid">
       <button class="phrase" data-jp="生ビールを一杯お願いします。" data-reading="Nama biiru o ippai onegai shimasu" data-cn="请给我来一杯生啤。"><b>来一杯生啤</b><span>生ビールを一杯</span></button>
       <button class="phrase" data-jp="とりあえず、生ビールを二杯お願いします。" data-reading="Toriaezu, nama biiru o nihai onegai shimasu" data-cn="先来两杯生啤。很地道的开场说法。"><b>先来两杯生啤</b><span>とりあえず、生二杯</span></button>
       <button class="phrase" data-jp="これを一つお願いします。" data-reading="Kore o hitotsu onegai shimasu" data-cn="这个请给我来一份。"><b>这个来一份</b><span>これを一つ</span></button>
@@ -1110,7 +1128,8 @@
       <button class="phrase" data-jp="道に迷いました。この場所へ行きたいです。" data-reading="Michi ni mayoimashita. Kono basho e ikitai desu" data-cn="我迷路了，想去这个地方。"><b>我迷路了</b><span>道に迷いました</span></button>
       <button class="phrase" data-jp="体調が悪いです。病院を教えてください。" data-reading="Taichou ga warui desu. Byouin o oshiete kudasai" data-cn="我身体不舒服，请告诉我医院在哪里。"><b>身体不舒服</b><span>体調が悪いです</span></button>
       <button class="phrase" data-jp="中国語か英語で対応できますか？" data-reading="Chuugokugo ka eigo de taiou dekimasu ka" data-cn="可以用中文或英语沟通吗？"><b>需要中文或英语</b><span>中国語か英語で</span></button>
-    </div>
+      </div>
+    </details>
   </section>
 
   <div class="phrase-ovl" id="phraseOvl" hidden><div class="phrase-sheet"><div class="phrase-jp" id="phraseJp"></div><div class="phrase-reading" id="phraseReading"></div><div class="phrase-cn" id="phraseCn"></div><div class="phrase-actions"><button class="phrase-speak" id="phraseSpeak" type="button">▶ 播放发音</button><button class="phrase-close" id="phraseClose" type="button">关闭</button></div></div></div>
@@ -1118,7 +1137,9 @@
   <!-- ============ TIPS ============ -->
   <section>
     <div class="sec-title"><span class="n">TIPS</span><h2>出行注意点</h2></div>
-    <div class="card">
+    <details class="pitfall-card">
+      <summary>📌 查看预约、防暑与通用提醒</summary>
+      <div class="card" style="margin-top:8px; box-shadow:none;">
       <div class="row"><div class="ic">🍱</div><div class="bd"><div class="t">午饭怎么办（都不用预约，随走随吃）</div><div class="d"><b>D1</b>·博多站先买駅弁，新干线上吃最省时间；<b>D2</b>·渡轮全配乌冬 + 樱岛/水族馆附近轻食；<b>D3</b>·指宿吃「温たまらん丼/流水素面」；<b>D4</b>·天神重点吃 Wakaba 炸猪排；<b>D5</b>·Dacomecca 早餐 + 药院咖啡轻食；<b>D6</b>·博多站/机场解决。</div></div></div>
       <div class="row"><div class="ic">📌</div><div class="bd"><div class="t">预约小结</div><div class="d">✅ 已订：<b>牛一彩烤肉(D2 19:00) · 牛肠锅おおやま(D4 20:30) · かわ屋鸡皮串(D5 19:00)</b>，均 2 位。仅剩：<b>玉手箱号指定席(D3选指宿时·当地车站买)</b>。黑豚炸猪排、白熊、拉面、屋台、百道日落 → <b>免预约随到随吃</b>。</div></div></div>
       <div class="row"><div class="ic">💴</div><div class="bd"><div class="t">实体卡 + 现金才是主力</div><div class="d">福冈地铁、西铁巴士、鹿儿岛市电和樱岛渡轮都可用 Suica；部分民营线路要另看现场标识。市电、渡轮、观光巴士坐得多用 <b>CUTE</b>；小店优先实体 Visa，并备少量现金，Apple Pay 只作补充。</div></div></div>
@@ -1127,7 +1148,8 @@
       <div class="row"><div class="ic">☔</div><div class="bd"><div class="t">7/17 中雨</div><div class="d">折叠伞随身；忘带便利店 ¥600 有伞。那天走室内动线最稳。屋台雨天可能不出摊。</div></div></div>
       <div class="row"><div class="ic">🚄</div><div class="bd"><div class="t">新干线指定席早点买</div><div class="d">往返鹿儿岛约 ¥21,000。若还想多跑，可算 <b>JR 九州全九州 3 日券（约 ¥20,000）</b>是否划算。</div></div></div>
       <div class="row"><div class="ic">📱</div><div class="bd"><div class="t">Google Maps 是辅助，不是圣旨</div><div class="d">备 eSIM / 随身 WiFi；地图负责定位，现场站牌、系统编号、终点方向和纸质时刻表负责防坐反。观光巴士到站先拍时刻表，再决定逛多久。</div></div></div>
-    </div>
+      </div>
+    </details>
   </section>
 
   <footer>
