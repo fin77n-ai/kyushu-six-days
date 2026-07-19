@@ -1,4 +1,4 @@
-const CACHE_NAME = 'kyushu-six-days-v17';
+const CACHE_NAME = 'kyushu-six-days-v18';
 const APP_FILES = [
   './',
   './index.html',
